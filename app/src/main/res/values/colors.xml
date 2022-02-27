@@ -13,6 +13,7 @@
     <color name="white">#FAFAFA</color>
     <color name="pure_black">#FF000000</color>
     <color name="gray">#737373</color>
+    <color name="modal_bg">#4D000000</color>
     <color name="green">#4E9A51</color>
     <color name="red">#DE0000</color>
     <color name="blue">#1A73E8</color>
