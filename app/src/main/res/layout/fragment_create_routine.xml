@@ -1,14 +1,251 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.routines.CreateRoutineFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp">
+            <TextView
+                android:id="@+id/name_textView"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="Nombre:"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/name_textField"
+                app:layout_constraintTop_toBottomOf="@id/name_textView"
+                app:layout_constraintStart_toEndOf="@id/name_textField"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la rutina">
 
-</FrameLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/id_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/id_textField"
+                app:layout_constraintBottom_toTopOf="@id/id_textField"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="ID:"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/id_textField"
+                app:layout_constraintTop_toBottomOf="@id/id_textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:hint="ID">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/video_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name_textField"
+                android:layout_marginTop="16dp"
+                android:text="Adjuntar vídeo:"
+                />
+
+            <TextView
+                android:id="@+id/upload_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/upload_imageView"
+                app:layout_constraintTop_toBottomOf="@id/id_textField"
+                android:layout_marginTop="16dp"
+                android:text="Volver a cargar"
+                />
+            <ImageView
+                android:id="@+id/upload_imageView"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/id_textField"
+                android:src="@drawable/ic_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!--<Button
+                android:id="@+id/uploadVideo_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Presiona para cargar un vídeo"
+                app:layout_constraintTop_toBottomOf="@id/upload_textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/Widget.MaterialComponents.Button"
+                />-->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/uploadVideo_button"
+                app:layout_constraintTop_toBottomOf="@id/upload_textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Media -->
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="194dp"
+                        android:contentDescription="Imagen de un vídeo"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/video" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <!-- Title, secondary and supporting text -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Presiona para cargar un vídeo"
+                            android:textAppearance="?attr/textAppearanceHeadline6"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/description_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uploadVideo_button"
+                android:layout_marginTop="16dp"
+                android:text="Descripción de la rutina:"
+                />
+
+            <ImageView
+                android:id="@+id/addExcercise_imageView"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/uploadVideo_button"
+                android:src="@drawable/ic_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/excercise_textView"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/description_textView"
+                android:layout_marginTop="10dp"
+                android:text="Nombre:"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/excercise_textField"
+                app:layout_constraintTop_toBottomOf="@id/excercise_textView"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del ejercicio">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/series_textView"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/excercise_textView"
+                app:layout_constraintEnd_toStartOf="@id/repetitions_textView"
+                app:layout_constraintTop_toBottomOf="@id/description_textView"
+                android:layout_marginTop="10dp"
+                android:text="Series:"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/series_textField"
+                app:layout_constraintTop_toBottomOf="@id/series_textView"
+                app:layout_constraintStart_toEndOf="@id/excercise_textField"
+                app:layout_constraintEnd_toStartOf="@id/repetitions_textField"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:hint="Cant.">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/repetitions_textView"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/repetitions_textField"
+                app:layout_constraintTop_toBottomOf="@id/description_textView"
+                android:layout_marginTop="10dp"
+                android:text="Rep:"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/repetitions_textField"
+                app:layout_constraintTop_toBottomOf="@id/repetitions_textView"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:hint="Cant.">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+
+        android:id="@+id/accept_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
