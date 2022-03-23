@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.nutrikares.nutrideskapp.adapters.PatientAdapter
+import com.nutrikares.nutrideskapp.adapters.RecipeAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 
 
@@ -30,14 +32,18 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textRecipes
-
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Recycler Viewer
+        binding.recipesRecycler.adapter = RecipeAdapter(this)
+        binding.recipesRecycler.setHasFixedSize(true)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //_binding = null
+        _binding = null
     }
 
 

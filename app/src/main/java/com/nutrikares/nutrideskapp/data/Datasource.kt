@@ -20,4 +20,23 @@ object Datasource {
         "Paciente 15",
         "Paciente 16"
     )
+
+    val recipes: MutableList<String> = mutableListOf(
+        "Receta 1",
+        "Receta 2",
+        "Receta 3",
+        "Receta 4",
+        "Receta 5",
+        "Receta 6",
+        "Receta 7",
+        "Receta 8",
+        "Receta 9",
+        "Receta 10",
+        "Receta 11",
+        "Receta 12",
+        "Receta 13",
+        "Receta 14",
+        "Receta 15",
+        "Receta 16"
+    )
 }
