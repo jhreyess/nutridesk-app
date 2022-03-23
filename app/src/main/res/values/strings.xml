@@ -19,11 +19,16 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_routines">Rutinas de ejercicio</string>
-    <string name="menu_patients">Pacientes</string>
-    <string name="menu_recipes">Recetas</string>
     <string name="create_routine">Nueva Rutina</string>
-    <string name="create_recipe">Nueva Receta</string>
+
+    <string name="menu_patients">Pacientes</string>
     <string name="create_patient">Nuevo Paciente</string>
+
+    <string name="menu_recipes">Recetas</string>
+    <string name="create_recipe">Nueva Receta</string>
+    <string name="create_preparation_recipe">Nueva Receta - Preparación</string>
+    <string name="create_information_recipe">Nueva Receta - Información</string>
+
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>

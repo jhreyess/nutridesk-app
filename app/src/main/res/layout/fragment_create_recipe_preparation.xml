@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.recipes.CreateRecipeFragment">
+    tools:context=".ui.recipes.CreateRecipePreparationFragment">
 
     <Button
-        android:id="@+id/toPreparation_button"
+        android:id="@+id/toInformation_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="A preparación"
+        android:text="A información"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
