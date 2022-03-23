@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.databinding.FragmentPacientsBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_pacients">
+    app:startDestination="@id/nav_patients">
 
     <fragment
         android:id="@+id/nav_home"
@@ -23,10 +23,10 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/nav_pacients"
-        android:name="com.nutrikares.nutrideskapp.ui.pacients.PacientsFragment"
-        android:label="@string/menu_pacients"
-        tools:layout="@layout/fragment_pacients" />
+        android:id="@+id/nav_patients"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.PatientsFragment"
+        android:label="@string/menu_patients"
+        tools:layout="@layout/fragment_patients" />
     <fragment
         android:id="@+id/nav_recipes"
         android:name="com.nutrikares.nutrideskapp.ui.recipes.RecipesFragment"
