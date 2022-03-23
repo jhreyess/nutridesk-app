@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.nutrikares.nutrideskapp.R
+import com.nutrikares.nutrideskapp.adapters.PatientAdapter
+import com.nutrikares.nutrideskapp.adapters.RoutineAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentRoutinesBinding
 
@@ -31,9 +33,14 @@ class RoutinesFragment : Fragment() {
         _binding = FragmentRoutinesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textRoutines
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Recycler Viewer
+        binding.routinesRecycler.adapter = RoutineAdapter(this)
+        binding.routinesRecycler.setHasFixedSize(true)
     }
 
     override fun onDestroyView() {
