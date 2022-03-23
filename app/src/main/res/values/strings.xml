@@ -10,4 +10,22 @@
     <string name="emptyPasswordError">Introduce una contraseña</string>
     <string name="emptyFieldsError">Llena los campos correspondientes</string>
     <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
+
+    <!-- LABELS -->
+    <string name="home_label">Inicio</string>
+    <string name="food_label">Comidas</string>
+    <string name="exercise_label">Ejercicios</string>
+    <string name="analytics_label">Antropometría</string>
+    <string name="profile_label">Perfil</string>
+
+    <!-- HOME -->
+    <string name="home_toolbar">¡Bienvenido!</string>
+    <string name="imc">IMC</string>
+    <string name="weight">Tu Peso</string>
+    <string name="progress">Tu Progreso</string>
+    <string name="weight_placeholder">%1$d kg</string>
+    <string name="imc_placeholder">%1$d kg/m2</string>
+    <string name="daily_routine">Tu rutina diaria</string>
+    <string name="daily_menu">El menú de hoy</string>
+
 </resources>

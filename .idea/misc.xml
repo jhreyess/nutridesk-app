@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_blue.xml" value="0.273" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_yellow.xml" value="0.273" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/ic_logo.xml" value="0.218" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/activity_admin_main.xml" value="0.2875905797101449" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/menu/nav_items.xml" value="0.2975630611372381" />
       </map>
     </option>
   </component>
