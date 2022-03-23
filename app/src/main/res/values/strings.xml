@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">nutrideskapp</string>
+    <string name="app_name_short">nutridesk</string>
+    <string name="prompt_email">Correo electrónico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="hint_email">Introduce tu correo electrónico</string>
+    <string name="hint_password">Introduce tu contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="emptyEmailError">Introduce un correo electrónico</string>
+    <string name="emptyPasswordError">Introduce una contraseña</string>
+    <string name="emptyFieldsError">Llena los campos correspondientes</string>
+    <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
 </resources>
