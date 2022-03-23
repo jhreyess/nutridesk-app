@@ -27,4 +27,9 @@
         android:name="com.nutrikares.nutrideskapp.ui.pacients.PacientsFragment"
         android:label="@string/menu_pacients"
         tools:layout="@layout/fragment_pacients" />
+    <fragment
+        android:id="@+id/nav_recipes"
+        android:name="com.nutrikares.nutrideskapp.ui.recipes.RecipesFragment"
+        android:label="@string/menu_recipes"
+        tools:layout="@layout/fragment_recipes" />
 </navigation>
