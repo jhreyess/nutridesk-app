@@ -32,4 +32,10 @@
         android:name="com.nutrikares.nutrideskapp.ui.recipes.RecipesFragment"
         android:label="@string/menu_recipes"
         tools:layout="@layout/fragment_recipes" />
+    <fragment
+        android:id="@+id/nav_routines"
+        android:name="com.nutrikares.nutrideskapp.ui.routines.RoutinesFragment"
+        android:label="@string/menu_routines"
+        tools:layout="@layout/fragment_routines" />
+
 </navigation>
