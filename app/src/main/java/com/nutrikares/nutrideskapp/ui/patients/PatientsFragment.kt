@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.adapters.PatientAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentPatientsBinding
 
@@ -34,6 +36,10 @@ class PatientsFragment : Fragment() {
         // Recycler Viewer
         binding.patientsRecycler.adapter = PatientAdapter(this)
         binding.patientsRecycler.setHasFixedSize(true)
+
+        binding.createPatientButton.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_patients_to_createPatientFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.NavAction
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.adapters.PatientAdapter
 import com.nutrikares.nutrideskapp.adapters.RoutineAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentRoutinesBinding
+import com.nutrikares.nutrideskapp.ui.home.HomeFragment
 
 
 class RoutinesFragment : Fragment() {
@@ -29,11 +34,8 @@ class RoutinesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentRoutinesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-
         return root
     }
 
@@ -41,10 +43,14 @@ class RoutinesFragment : Fragment() {
         // Recycler Viewer
         binding.routinesRecycler.adapter = RoutineAdapter(this)
         binding.routinesRecycler.setHasFixedSize(true)
+
+        binding.createRoutineButton.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_routines_to_createRoutineFragment)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        //_binding = null
+        _binding = null
     }
 }
