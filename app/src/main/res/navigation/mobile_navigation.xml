@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_nav_patients_to_createPatientFragment"
             app:destination="@id/createPatientFragment" />
+        <action
+            android:id="@+id/action_nav_patients_to_viewPatientFragment2"
+            app:destination="@id/viewPatientFragment2" />
     </fragment>
     <fragment
         android:id="@+id/nav_recipes"
@@ -69,5 +72,10 @@
             android:id="@+id/action_createRecipeInformationFragment_to_nav_recipes"
             app:destination="@id/nav_recipes" />
     </fragment>
+    <fragment
+        android:id="@+id/viewPatientFragment2"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment"
+        android:label="@string/view_patient"
+        tools:layout="@layout/fragment_view_patient" />
 
 </navigation>

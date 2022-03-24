@@ -23,6 +23,7 @@
 
     <string name="menu_patients">Pacientes</string>
     <string name="create_patient">Nuevo Paciente</string>
+    <string name="view_patient">Paciente</string>
 
     <string name="menu_recipes">Recetas</string>
     <string name="create_recipe">Nueva Receta</string>

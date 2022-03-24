@@ -15,7 +15,6 @@ import com.nutrikares.nutrideskapp.adapters.PatientAdapter
 import com.nutrikares.nutrideskapp.adapters.RoutineAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentRoutinesBinding
-import com.nutrikares.nutrideskapp.ui.home.HomeFragment
 
 
 class RoutinesFragment : Fragment() {

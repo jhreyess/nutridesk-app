@@ -1,17 +1,18 @@
-package com.nutrikares.nutrideskapp.ui.recipes
+package com.nutrikares.nutrideskapp.ui.patients
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeBinding
-import com.nutrikares.nutrideskapp.databinding.FragmentCreateRoutineBinding
+import com.nutrikares.nutrideskapp.databinding.FragmentCreatePatientBinding
+import com.nutrikares.nutrideskapp.databinding.FragmentViewPatientBinding
 
-class CreateRecipeFragment : Fragment() {
-    private var _binding: FragmentCreateRecipeBinding? = null
+
+class ViewPatientFragment : Fragment() {
+
+    private var _binding: FragmentViewPatientBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -26,15 +27,13 @@ class CreateRecipeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCreateRecipeBinding.inflate(inflater, container, false)
+        _binding = FragmentViewPatientBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.acceptButton.setOnClickListener {
-            findNavController().navigate(R.id.action_createRecipeFragment_to_createRecipePreparationFragment)
-        }
+
     }
 
     override fun onDestroyView() {
