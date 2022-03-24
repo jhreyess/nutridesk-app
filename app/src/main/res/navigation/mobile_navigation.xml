@@ -89,6 +89,30 @@
             android:name="patientName"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_viewPatientFragment2_to_editPatientFragment"
+            app:destination="@id/editPatientFragment" />
+        <action
+            android:id="@+id/action_viewPatientFragment2_to_anthropometryPatientFragment"
+            app:destination="@id/anthropometryPatientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPatientFragment"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.EditPatientFragment"
+        android:label="@string/edit_patient"
+        tools:layout="@layout/fragment_edit_patient" >
+        <action
+            android:id="@+id/action_editPatientFragment_to_nav_patients"
+            app:destination="@id/nav_patients" />
+    </fragment>
+    <fragment
+        android:id="@+id/anthropometryPatientFragment"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.AnthropometryPatientFragment"
+        android:label="@string/anthropometry_patient"
+        tools:layout="@layout/fragment_anthropometry_patient" >
+        <action
+            android:id="@+id/action_anthropometryPatientFragment_to_viewPatientFragment2"
+            app:destination="@id/viewPatientFragment2" />
     </fragment>
 
 </navigation>

@@ -24,6 +24,8 @@
     <string name="menu_patients">Pacientes</string>
     <string name="create_patient">Nuevo Paciente</string>
     <string name="view_patient">Paciente</string>
+    <string name="edit_patient">Editar Paciente</string>
+    <string name="anthropometry_patient">Antropometría</string>
 
     <string name="menu_recipes">Recetas</string>
     <string name="create_recipe">Nueva Receta</string>

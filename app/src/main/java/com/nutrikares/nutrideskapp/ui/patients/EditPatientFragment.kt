@@ -9,13 +9,13 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.databinding.FragmentCreatePatientBinding
+import com.nutrikares.nutrideskapp.databinding.FragmentEditPatientBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentViewPatientBinding
 
 
-class ViewPatientFragment : Fragment() {
+class EditPatientFragment : Fragment() {
 
-    private var _binding: FragmentViewPatientBinding? = null
+    private var _binding: FragmentEditPatientBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -30,20 +30,19 @@ class ViewPatientFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentViewPatientBinding.inflate(inflater, container, false)
+        _binding = FragmentEditPatientBinding.inflate(inflater, container, false)
         val root: View = binding.root
         return root
     }
 
-    val args: ViewPatientFragmentArgs by navArgs()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val patientName = args.patientName
-        binding.patientNameTextView.text = patientName
-        
-        binding.editIcon.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPatientFragment2_to_editPatientFragment)
+
+        binding.acceptButtonEdit.setOnClickListener {
+            findNavController().navigate(R.id.action_editPatientFragment_to_nav_patients)
         }
+
     }
 
     override fun onDestroyView() {
