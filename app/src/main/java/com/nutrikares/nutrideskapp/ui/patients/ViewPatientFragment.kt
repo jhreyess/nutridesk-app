@@ -40,9 +40,13 @@ class ViewPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val patientName = args.patientName
         binding.patientNameTextView.text = patientName
-        
+
         binding.editIcon.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_editPatientFragment)
+        }
+
+        binding.anthropometryCard.setOnClickListener {
+            findNavController().navigate(R.id.action_viewPatientFragment2_to_anthropometryPatientFragment)
         }
     }
 
