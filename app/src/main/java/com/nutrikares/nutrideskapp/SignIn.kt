@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.nutrikares.nutrideskapp.models.User
+import com.nutrikares.nutrideskapp.data.models.User
 import com.nutrikares.nutrideskapp.presenters.SignInPresenter
 import com.nutrikares.nutrideskapp.presenters.SignInUser
 import com.nutrikares.nutrideskapp.views.SignInUserView

@@ -3,11 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentHome">
+    app:startDestination="@id/homeNavigation">
+
+    <navigation
+        android:id="@+id/foodNavigation"
+        app:startDestination="@id/fragmentFood">
+
+        <fragment
+            android:id="@+id/fragmentFood"
+            android:name="com.nutrikares.nutrideskapp.FragmentFood"
+            android:label="fragment_food"
+            tools:layout="@layout/fragment_food" >
+            <action
+                android:id="@+id/action_fragmentFood_to_fragmentFoodDaily"
+                app:destination="@id/fragmentFoodDaily" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragmentFoodDaily"
+            android:name="com.nutrikares.nutrideskapp.FragmentFoodDaily"
+            android:label="FragmentFoodDaily"
+            tools:layout="@layout/fragment_food_daily" >
+            <argument
+                android:name="dayIndex"
+                app:argType="string" />
+            <action
+                android:id="@+id/action_fragmentFoodDaily_to_fragmentFood"
+                app:destination="@id/fragmentFood" />
+        </fragment>
+
+
+    </navigation>
 
     <fragment
-        android:id="@+id/fragmentHome"
-        android:name="com.nutrikares.nutrideskapp.FragmentHome"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/fragmentAnalytics"
+        android:name="com.nutrikares.nutrideskapp.FragmentAnalytics"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.nutrikares.nutrideskapp.FragmentProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/fragmentExercise"
+        android:name="com.nutrikares.nutrideskapp.FragmentExercise"
+        android:label="fragment_exercise_empty"
+        tools:layout="@layout/fragment_exercise_empty" />
+
+    <navigation android:id="@+id/homeNavigation"
+        app:startDestination="@id/fragmentHome">
+        <fragment
+            android:id="@+id/fragmentHome"
+            android:name="com.nutrikares.nutrideskapp.FragmentHome"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home">
+            <action
+                android:id="@+id/action_fragmentHome_to_fragmentFoodDaily_home"
+                app:destination="@id/fragmentFoodDaily_home" />
+            <action
+                android:id="@+id/action_fragmentHome_to_fragmentExercise_home"
+                app:destination="@id/fragmentExercise_home" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragmentFoodDaily_home"
+            android:name="com.nutrikares.nutrideskapp.FragmentFoodDaily"
+            android:label="FragmentFoodDaily"
+            tools:layout="@layout/fragment_food_daily">
+            <argument
+                android:name="dayIndex"
+                app:argType="string" />
+        </fragment>
+        <fragment
+            android:id="@+id/fragmentExercise_home"
+            android:name="com.nutrikares.nutrideskapp.FragmentExercise"
+            android:label="fragment_exercise_empty"
+            tools:layout="@layout/fragment_exercise_empty" />
+    </navigation>
+
 </navigation>

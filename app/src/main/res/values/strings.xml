@@ -1,15 +1,5 @@
 <resources>
-    <string name="app_name">nutrideskapp</string>
-    <string name="app_name_short">nutridesk</string>
-    <string name="prompt_email">Correo electrónico</string>
-    <string name="prompt_password">Contraseña</string>
-    <string name="hint_email">Introduce tu correo electrónico</string>
-    <string name="hint_password">Introduce tu contraseña</string>
-    <string name="login">Iniciar Sesión</string>
-    <string name="emptyEmailError">Introduce un correo electrónico</string>
-    <string name="emptyPasswordError">Introduce una contraseña</string>
-    <string name="emptyFieldsError">Llena los campos correspondientes</string>
-    <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
+    <string name="app_name">Nutridesk</string>
 
     <!-- LABELS -->
     <string name="home_label">Inicio</string>
@@ -28,4 +18,43 @@
     <string name="daily_routine">Tu rutina diaria</string>
     <string name="daily_menu">El menú de hoy</string>
 
+    <!-- FOOD -->
+    <string name="food_toolbar">Semana del %1$s al %2$s</string>
+    <string name="card_day">Día %1$s</string>
+    <string name="menu_date">Día %1$d - %2$s</string>
+
+    <!-- EXERCISES -->
+    <string name="exercise_toolbar">Ejercicios de hoy</string>
+    <string name="congrats">¡Enhorabuena!</string>
+    <string name="empty_exercise">No tienes rutinas para el día de hoy</string>
+    <string name="routine_name">Rutina - %1$s</string>
+
+    <!-- ANALYTICS -->
+    <string name="weight_label">Peso (kg)</string>
+    <string name="weight_relative">Grasa relativa (kg)</string>
+    <string name="IMC_prompt">IMC</string>
+    <string name="waist_prompt">Medida cintura</string>
+    <string name="hip_prompt">Medida cadera</string>
+    <string name="stomach_prompt">Medida abdomen</string>
+
+    <!-- MISCELLANEOUS -->
+    <string name="sign_out">Cerrar Sesión</string>
+    <string name="measure">%1$d cm</string>
+    <string name="prompt_email">Correo electrónico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="current_password">Contraseña actual</string>
+    <string name="change_password">Cambiar contraseña</string>
+    <string name="new_password">Nueva contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="hint_email">Introduce tu correo electrónico</string>
+    <string name="hint_password">Introduce tu contraseña</string>
+    <string name="hint_current_password">Introduce tu contraseña actual</string>
+    <string name="hint_new_password">Introduce tu nueva contraseña</string>
+    <string name="hint_confirm_password">Confirma tu nueva contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="emptyEmailError">Introduce un correo electrónico</string>
+    <string name="emptyPasswordError">Introduce una contraseña</string>
+    <string name="emptyFieldsError">Llena los campos correspondientes</string>
+    <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
+    <string name="save">Guardar</string>
 </resources>
