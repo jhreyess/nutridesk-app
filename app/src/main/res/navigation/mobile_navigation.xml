@@ -39,7 +39,11 @@
         android:id="@+id/createRoutineFragment"
         android:name="com.nutrikares.nutrideskapp.ui.routines.CreateRoutineFragment"
         android:label="@string/create_routine"
-        tools:layout="@layout/fragment_create_routine" />
+        tools:layout="@layout/fragment_create_routine" >
+        <action
+            android:id="@+id/action_createRoutineFragment_to_nav_routines"
+            app:destination="@id/nav_routines" />
+    </fragment>
     <fragment
         android:id="@+id/createRecipeFragment"
         android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipeFragment"
@@ -80,6 +84,11 @@
         android:id="@+id/viewPatientFragment2"
         android:name="com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment"
         android:label="@string/view_patient"
-        tools:layout="@layout/fragment_view_patient" />
+        tools:layout="@layout/fragment_view_patient" >
+        <argument
+            android:name="patientName"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

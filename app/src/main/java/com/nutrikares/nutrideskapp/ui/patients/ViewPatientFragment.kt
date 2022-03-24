@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.databinding.FragmentCreatePatientBinding
 import com.nutrikares.nutrideskapp.databinding.FragmentViewPatientBinding
@@ -32,7 +33,11 @@ class ViewPatientFragment : Fragment() {
         return root
     }
 
+    val args: ViewPatientFragmentArgs by navArgs()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val patientName = args.patientName
+        binding.patientNameTextView.text = patientName
 
     }
 

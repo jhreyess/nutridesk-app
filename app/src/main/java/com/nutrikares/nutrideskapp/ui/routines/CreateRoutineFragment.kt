@@ -34,7 +34,9 @@ class CreateRoutineFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        binding.acceptButton.setOnClickListener {
+            findNavController().navigate(R.id.action_createRoutineFragment_to_nav_routines)
+        }
     }
 
     override fun onDestroyView() {

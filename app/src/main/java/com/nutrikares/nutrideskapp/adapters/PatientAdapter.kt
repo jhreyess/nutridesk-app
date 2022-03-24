@@ -11,6 +11,7 @@ import com.google.android.material.card.MaterialCardView
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragment
+import com.nutrikares.nutrideskapp.ui.patients.PatientsFragmentDirections
 
 class PatientAdapter (private val context: PatientsFragment?,) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 
@@ -37,7 +38,7 @@ class PatientAdapter (private val context: PatientsFragment?,) : RecyclerView.Ad
         holder.preview.text = patient
 
         holder.cardButton.setOnClickListener{
-            val action = R.id.action_nav_patients_to_viewPatientFragment2
+            val action = PatientsFragmentDirections.actionNavPatientsToViewPatientFragment2(patient)
             holder.view?.findNavController()!!.navigate(action)
         }
     }
