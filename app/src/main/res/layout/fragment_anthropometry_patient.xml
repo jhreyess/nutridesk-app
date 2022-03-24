@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.patients.AnthropometryPatientFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Peso (kg):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce el peso del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatient"
+            app:layout_constraintTop_toBottomOf="@id/textViewName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewAge"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="IMC (kg/m2):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatient" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatientAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce el IMC del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatientAge"
+            app:layout_constraintTop_toBottomOf="@id/textViewAge">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewObjective"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Medida cintura (cm):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAge" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatientObjective"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce la medida de la cintura del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatientObjective"
+            app:layout_constraintTop_toBottomOf="@id/textViewObjective">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Medida cadera (cm):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatientObjective" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatientEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce la medida de la cadera del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatientEmail"
+            app:layout_constraintTop_toBottomOf="@id/textViewEmail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewAbdomen"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Medida abdomen (cm):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatientEmail" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatientAbdomen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce la medida del abdomen del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatientAbdomen"
+            app:layout_constraintTop_toBottomOf="@id/textViewAbdomen">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textViewGrasa"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Grasa relativa (kg):"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAbdomen" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldPatientGrasa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce la grasa relativa del paciente"
+            app:layout_constraintStart_toEndOf="@id/textFieldPatientGrasa"
+            app:layout_constraintTop_toBottomOf="@id/textViewGrasa">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/accept_button"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Actualizar medidas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

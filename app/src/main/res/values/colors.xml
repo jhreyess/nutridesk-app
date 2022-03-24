@@ -22,10 +22,12 @@
     <!-- Light Mode text -->
     <color name="black">#0F0421</color>
     <color name="dark_gray">#2C2933</color>
+    <color name="light_surface">#F0F0F0</color>
     <color name="light_bg">#F6F6F6</color>
 
     <!-- Dark Mode text -->
     <color name="pure_white">#FFFFFFFF</color>
     <color name="light_gray">#D9D9D9</color>
+    <color name="dark_surface">#424242</color>
     <color name="dark_bg">#303030</color>
 </resources>
