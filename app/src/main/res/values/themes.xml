@@ -16,4 +16,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:windowBackground">@color/light_bg</item>
     </style>
+
+    <style name="Theme.Nutrideskapp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Nutrideskapp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Nutrideskapp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

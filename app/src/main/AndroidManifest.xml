@@ -11,7 +11,9 @@
         android:theme="@style/Theme.Nutrideskapp">
         <activity
             android:name=".AdminMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_activity_admin_main"
+            android:theme="@style/Theme.Nutrideskapp.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

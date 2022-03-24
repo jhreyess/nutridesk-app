@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.recipes.CreateRecipePreparationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/ingredients_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredientes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/line_view"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_textView"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="8dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ingredients_textField"
+            app:layout_constraintTop_toBottomOf="@id/line_view"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Descripción del ingrediente">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/ingredientslist1_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• 1/2 aguacate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredients_textField"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/ingredientslist2_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• 1/2 taza de espinaca desinfectada"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientslist1_textView"
+            />
+
+        <TextView
+            android:id="@+id/ingredientslist3_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• 2 rebanadas de jamón"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientslist2_textView"
+            />
+
+        <TextView
+            android:id="@+id/ingredientslist4_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Tomate cherry"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientslist3_textView"
+            />
+
+        <TextView
+            android:id="@+id/ingredientslist5_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• 2 huevos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientslist4_textView"
+            />
+
+        <TextView
+            android:id="@+id/ingredientslist6_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• 1 cucharada de aceite de oliva"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredientslist5_textView"
+            />
+
+        <TextView
+            android:id="@+id/description_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Preparación:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientslist6_textView" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_textField"
+            app:layout_constraintTop_toBottomOf="@id/description_textView"
+            app:layout_constraintStart_toEndOf="@id/description_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Introduce la preparación del platillo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:lines = "14"
+                android:gravity="top"
+                android:overScrollMode="always"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="insideInset"
+                android:scrollHorizontally="false"
+                android:layout_marginTop="8dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:background="@android:color/transparent"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+
+        android:id="@+id/accept_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
