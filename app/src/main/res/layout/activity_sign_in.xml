@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SignIn"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,12 +27,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/app_name_short"
+            android:text="@string/app_name"
             android:textAllCaps="true"
             android:textStyle="bold"
             android:letterSpacing="0.1"
             android:textAlignment="center"
-            style="@style/TextAppearance.MaterialComponents.Headline4"
+            style="@style/Headline4"
             android:textColor="@color/black"/>
 
         <TextView
@@ -42,7 +42,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:layout_marginTop="30dp"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            style="@style/Body1"
             android:textColor="@color/red"
             tools:text="Invalid inputs!" />
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="@string/prompt_email"
             android:textColor="@color/dark_gray"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/Subtitle1"
         />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -70,6 +70,7 @@
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
                 android:autofillHints="no"
+                android:textColor="@color/black"
                 android:hint="@string/hint_email"
                 android:textColorHint="@color/gray"/>
 
@@ -81,7 +82,7 @@
             android:layout_height="wrap_content"
             android:text="@string/prompt_password"
             android:textColor="@color/dark_gray"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            style="@style/Subtitle1" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userPassword"
@@ -99,6 +100,7 @@
                 android:inputType="textPassword"
                 android:autofillHints="no"
                 android:hint="@string/hint_password"
+                android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +114,7 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/purple"
             app:cornerRadius="25dp"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textAppearance="@style/Headline6"
             android:textStyle="bold" />
 
     </LinearLayout>

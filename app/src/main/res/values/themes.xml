@@ -8,12 +8,16 @@
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/purple</item>
+        <item name="colorOnSecondary">@color/white</item>
 
         <item name="colorSurface">@color/light_surface</item>
         <item name="colorOnSurface">@color/light_purple</item>
 
+        <item name="colorError">@color/red</item>
+
         <!-- Status bar & Background color -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSecondaryVariant</item>
         <item name="android:windowBackground">@color/light_bg</item>
     </style>
 

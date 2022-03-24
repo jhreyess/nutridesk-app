@@ -1,4 +1,4 @@
-package com.nutrikares.nutrideskapp.models
+package com.nutrikares.nutrideskapp.data.models
 
 class User{
 

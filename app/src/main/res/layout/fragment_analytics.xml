@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentAnalytics">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/analytics_label"
+            android:layout_marginTop="32dp"
+            android:textColor="?attr/colorSecondary"
+            style="@style/Headline6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            style="@style/Subtitle2"
+            android:text="@string/weight_label"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/imc_indicator"
+                    style="@style/Headline6"
+                    android:layout_width="135dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/indicator_background"
+                    android:gravity="center"
+                    android:text="@string/IMC_prompt"
+                    android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    style="@style/Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/imc_indicator"
+                    android:gravity="center"
+                    android:text="@string/imc_placeholder"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textStyle="bold"
+                    tools:text="19 kg/m2" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="12dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/waist_indicator"
+                    style="@style/Headline6"
+                    android:layout_width="135dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/indicator_background"
+                    android:gravity="center"
+                    android:text="@string/waist_prompt"
+                    android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    style="@style/Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/waist_indicator"
+                    android:gravity="center"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textStyle="bold"
+                    android:text="@string/measure"
+                    tools:text="40 cm" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="12dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/hip_indicator"
+                    style="@style/Headline6"
+                    android:layout_width="135dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/indicator_background"
+                    android:gravity="center"
+                    android:text="@string/hip_prompt"
+                    android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    style="@style/Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/hip_indicator"
+                    android:gravity="center"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textStyle="bold"
+                    android:text="@string/measure"
+                    tools:text="80 cm" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="12dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/stomach_indicator"
+                    style="@style/Headline6"
+                    android:layout_width="135dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/indicator_background"
+                    android:gravity="center"
+                    android:text="@string/stomach_prompt"
+                    android:textColor="?attr/colorOnSecondary" />
+
+                <TextView
+                    style="@style/Headline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/stomach_indicator"
+                    android:gravity="center"
+                    android:textColor="?attr/colorSecondaryVariant"
+                    android:textStyle="bold"
+                    android:text="@string/measure"
+                    tools:text="120 cm" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/Subtitle2"
+            android:text="@string/weight_relative"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            app:cardElevation="0dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="12dp"/>
+
+    </LinearLayout>
+</ScrollView>
