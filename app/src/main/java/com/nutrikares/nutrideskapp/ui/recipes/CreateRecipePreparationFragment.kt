@@ -34,7 +34,7 @@ class CreateRecipePreparationFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.toInformationButton.setOnClickListener {
+        binding.acceptButton.setOnClickListener {
             findNavController().navigate(R.id.action_createRecipePreparationFragment_to_createRecipeInformationFragment)
         }
 

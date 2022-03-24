@@ -53,7 +53,11 @@
         android:id="@+id/createPatientFragment"
         android:name="com.nutrikares.nutrideskapp.ui.patients.CreatePatientFragment"
         android:label="@string/create_patient"
-        tools:layout="@layout/fragment_create_patient" />
+        tools:layout="@layout/fragment_create_patient" >
+        <action
+            android:id="@+id/action_createPatientFragment_to_nav_patients"
+            app:destination="@id/nav_patients" />
+    </fragment>
     <fragment
         android:id="@+id/createRecipePreparationFragment"
         android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipePreparationFragment"
