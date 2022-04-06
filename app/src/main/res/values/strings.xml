@@ -44,7 +44,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    
+
     <!-- FOOD -->
     <string name="food_toolbar">Semana del %1$s al %2$s</string>
     <string name="card_day">Día %1$s</string>
@@ -64,7 +64,26 @@
     <string name="hip_prompt">Medida cadera</string>
     <string name="stomach_prompt">Medida abdomen</string>
 
+    <!-- DAYS OF THE WEEK-->
+    <string name="days_week">Días de la semana</string>
+    <string name="sunday">Domingo</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+
+    <!-- RECIPES OF THE DAY-->
+    <string name="recipes_day">Dieta del día</string>
+    <string name="breakfast">Desayuno</string>
+    <string name="meal">Comida</string>
+    <string name="dinner">Cena</string>
+    <string name="snack">Snack</string>
+
+
     <!-- MISCELLANEOUS -->
+    <string name="assign_recipe">Asignar receta</string>
     <string name="sign_out">Cerrar Sesión</string>
     <string name="measure">%1$d cm</string>
     <string name="prompt_email">Correo electrónico</string>
@@ -84,5 +103,7 @@
     <string name="emptyFieldsError">Llena los campos correspondientes</string>
     <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
     <string name="save">Guardar</string>
->>>>>>> dev
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    >>>>>>> dev
 </resources>

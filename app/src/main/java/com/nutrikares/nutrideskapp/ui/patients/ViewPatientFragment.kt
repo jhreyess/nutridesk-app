@@ -48,6 +48,9 @@ class ViewPatientFragment : Fragment() {
         binding.anthropometryCard.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_anthropometryPatientFragment)
         }
+        binding.dietCard.setOnClickListener {
+            findNavController().navigate(R.id.action_viewPatientFragment2_to_recipeDaysFragment)
+        }
     }
 
     override fun onDestroyView() {
