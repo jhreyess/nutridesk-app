@@ -84,6 +84,7 @@
 
     <!-- MISCELLANEOUS -->
     <string name="assign_recipe">Asignar receta</string>
+    <string name="assign_routine">Asignar rutina</string>
     <string name="sign_out">Cerrar Sesión</string>
     <string name="measure">%1$d cm</string>
     <string name="prompt_email">Correo electrónico</string>

@@ -44,12 +44,14 @@ class ViewPatientFragment : Fragment() {
         binding.editIcon.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_editPatientFragment)
         }
-
         binding.anthropometryCard.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_anthropometryPatientFragment)
         }
         binding.dietCard.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_recipeDaysFragment)
+        }
+        binding.excerciseCard.setOnClickListener {
+            findNavController().navigate(R.id.action_viewPatientFragment2_to_routineDaysFragment)
         }
     }
 

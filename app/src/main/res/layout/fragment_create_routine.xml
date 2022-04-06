@@ -30,7 +30,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/name_textField"
                 app:layout_constraintTop_toBottomOf="@id/name_textView"
-                app:layout_constraintStart_toEndOf="@id/name_textField"
+                app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="Nombre de la rutina">
@@ -121,9 +121,10 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="194dp"
+                        android:padding="40dp"
                         android:contentDescription="Imagen de un vídeo"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/video" />
+                        app:srcCompat="@drawable/play_video" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

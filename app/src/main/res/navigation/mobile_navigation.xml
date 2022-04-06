@@ -98,6 +98,9 @@
         <action
             android:id="@+id/action_viewPatientFragment2_to_recipeDaysFragment"
             app:destination="@id/recipeDaysFragment" />
+        <action
+            android:id="@+id/action_viewPatientFragment2_to_routineDaysFragment"
+            app:destination="@id/routineDaysFragment" />
     </fragment>
     <fragment
         android:id="@+id/editPatientFragment"
@@ -140,4 +143,18 @@
         android:name="com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment"
         android:label="@string/assign_recipe"
         tools:layout="@layout/fragment_assing_recipe" />
+    <fragment
+        android:id="@+id/routineDaysFragment"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.RoutineDaysFragment"
+        android:label="@string/days_week"
+        tools:layout="@layout/fragment_routine_days" >
+        <action
+            android:id="@+id/action_routineDaysFragment_to_assignRoutineFragment"
+            app:destination="@id/assignRoutineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignRoutineFragment"
+        android:name="com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment"
+        android:label="@string/assign_routine"
+        tools:layout="@layout/fragment_assign_routine" />
 </navigation>
