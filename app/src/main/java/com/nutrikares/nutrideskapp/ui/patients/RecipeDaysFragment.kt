@@ -31,25 +31,25 @@ class RecipeDaysFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.sundayArrowIcon.setOnClickListener {
+        binding.sundayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.mondayArrowIcon.setOnClickListener {
+        binding.mondayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.tuesdayArrowIcon.setOnClickListener {
+        binding.tuesdayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.wednesdayArrowIcon.setOnClickListener {
+        binding.wednesdayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.thursdayArrowIcon.setOnClickListener {
+        binding.thursdayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.fridayArrowIcon.setOnClickListener {
+        binding.fridayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
-        binding.saturdayArrowIcon.setOnClickListener {
+        binding.saturdayRecipeCard.setOnClickListener {
             findNavController().navigate(R.id.action_recipeDaysFragment_to_dayRecipeFragment)
         }
     }

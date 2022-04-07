@@ -30,19 +30,19 @@ class DayRecipeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.breakfastEditIcon.setOnClickListener{
+        binding.breakfastRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }
-        binding.mealEditIcon.setOnClickListener{
+        binding.mealRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }
-        binding.dinnerEditIcon.setOnClickListener{
+        binding.dinnerRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }
-        binding.firstSnackEditIcon.setOnClickListener{
+        binding.firstSnackRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }
-        binding.secondSnackEditIcon.setOnClickListener{
+        binding.secondSnackRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }
     }

@@ -34,25 +34,25 @@ class RoutineDaysFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.sundayEditIcon.setOnClickListener {
+        binding.sundayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.mondayEditIcon.setOnClickListener {
+        binding.mondayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.tuesdayEditIcon.setOnClickListener {
+        binding.tuesdayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.wednesdayEditIcon.setOnClickListener {
+        binding.wednesdayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.thursdayEditIcon.setOnClickListener {
+        binding.thursdayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.fridayEditIcon.setOnClickListener {
+        binding.fridayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
-        binding.saturdayEditIcon.setOnClickListener {
+        binding.saturdayRoutineCard.setOnClickListener {
             findNavController().navigate(R.id.action_routineDaysFragment_to_assignRoutineFragment)
         }
     }
