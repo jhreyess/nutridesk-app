@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.adapters.PatientAdapter
 import com.nutrikares.nutrideskapp.adapters.RecipeAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 
@@ -29,12 +27,11 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

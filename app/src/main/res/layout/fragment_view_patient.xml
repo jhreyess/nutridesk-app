@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"></ImageView>
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/diet_card"

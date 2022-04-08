@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.patients.CreatePatientFragment">
+    tools:context=".ui.patients.CreatePatientFragment"
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewName"
@@ -27,15 +26,24 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatient"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el nombre del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatient"
-            app:layout_constraintTop_toBottomOf="@id/textViewName">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce el nombre del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -49,15 +57,24 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la edad del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientAge"
-            app:layout_constraintTop_toBottomOf="@id/textViewAge">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce la edad del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -71,15 +88,24 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientObjective"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el objetivo del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientObjective"
-            app:layout_constraintTop_toBottomOf="@id/textViewObjective">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce la edad del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -87,21 +113,30 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Correo electrónico:"
+            android:text="@string/prompt_email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldPatientObjective" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el correo electrónico del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientEmail"
-            app:layout_constraintTop_toBottomOf="@id/textViewEmail">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce el correo del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -109,48 +144,61 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Contraseña:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientEmail" />
+            android:text="@string/prompt_password" />
 
-        <Button
-            android:paddingVertical="15dp"
-            android:paddingHorizontal="20dp"
-            android:id="@+id/generateButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray"
-            android:text="Generar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewPassword" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientPassword"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:hint="****"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewPassword"
-            app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFieldPatientPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorSurface"
+                app:boxStrokeColor="@color/gray"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true"
+                android:layout_alignParentStart="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="no"
+                    android:background="@android:color/transparent"
+                    android:hint="****"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray" />
 
-        <Button
-            android:id="@+id/accept_button"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Aceptar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/generateButton"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:backgroundTint="?attr/colorSecondaryVariant"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp"
+                android:text="Generar"
+                android:textColor="?attr/colorOnSecondary" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/accept_button"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:textColor="?attr/colorOnSecondary"
+        android:text="Aceptar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

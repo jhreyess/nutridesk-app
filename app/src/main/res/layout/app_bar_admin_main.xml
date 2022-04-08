@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Nutrideskapp.PopupOverlay" />
+            app:popupTheme="@style/Theme.Nutrideskapp.PopupOverlay"
+            android:backgroundTint="?attr/colorSecondaryVariant" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

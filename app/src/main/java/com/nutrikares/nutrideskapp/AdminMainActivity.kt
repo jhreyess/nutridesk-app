@@ -11,12 +11,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.nutrikares.nutrideskapp.databinding.ActivityAdminMainBinding
 
 class AdminMainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityAdminMainBinding
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +32,11 @@ class AdminMainActivity : AppCompatActivity() {
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_admin_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_admin) as NavHostFragment
+        navController = navHostFragment.navController
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_patients, R.id.nav_recipes, R.id.nav_routines
@@ -47,7 +53,7 @@ class AdminMainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_admin_main)
+        val navController = findNavController(R.id.nav_host_admin)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

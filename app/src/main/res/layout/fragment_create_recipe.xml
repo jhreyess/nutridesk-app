@@ -1,88 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.recipes.CreateRecipeFragment">
+    tools:context=".ui.recipes.CreateRecipeFragment"
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
-        android:id="@+id/constraint_layout"
+    <LinearLayout
+        android:id="@+id/form_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/accept_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        >
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/name_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/name_textField"
-            app:layout_constraintTop_toBottomOf="@id/name_textView"
-            app:layout_constraintStart_toEndOf="@id/name_textField"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:hint="Nombre del platillo">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/name_layout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_alignParentStart="true"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/id_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID:"
-            app:layout_constraintBottom_toTopOf="@id/id_textField"
-            app:layout_constraintStart_toStartOf="@id/id_textField"
-            app:layout_constraintTop_toTopOf="parent" />
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/id_textField"
-            app:layout_constraintTop_toBottomOf="@id/id_textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:hint="ID">
+                <TextView
+                    android:id="@+id/name_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre:" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/name_textField"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?attr/colorSurface"
+                    app:boxStrokeColor="@color/gray"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="no"
+                        android:background="@android:color/transparent"
+                        android:hint="Introduce el nombre del platillo"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_toEndOf="@id/name_layout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/id_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID:" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/id_textField"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?attr/colorSurface"
+                    app:boxStrokeColor="@color/gray"
+                    app:hintEnabled="false">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="no"
+                        android:background="@android:color/transparent"
+                        android:hint="ID"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/time_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Tiempo de preparación (min):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_textField" />
+            android:text="Tiempo de preparación (min):" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/time_textField"
-            app:layout_constraintTop_toBottomOf="@id/time_textView"
-            app:layout_constraintStart_toEndOf="@id/time_textField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el tiempo de preparación">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce el tiempo de preparación"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -90,16 +129,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Categoría"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/time_textField" />
+            android:text="Categoría" />
 
         <RadioGroup
             android:id="@+id/radioGroup1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_textView">
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/radioButton"
@@ -131,51 +166,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Descripción:"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
+            android:text="Descripción:" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_textField"
-            app:layout_constraintTop_toBottomOf="@id/description_textView"
-            app:layout_constraintStart_toEndOf="@id/description_textView"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la descripción del platillo">
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:lines = "5"
-                android:gravity="top"
-                android:overScrollMode="always"
-                android:scrollbars="vertical"
-                android:scrollbarStyle="insideInset"
-                android:scrollHorizontally="false"
-                />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce la descripción del platillo"
+                android:lines="10"
+                android:gravity="start"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:scrollbars="vertical" />
+
         </com.google.android.material.textfield.TextInputLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </LinearLayout>
 
     <Button
         android:id="@+id/accept_button"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Siguiente"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:textColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        />
-
-
-
-
-
+        style="@style/Widget.MaterialComponents.Button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

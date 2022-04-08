@@ -1,62 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.patients.AnthropometryPatientFragment">
+    tools:context=".ui.patients.AnthropometryPatientFragment"
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Peso (kg):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/weight_label" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatient"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el peso del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatient"
-            app:layout_constraintTop_toBottomOf="@id/textViewName">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce el peso del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textViewAge"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="IMC (kg/m2):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatient" />
+            android:text="@string/imc_label" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce el IMC del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientAge"
-            app:layout_constraintTop_toBottomOf="@id/textViewAge">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce el IMC del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -64,45 +73,54 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida cintura (cm):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAge" />
+            android:text="Medida cintura (cm):" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientObjective"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la medida de la cintura del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientObjective"
-            app:layout_constraintTop_toBottomOf="@id/textViewObjective">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce medida del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textViewEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida cadera (cm):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientObjective" />
+            android:text="Medida cadera (cm):" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la medida de la cadera del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientEmail"
-            app:layout_constraintTop_toBottomOf="@id/textViewEmail">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce medida del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -110,22 +128,27 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida abdomen (cm):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientEmail" />
+            android:text="Medida abdomen (cm):" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientAbdomen"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la medida del abdomen del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientAbdomen"
-            app:layout_constraintTop_toBottomOf="@id/textViewAbdomen">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce medida del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -133,37 +156,39 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Grasa relativa (kg):"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAbdomen" />
+            android:text="Grasa relativa (kg):" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientGrasa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Introduce la grasa relativa del paciente"
-            app:layout_constraintStart_toEndOf="@id/textFieldPatientGrasa"
-            app:layout_constraintTop_toBottomOf="@id/textViewGrasa">
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="Introduce medida del paciente"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/accept_button"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="Actualizar medidas"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        style="@style/Widget.MaterialComponents.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Update_anthropometry" />
 
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

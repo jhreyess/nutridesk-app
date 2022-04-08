@@ -8,27 +8,19 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeBinding
-import com.nutrikares.nutrideskapp.databinding.FragmentCreateRoutineBinding
 
 class CreateRecipeFragment : Fragment() {
+
     private var _binding: FragmentCreateRecipeBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCreateRecipeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
