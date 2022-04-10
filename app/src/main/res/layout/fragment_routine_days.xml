@@ -46,7 +46,7 @@
                         android:id="@+id/sundayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sin asignar"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
@@ -56,7 +56,8 @@
                         android:id="@+id/sundayEdit_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_edit" />
+                        app:srcCompat="@drawable/ic_edit"
+                        android:contentDescription="@string/content_description_edit"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -86,10 +87,11 @@
                         android:id="@+id/mondayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cardio simple"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/monday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/mondayRoutine_textView"
@@ -126,10 +128,11 @@
                         android:id="@+id/tuesdayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fuerza principiante"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/tuesday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/tuesdayRoutine_textView"
@@ -166,10 +169,11 @@
                         android:id="@+id/wednesdayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sin asignar"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/wednesday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/wednesdayRoutine_textView"
@@ -206,10 +210,11 @@
                         android:id="@+id/thursdayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fortalecimiento básico"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/thursday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/thursdayRoutine_textView"
@@ -246,10 +251,11 @@
                         android:id="@+id/fridayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cardio moderado"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/friday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/fridayRoutine_textView"
@@ -286,10 +292,11 @@
                         android:id="@+id/saturdayRoutine_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fuerza moderada"
+                        android:text="@string/routine_name_exampleOne"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/saturday_textView"
                         app:layout_constraintBottom_toBottomOf="@id/saturdayRoutine_textView"

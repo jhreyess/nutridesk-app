@@ -30,7 +30,7 @@
                     android:id="@+id/name_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre:" />
+                    android:text="@string/name" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_textField"
@@ -47,7 +47,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="Introduce el nombre de la rutina"
+                        android:hint="@string/routine_name_placeholder"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -67,7 +67,7 @@
                     android:id="@+id/id_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID:" />
+                    android:text="@string/id" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/id_textField"
@@ -84,7 +84,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="ID"
+                        android:hint="@string/id"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -101,9 +101,9 @@
                 android:id="@+id/video_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_alignParentStart="true"
-                android:text="Adjuntar vídeo:" />
+                android:layout_marginTop="16dp"
+                android:text="@string/addVideo" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@id/uploadVideo_button"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
-                android:text="Volver a cargar"
+                android:text="@string/reload"
                 app:icon="@drawable/ic_upload" />
 
         </RelativeLayout>
@@ -131,9 +131,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="194dp"
                     android:padding="40dp"
-                    android:contentDescription="Imagen de un vídeo"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/play_video" />
+                    app:srcCompat="@drawable/play_video"
+                    android:contentDescription="@string/content_image_video" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -145,7 +145,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Presiona para cargar un vídeo"
+                        android:text="@string/load_video_placeholder"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
                 </LinearLayout>
             </LinearLayout>
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Descripción de la rutina:" />
+                android:text="@string/description" />
 
             <ImageView
                 android:id="@+id/addExcercise_imageView"
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_textView"
-            android:text="Nombre:" />
+            android:text="@string/name" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/excercise_textField"
@@ -198,7 +198,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el nombre del ejercicio"
+                android:hint="@string/excersice_name_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -222,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Series:" />
+                    android:text="@string/series" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/series_textField"
@@ -239,7 +239,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="Cant."
+                        android:hint="@string/cant"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -258,7 +258,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Repeticiones:" />
+                    android:text="@string/repetitions" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/repetitions_textField"
@@ -275,7 +275,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="Cant."
+                        android:hint="@string/cant"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -290,7 +290,7 @@
         android:id="@+id/accept_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Agregar"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

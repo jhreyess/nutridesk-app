@@ -20,7 +20,7 @@
             android:id="@+id/textViewName"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="@string/name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +39,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el nombre del paciente"
+                android:hint="@string/patient_name_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -51,7 +51,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Edad:"
+            android:text="@string/age"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldPatient" />
 
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce la edad del paciente"
+                android:hint="@string/patient_age_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -82,7 +82,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Objetivo:"
+            android:text="@string/objective"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldPatientAge" />
 
@@ -101,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce la edad del paciente"
+                android:hint="@string/patient_objective_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -132,7 +132,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el correo del paciente"
+                android:hint="@string/patient_email_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -166,7 +166,7 @@
                     android:layout_height="match_parent"
                     android:autofillHints="no"
                     android:background="@android:color/transparent"
-                    android:hint="****"
+                    android:hint="@string/patient_password_placeholder"
                     android:inputType="text"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray" />
@@ -182,7 +182,7 @@
                 android:backgroundTint="?attr/colorSecondaryVariant"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="15dp"
-                android:text="Generar"
+                android:text="@string/generate"
                 android:textColor="?attr/colorOnSecondary" />
 
         </RelativeLayout>
@@ -196,7 +196,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorSecondaryVariant"
         android:textColor="?attr/colorOnSecondary"
-        android:text="Aceptar"
+        android:text="@string/accept"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

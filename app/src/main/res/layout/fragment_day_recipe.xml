@@ -55,7 +55,7 @@
                         android:id="@+id/breakfastRecipe_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Huevo con pollo"
+                        android:text="@string/recipe_name_example_one"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
@@ -65,7 +65,8 @@
                         android:id="@+id/breakfastEdit_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_edit" />
+                        app:srcCompat="@drawable/ic_edit"
+                        android:contentDescription="@string/content_description_edit" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -95,10 +96,11 @@
                         android:id="@+id/mealRecipe_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Huevo con pollo"
+                        android:text="@string/recipe_name_example_one"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/meal_textView"
                         app:layout_constraintBottom_toBottomOf="@id/mealRecipe_textView"
@@ -135,10 +137,11 @@
                         android:id="@+id/dinnerRecipe_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Huevo con pollo"
+                        android:text="@string/recipe_name_example_one"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/dinner_textView"
                         app:layout_constraintBottom_toBottomOf="@id/dinnerRecipe_textView"
@@ -175,10 +178,11 @@
                         android:id="@+id/firstSnackRecipe_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Huevo con pollo"
+                        android:text="@string/recipe_name_example_one"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/firstSnack_textView"
                         app:layout_constraintBottom_toBottomOf="@id/firstSnackRecipe_textView"
@@ -215,10 +219,11 @@
                         android:id="@+id/secondSnackRecipe_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Huevo con pollo"
+                        android:text="@string/recipe_name_example_one"
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_edit"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/secondSnack_textView"
                         app:layout_constraintBottom_toBottomOf="@id/secondSnackRecipe_textView"

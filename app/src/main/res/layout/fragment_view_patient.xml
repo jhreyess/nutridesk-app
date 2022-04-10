@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/edit_icon"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:text="Pili Ainara Cardona Escalona" />
 
         <ImageView
@@ -52,6 +52,7 @@
 
                 <!-- Title, secondary and supporting text -->
                 <ImageView
+                    android:importantForAccessibility="no"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/diet"
@@ -73,7 +74,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Dieta"
+                    android:text="@string/diet"
                     android:textColor="#FFFFFF"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />
@@ -97,6 +98,7 @@
 
                 <!-- Title, secondary and supporting text -->
                 <ImageView
+                    android:importantForAccessibility="no"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/excercise"
@@ -118,7 +120,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Ejercicios"
+                    android:text="@string/exercises"
                     android:textColor="#FFFFFF"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />
@@ -142,6 +144,7 @@
 
                 <!-- Title, secondary and supporting text -->
                 <ImageView
+                    android:importantForAccessibility="no"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/anthropometry"
@@ -163,7 +166,7 @@
                     android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Antropometría"
+                    android:text="@string/anthropometry"
                     android:textColor="#FFFFFF"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     />

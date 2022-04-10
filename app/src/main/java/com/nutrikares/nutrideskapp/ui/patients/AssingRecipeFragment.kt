@@ -40,6 +40,9 @@ class AssingRecipeFragment : Fragment() {
         // Recycler Viewer
         binding.recipesRecycler.adapter = AssignRecipeAdapter(this)
         binding.recipesRecycler.setHasFixedSize(true)
+        binding.assignButton.setOnClickListener{
+            findNavController().navigate(R.id.action_assingRecipeFragment_to_dayRecipeFragment)
+        }
     }
 
     override fun onDestroyView() {

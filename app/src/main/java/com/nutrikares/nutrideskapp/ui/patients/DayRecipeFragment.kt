@@ -13,6 +13,9 @@ import com.nutrikares.nutrideskapp.databinding.FragmentRecipeDaysBinding
 class DayRecipeFragment : Fragment() {
     private var _binding: FragmentDayRecipeBinding? = null
     private val binding get() = _binding!!
+    companion object{
+        var Day : String? = "Domingo"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,7 @@ class DayRecipeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.dayNameTextView.text = Day
         binding.breakfastRecipeCard.setOnClickListener{
             findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
         }

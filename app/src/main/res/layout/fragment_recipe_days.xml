@@ -44,7 +44,8 @@
                         android:id="@+id/sundayArrow_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_arrow" />
+                        app:srcCompat="@drawable/ic_arrow"
+                        android:contentDescription="@string/content_description_arrow" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -69,6 +70,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/mondayArrow_icon"
@@ -99,6 +101,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/tuesdayArrow_icon"
@@ -129,6 +132,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/wednesdayArrow_icon"
@@ -159,6 +163,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/thursdayArrow_icon"
@@ -189,6 +194,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/fridayArrow_icon"
@@ -219,6 +225,7 @@
                         android:textAppearance="?attr/textAppearanceHeadline6"
                         />
                     <ImageView
+                        android:contentDescription="@string/content_description_arrow"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/saturdayArrow_icon"

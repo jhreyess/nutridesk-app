@@ -32,7 +32,7 @@
                     android:id="@+id/name_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre:" />
+                    android:text="@string/name" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name_textField"
@@ -49,7 +49,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="Introduce el nombre del platillo"
+                        android:hint="@string/recipe_name_placeholder"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -69,7 +69,7 @@
                     android:id="@+id/id_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID:" />
+                    android:text="@string/id" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/id_textField"
@@ -86,7 +86,7 @@
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
-                        android:hint="ID"
+                        android:hint="@string/id"
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
@@ -100,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Tiempo de preparación (min):" />
+            android:text="@string/recipe_time_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/time_textField"
@@ -117,7 +117,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el tiempo de preparación"
+                android:hint="@string/recipe_time_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -129,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Categoría" />
+            android:text="@string/category" />
 
         <RadioGroup
             android:id="@+id/radioGroup1"
@@ -140,25 +140,25 @@
                 android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Desayuno" />
+                android:text="@string/breakfast" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comida" />
+                android:text="@string/meal" />
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cena" />
+                android:text="@string/dinner" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Snack" />
+                android:text="@string/snack" />
         </RadioGroup>
 
         <TextView
@@ -166,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Descripción:" />
+            android:text="@string/description" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_textField"
@@ -183,14 +183,13 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce la descripción del platillo"
+                android:hint="@string/recipe_description_placeholder"
                 android:lines="10"
                 android:gravity="start"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:scrollbars="vertical" />
-
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -198,7 +197,7 @@
         android:id="@+id/accept_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Siguiente"
+        android:text="@string/next"
         android:backgroundTint="?attr/colorSecondaryVariant"
         android:textColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent"

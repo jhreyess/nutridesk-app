@@ -12,6 +12,7 @@ import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragment
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragmentDirections
+import com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment
 
 class PatientAdapter (private val context: PatientsFragment?,) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 
@@ -38,7 +39,8 @@ class PatientAdapter (private val context: PatientsFragment?,) : RecyclerView.Ad
         holder.preview.text = patient
 
         holder.cardButton.setOnClickListener{
-            val action = PatientsFragmentDirections.actionNavPatientsToViewPatientFragment2(patient)
+            ViewPatientFragment.Nombre = patient
+            val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
             holder.view?.findNavController()!!.navigate(action)
         }
     }

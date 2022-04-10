@@ -40,7 +40,7 @@ class EditPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         binding.acceptButtonEdit.setOnClickListener {
-            findNavController().navigate(R.id.action_editPatientFragment_to_nav_patients)
+            findNavController().navigate(R.id.action_editPatientFragment_to_viewPatientFragment2)
         }
 
     }

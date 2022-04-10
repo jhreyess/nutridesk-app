@@ -24,5 +24,6 @@
         android:layout_margin="16dp"
         android:backgroundTint="?attr/colorSecondaryVariant"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/content_description_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>

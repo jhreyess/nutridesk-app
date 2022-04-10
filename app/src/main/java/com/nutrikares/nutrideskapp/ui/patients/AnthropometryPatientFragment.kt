@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.databinding.FragmentAnthropometryPatientBinding
 
 class AnthropometryPatientFragment : Fragment() {
@@ -23,7 +25,9 @@ class AnthropometryPatientFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        binding.updateMeasuresButton.setOnClickListener{
+            findNavController().navigate(R.id.action_anthropometryPatientFragment_to_viewPatientFragment2)
+        }
     }
 
     override fun onDestroyView() {

@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Ingredientes" />
+                android:text="@string/ingredients" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el nombre del ingrediente"
+                android:hint="@string/recipe_ingredients_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Preparación:"
+            android:text="@string/preparation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredientslist6_textView" />
 
@@ -93,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce los pasos de preparación del platillo"
+                android:hint="@string/recipe_steps_placeholder"
                 android:lines="10"
                 android:gravity="start"
                 android:inputType="text"
@@ -107,7 +107,7 @@
         android:id="@+id/accept_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Siguiente"
+        android:text="@string/next"
         android:backgroundTint="?attr/colorSecondaryVariant"
         android:textColor="?attr/colorOnSecondary"
         app:layout_constraintBottom_toBottomOf="parent" />

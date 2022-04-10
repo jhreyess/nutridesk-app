@@ -3,158 +3,198 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_patients">
+    app:startDestination="@id/navigation_patients">
 
-    <fragment
-        android:id="@+id/nav_patients"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.PatientsFragment"
-        android:label="@string/menu_patients"
-        tools:layout="@layout/fragment_patients" >
-        <action
-            android:id="@+id/action_nav_patients_to_createPatientFragment"
-            app:destination="@id/createPatientFragment" />
-        <action
-            android:id="@+id/action_nav_patients_to_viewPatientFragment2"
-            app:destination="@id/viewPatientFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_recipes"
-        android:name="com.nutrikares.nutrideskapp.ui.recipes.RecipesFragment"
-        android:label="@string/menu_recipes"
-        tools:layout="@layout/fragment_recipes" >
-        <action
-            android:id="@+id/action_nav_recipes_to_createRecipeFragment"
-            app:destination="@id/createRecipeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_routines"
-        android:name="com.nutrikares.nutrideskapp.ui.routines.RoutinesFragment"
-        android:label="@string/menu_routines"
-        tools:layout="@layout/fragment_routines" >
-        <action
-            android:id="@+id/action_nav_routines_to_createRoutineFragment"
-            app:destination="@id/createRoutineFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/createRoutineFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.routines.CreateRoutineFragment"
-        android:label="@string/create_routine"
-        tools:layout="@layout/fragment_create_routine" >
-        <action
-            android:id="@+id/action_createRoutineFragment_to_nav_routines"
-            app:destination="@id/nav_routines" />
-    </fragment>
-    <fragment
-        android:id="@+id/createRecipeFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipeFragment"
-        android:label="@string/create_recipe"
-        tools:layout="@layout/fragment_create_recipe" >
-        <action
-            android:id="@+id/action_createRecipeFragment_to_createRecipePreparationFragment"
-            app:destination="@id/createRecipePreparationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/createPatientFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.CreatePatientFragment"
-        android:label="@string/create_patient"
-        tools:layout="@layout/fragment_create_patient" >
-        <action
-            android:id="@+id/action_createPatientFragment_to_nav_patients"
-            app:destination="@id/nav_patients" />
-    </fragment>
-    <fragment
-        android:id="@+id/createRecipePreparationFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipePreparationFragment"
-        android:label="@string/create_preparation_recipe"
-        tools:layout="@layout/fragment_create_recipe_preparation" >
-        <action
-            android:id="@+id/action_createRecipePreparationFragment_to_createRecipeInformationFragment"
-            app:destination="@id/createRecipeInformationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/createRecipeInformationFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipeInformationFragment"
-        android:label="@string/create_information_recipe"
-        tools:layout="@layout/fragment_create_recipe_information" >
-        <action
-            android:id="@+id/action_createRecipeInformationFragment_to_nav_recipes"
-            app:destination="@id/nav_recipes" />
-    </fragment>
-    <fragment
-        android:id="@+id/viewPatientFragment2"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment"
-        android:label="@string/view_patient"
-        tools:layout="@layout/fragment_view_patient" >
-        <argument
-            android:name="patientName"
-            app:argType="string"
-            app:nullable="true" />
-        <action
-            android:id="@+id/action_viewPatientFragment2_to_editPatientFragment"
-            app:destination="@id/editPatientFragment" />
-        <action
-            android:id="@+id/action_viewPatientFragment2_to_anthropometryPatientFragment"
-            app:destination="@id/anthropometryPatientFragment" />
-        <action
-            android:id="@+id/action_viewPatientFragment2_to_recipeDaysFragment"
-            app:destination="@id/recipeDaysFragment" />
-        <action
-            android:id="@+id/action_viewPatientFragment2_to_routineDaysFragment"
-            app:destination="@id/routineDaysFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/editPatientFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.EditPatientFragment"
-        android:label="@string/edit_patient"
-        tools:layout="@layout/fragment_edit_patient" >
-        <action
-            android:id="@+id/action_editPatientFragment_to_nav_patients"
-            app:destination="@id/nav_patients" />
-    </fragment>
-    <fragment
-        android:id="@+id/anthropometryPatientFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.AnthropometryPatientFragment"
-        android:label="@string/anthropometry_patient"
-        tools:layout="@layout/fragment_anthropometry_patient" >
-        <action
-            android:id="@+id/action_anthropometryPatientFragment_to_viewPatientFragment2"
-            app:destination="@id/viewPatientFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/recipeDaysFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.RecipeDaysFragment"
-        android:label="@string/days_week"
-        tools:layout="@layout/fragment_recipe_days" >
-        <action
-            android:id="@+id/action_recipeDaysFragment_to_dayRecipeFragment"
-            app:destination="@id/dayRecipeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dayRecipeFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.DayRecipeFragment"
-        android:label="@string/recipes_day"
-        tools:layout="@layout/fragment_day_recipe" >
-        <action
-            android:id="@+id/action_dayRecipeFragment_to_assingRecipeFragment"
-            app:destination="@id/assingRecipeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/assingRecipeFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment"
-        android:label="@string/assign_recipe"
-        tools:layout="@layout/fragment_assing_recipe" />
-    <fragment
-        android:id="@+id/routineDaysFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.RoutineDaysFragment"
-        android:label="@string/days_week"
-        tools:layout="@layout/fragment_routine_days" >
-        <action
-            android:id="@+id/action_routineDaysFragment_to_assignRoutineFragment"
-            app:destination="@id/assignRoutineFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/assignRoutineFragment"
-        android:name="com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment"
-        android:label="@string/assign_routine"
-        tools:layout="@layout/fragment_assign_routine" />
+    <navigation android:id="@+id/navigation_recipes"
+        app:startDestination="@id/nav_recipes">
+        <fragment
+            android:id="@+id/createRecipeFragment"
+            android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipeFragment"
+            android:label="@string/create_recipe"
+            tools:layout="@layout/fragment_create_recipe">
+            <action
+                android:id="@+id/action_createRecipeFragment_to_createRecipePreparationFragment"
+                app:destination="@id/createRecipePreparationFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/nav_recipes"
+            android:name="com.nutrikares.nutrideskapp.ui.recipes.RecipesFragment"
+            android:label="@string/menu_recipes"
+            tools:layout="@layout/fragment_recipes">
+            <action
+                android:id="@+id/action_nav_recipes_to_createRecipeFragment"
+                app:destination="@id/createRecipeFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/createRecipePreparationFragment"
+            android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipePreparationFragment"
+            android:label="@string/create_preparation_recipe"
+            tools:layout="@layout/fragment_create_recipe_preparation">
+            <action
+                android:id="@+id/action_createRecipePreparationFragment_to_createRecipeInformationFragment"
+                app:destination="@id/createRecipeInformationFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/createRecipeInformationFragment"
+            android:name="com.nutrikares.nutrideskapp.ui.recipes.CreateRecipeInformationFragment"
+            android:label="@string/create_information_recipe"
+            tools:layout="@layout/fragment_create_recipe_information">
+            <action
+                android:id="@+id/action_createRecipeInformationFragment_to_nav_recipes"
+                app:destination="@id/nav_recipes"
+                app:popUpTo="@+id/nav_recipes"
+                app:popUpToInclusive="true"/>
+        </fragment>
+    </navigation>
+    <navigation android:id="@+id/navigation_routines"
+        app:startDestination="@id/nav_routines">
+        <fragment
+            android:id="@+id/nav_routines"
+            android:name="com.nutrikares.nutrideskapp.ui.routines.RoutinesFragment"
+            android:label="@string/menu_routines"
+            tools:layout="@layout/fragment_routines">
+            <action
+                android:id="@+id/action_nav_routines_to_createRoutineFragment"
+                app:destination="@id/createRoutineFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/createRoutineFragment"
+            android:name="com.nutrikares.nutrideskapp.ui.routines.CreateRoutineFragment"
+            android:label="@string/create_routine"
+            tools:layout="@layout/fragment_create_routine">
+            <action
+                android:id="@+id/action_createRoutineFragment_to_nav_routines"
+                app:destination="@id/nav_routines"
+                app:popUpTo="@+id/nav_routines"
+                app:popUpToInclusive="true"/>
+        </fragment>
+    </navigation>
+    <navigation android:id="@+id/navigation_patients"
+        app:startDestination="@id/nav_patients">
+        <fragment
+            android:id="@+id/createPatientFragment"
+            android:name="com.nutrikares.nutrideskapp.ui.patients.CreatePatientFragment"
+            android:label="@string/create_patient"
+            tools:layout="@layout/fragment_create_patient">
+            <action
+                android:id="@+id/action_createPatientFragment_to_nav_patients"
+                app:destination="@id/nav_patients"
+                app:popUpTo="@+id/nav_patients"
+                app:popUpToInclusive="true"/>
+        </fragment>
+        <fragment
+            android:id="@+id/nav_patients"
+            android:name="com.nutrikares.nutrideskapp.ui.patients.PatientsFragment"
+            android:label="@string/menu_patients"
+            tools:layout="@layout/fragment_patients">
+            <action
+                android:id="@+id/action_nav_patients_to_createPatientFragment"
+                app:destination="@id/createPatientFragment" />
+            <action
+                android:id="@+id/action_nav_patients_to_navigation_view_patient"
+                app:destination="@id/navigation_view_patient" />
+        </fragment>
+        <navigation android:id="@+id/navigation_view_patient"
+            app:startDestination="@id/viewPatientFragment2">
+            <fragment
+                android:id="@+id/editPatientFragment"
+                android:name="com.nutrikares.nutrideskapp.ui.patients.EditPatientFragment"
+                android:label="@string/edit_patient"
+                tools:layout="@layout/fragment_edit_patient" >
+                <action
+                    android:id="@+id/action_editPatientFragment_to_viewPatientFragment2"
+                    app:destination="@id/viewPatientFragment2"
+                    app:popUpTo="@+id/viewPatientFragment2"
+                    app:popUpToInclusive="true"/>
+            </fragment>
+            <fragment
+                android:id="@+id/anthropometryPatientFragment"
+                android:name="com.nutrikares.nutrideskapp.ui.patients.AnthropometryPatientFragment"
+                android:label="@string/anthropometry_patient"
+                tools:layout="@layout/fragment_anthropometry_patient" >
+                <action
+                    android:id="@+id/action_anthropometryPatientFragment_to_viewPatientFragment2"
+                    app:destination="@id/viewPatientFragment2"
+                    app:popUpTo="@+id/viewPatientFragment2"
+                    app:popUpToInclusive="true"/>
+            </fragment>
+            <fragment
+                android:id="@+id/viewPatientFragment2"
+                android:name="com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment"
+                android:label="@string/view_patient"
+                tools:layout="@layout/fragment_view_patient">
+                <argument
+                    android:name="patientName"
+                    app:argType="string"
+                    app:nullable="true" />
+                <action
+                    android:id="@+id/action_viewPatientFragment2_to_editPatientFragment"
+                    app:destination="@id/editPatientFragment" />
+                <action
+                    android:id="@+id/action_viewPatientFragment2_to_anthropometryPatientFragment"
+                    app:destination="@id/anthropometryPatientFragment" />
+                <action
+                    android:id="@+id/action_viewPatientFragment2_to_navigation_exercises"
+                    app:destination="@id/navigation_exercises" />
+                <action
+                    android:id="@+id/action_viewPatientFragment2_to_navigation_diet"
+                    app:destination="@id/navigation_diet" />
+            </fragment>
+            <navigation android:id="@+id/navigation_exercises"
+                app:startDestination="@id/routineDaysFragment">
+                <fragment
+                    android:id="@+id/routineDaysFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.RoutineDaysFragment"
+                    android:label="@string/days_week"
+                    tools:layout="@layout/fragment_routine_days">
+                    <action
+                        android:id="@+id/action_routineDaysFragment_to_assignRoutineFragment"
+                        app:destination="@id/assignRoutineFragment" />
+                </fragment>
+                <fragment
+                    android:id="@+id/assignRoutineFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment"
+                    android:label="@string/assign_routine"
+                    tools:layout="@layout/fragment_assign_routine" >
+                    <action
+                        android:id="@+id/action_assignRoutineFragment_to_routineDaysFragment"
+                        app:destination="@id/routineDaysFragment"
+                        app:popUpTo="@+id/routineDaysFragment"
+                        app:popUpToInclusive="true"/>
+                </fragment>
+            </navigation>
+            <navigation android:id="@+id/navigation_diet"
+                app:startDestination="@id/recipeDaysFragment">
+                <fragment
+                    android:id="@+id/dayRecipeFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.DayRecipeFragment"
+                    android:label="@string/recipes_day"
+                    tools:layout="@layout/fragment_day_recipe">
+                    <action
+                        android:id="@+id/action_dayRecipeFragment_to_assingRecipeFragment"
+                        app:destination="@id/assingRecipeFragment" />
+                </fragment>
+                <fragment
+                    android:id="@+id/recipeDaysFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.RecipeDaysFragment"
+                    android:label="@string/days_week"
+                    tools:layout="@layout/fragment_recipe_days">
+                    <action
+                        android:id="@+id/action_recipeDaysFragment_to_dayRecipeFragment"
+                        app:destination="@id/dayRecipeFragment" />
+                </fragment>
+                <fragment
+                    android:id="@+id/assingRecipeFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment"
+                    android:label="@string/assign_recipe"
+                    tools:layout="@layout/fragment_assing_recipe" >
+                    <action
+                        android:id="@+id/action_assingRecipeFragment_to_dayRecipeFragment"
+                        app:destination="@id/dayRecipeFragment"
+                        app:popUpTo="@+id/dayRecipeFragment"
+                        app:popUpToInclusive="true"/>
+                </fragment>
+            </navigation>
+        </navigation>
+    </navigation>
 </navigation>

@@ -19,6 +19,9 @@ class ViewPatientFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    companion object{
+        var Nombre : String? = "Default"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +38,10 @@ class ViewPatientFragment : Fragment() {
         return root
     }
 
-    val args: ViewPatientFragmentArgs by navArgs()
+    //val args: ViewPatientFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val patientName = args.patientName
+        val patientName = Nombre
         binding.patientNameTextView.text = patientName
 
         binding.editIcon.setOnClickListener {
@@ -48,10 +51,10 @@ class ViewPatientFragment : Fragment() {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_anthropometryPatientFragment)
         }
         binding.dietCard.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPatientFragment2_to_recipeDaysFragment)
+            findNavController().navigate(R.id.action_viewPatientFragment2_to_navigation_diet)
         }
         binding.excerciseCard.setOnClickListener {
-            findNavController().navigate(R.id.action_viewPatientFragment2_to_routineDaysFragment)
+            findNavController().navigate(R.id.action_viewPatientFragment2_to_navigation_exercises)
         }
     }
 

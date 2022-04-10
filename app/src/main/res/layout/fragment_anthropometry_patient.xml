@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el peso del paciente"
+                android:hint="@string/patient_weight_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -61,7 +61,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el IMC del paciente"
+                android:hint="@string/patient_imc_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -73,7 +73,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida cintura (cm):" />
+            android:text="@string/patient_waist_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce medida del paciente"
+                android:hint="@string/patient_measure_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -100,7 +100,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida cadera (cm):" />
+            android:text="@string/patient_hip_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -116,7 +116,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce medida del paciente"
+                android:hint="@string/patient_measure_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -128,7 +128,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Medida abdomen (cm):" />
+            android:text="@string/patient_abs_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -144,7 +144,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce medida del paciente"
+                android:hint="@string/patient_measure_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -152,11 +152,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textViewGrasa"
+            android:id="@+id/textViewFat"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Grasa relativa (kg):" />
+            android:text="@string/patient_fat_label" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -172,7 +172,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce medida del paciente"
+                android:hint="@string/patient_measure_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -182,6 +182,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/updateMeasures_button"
         style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

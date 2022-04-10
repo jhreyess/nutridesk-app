@@ -20,7 +20,7 @@
             android:id="@+id/textViewNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre:"
+            android:text="@string/name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,7 +40,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el nombre del paciente"
+                android:hint="@string/patient_name_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Edad:" />
+            android:text="@string/age" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientNameAgeEdit"
@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce la edad del paciente"
+                android:hint="@string/patient_age_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Objetivo:" />
+            android:text="@string/objective" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientGoalEdit"
@@ -100,7 +100,7 @@
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
-                android:hint="Introduce el objetivo del paciente"
+                android:hint="@string/patient_objective_placeholder"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
@@ -117,6 +117,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorSecondaryVariant"
         android:textColor="?attr/colorOnSecondary"
-        android:text="Guardar" />
+        android:text="@string/save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

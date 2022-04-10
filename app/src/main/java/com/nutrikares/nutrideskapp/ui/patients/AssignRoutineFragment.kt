@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.adapters.AssignRecipeAdapter
 import com.nutrikares.nutrideskapp.adapters.AssignRoutineAdapter
@@ -38,6 +39,12 @@ class AssignRoutineFragment : Fragment() {
         // Recycler Viewer
         binding.routinesRecycler.adapter = AssignRoutineAdapter(this)
         binding.routinesRecycler.setHasFixedSize(true)
+        binding.assignRoutineButton.setOnClickListener{
+            findNavController().navigate(R.id.action_assignRoutineFragment_to_routineDaysFragment)
+        }
+        binding.noAssignRoutineButton.setOnClickListener{
+            findNavController().navigate(R.id.action_assignRoutineFragment_to_routineDaysFragment)
+        }
     }
 
     override fun onDestroyView() {
