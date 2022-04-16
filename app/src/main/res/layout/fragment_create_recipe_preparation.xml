@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.recipes.CreateRecipePreparationFragment"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ingredients_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/ingredients" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_add"
+                android:importantForAccessibility="no" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line_view"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ingredients_textField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="@string/recipe_ingredients_placeholder"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- TODO: Adding recycler view with ingredients list -->
+
+        <TextView
+            android:id="@+id/description_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/preparation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredientslist6_textView" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_textField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:background="?attr/colorSurface"
+            app:boxStrokeColor="@color/gray"
+            app:hintEnabled="false">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:autofillHints="no"
+                android:background="@android:color/transparent"
+                android:hint="@string/recipe_steps_placeholder"
+                android:lines="10"
+                android:gravity="start"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/accept_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:textColor="?attr/colorOnSecondary"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,167 @@
 <resources>
-    <string name="app_name">nutrideskapp</string>
-    <string name="app_name_short">nutridesk</string>
+    <string name="app_name">Nutridesk</string>
+
+    <!-- LABELS -->
+    <string name="home_label">Inicio</string>
+    <string name="food_label">Comidas</string>
+    <string name="exercise_label">Ejercicios</string>
+    <string name="analytics_label">Antropometría</string>
+    <string name="profile_label">Perfil</string>
+
+    <!-- HOME -->
+    <string name="home_toolbar">¡Bienvenido!</string>
+    <string name="imc">IMC</string>
+    <string name="weight">Tu Peso</string>
+    <string name="progress">Tu Progreso</string>
+    <string name="weight_placeholder">%1$d kg</string>
+    <string name="imc_placeholder">%1$d kg/m2</string>
+    <string name="daily_routine">Tu rutina diaria</string>
+    <string name="daily_menu">El menú de hoy</string>
+
+    <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_routines">Rutinas de ejercicio</string>
+    <string name="create_routine">Nueva Rutina</string>
+
+    <string name="menu_patients">Pacientes</string>
+    <string name="create_patient">Nuevo Paciente</string>
+    <string name="view_patient">Paciente</string>
+    <string name="edit_patient">Editar Paciente</string>
+    <string name="anthropometry_patient">Antropometría</string>
+
+    <string name="menu_recipes">Recetas</string>
+    <string name="create_recipe">Nueva Receta</string>
+    <string name="create_preparation_recipe">Nueva Receta - Preparación</string>
+    <string name="create_information_recipe">Nueva Receta - Información</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!-- FOOD -->
+    <string name="food_toolbar">Semana del %1$s al %2$s</string>
+    <string name="card_day">Día %1$s</string>
+    <string name="menu_date">Día %1$d - %2$s</string>
+
+    <!-- EXERCISES -->
+    <string name="exercise_toolbar">Ejercicios de hoy</string>
+    <string name="congrats">¡Enhorabuena!</string>
+    <string name="empty_exercise">No tienes rutinas para el día de hoy</string>
+    <string name="routine_name">Rutina - %1$s</string>
+
+    <!-- ANALYTICS -->
+    <string name="weight_label">Peso (kg)</string>
+    <string name="weight_relative">Grasa relativa (kg)</string>
+    <string name="IMC_prompt">IMC</string>
+    <string name="waist_prompt">Medida cintura</string>
+    <string name="hip_prompt">Medida cadera</string>
+    <string name="stomach_prompt">Medida abdomen</string>
+
+    <!-- DAYS OF THE WEEK-->
+    <string name="days_week">Días de la semana</string>
+    <string name="sunday">Domingo</string>
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+
+    <!-- RECIPES OF THE DAY-->
+    <string name="recipes_day">Dieta del día</string>
+
+
+    <!-- MISCELLANEOUS -->
+    <string name="assign_recipe">Asignar receta</string>
+    <string name="assign_routine">Asignar rutina</string>
+    <string name="sign_out">Cerrar Sesión</string>
+    <string name="measure">%1$d cm</string>
     <string name="prompt_email">Correo electrónico</string>
     <string name="prompt_password">Contraseña</string>
+    <string name="current_password">Contraseña actual</string>
+    <string name="change_password">Cambiar contraseña</string>
+    <string name="new_password">Nueva contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
     <string name="hint_email">Introduce tu correo electrónico</string>
     <string name="hint_password">Introduce tu contraseña</string>
+    <string name="hint_current_password">Introduce tu contraseña actual</string>
+    <string name="hint_new_password">Introduce tu nueva contraseña</string>
+    <string name="hint_confirm_password">Confirma tu nueva contraseña</string>
     <string name="login">Iniciar Sesión</string>
     <string name="emptyEmailError">Introduce un correo electrónico</string>
     <string name="emptyPasswordError">Introduce una contraseña</string>
     <string name="emptyFieldsError">Llena los campos correspondientes</string>
     <string name="wrongCredentialsError">Correo o contraseña son incorrectos</string>
+    <string name="assign">Asignar</string>
+    <string name="continue_assign">Continuar sin asignar</string>
+    <string name="Update_anthropometry">Actualizar medidas</string>
+    <string name="imc_label">IMC (kg/m2)</string>
+    <string name="admin">Administrador</string>
+    <string name="name_label">Nombre:</string>
+    <string name="selected_text">Seleccionada:</string>
+    <string name="searchRoutine">Buscar rutina</string>
+    <string name="search_recipe">Buscar receta</string>
+    <string name="patient_weight_placeholder">Introduce el peso del paciente</string>
+    <string name="patient_imc_placeholder">Introduce el IMC del paciente</string>
+    <string name="patient_waist_label">Medida cintura (cm):</string>
+    <string name="patient_measure_placeholder">Introduce medida del paciente</string>
+    <string name="patient_hip_label">Medida cadera (cm):</string>
+    <string name="patient_abs_label">Medida abdomen (cm):</string>
+    <string name="patient_fat_label">Grasa relativa (kg):</string>
+    <string name="name">Nombre</string>
+    <string name="age">Edad</string>
+    <string name="objective">Objetivo</string>
+    <string name="patient_name_placeholder">Introduce el nombre del paciente</string>
+    <string name="patient_age_placeholder">Introduce la edad del paciente</string>
+    <string name="patient_objective_placeholder">Introduce el objetivo del paciente</string>
+    <string name="patient_email_placeholder">Introduce el correo del paciente</string>
+    <string name="patient_password_placeholder">****</string>
+    <string name="generate">Generar</string>
+    <string name="accept">Aceptar</string>
+    <string name="recipe_name_placeholder">Introduce el nombre del platillo</string>
+    <string name="id">ID</string>
+    <string name="recipe_time_label">Tiempo de preparación (min):</string>
+    <string name="recipe_time_placeholder">Introduce el tiempo de preparación</string>
+    <string name="category">Categoría</string>
+    <string name="breakfast">Desayuno</string>
+    <string name="meal">Comida</string>
+    <string name="dinner">Cena</string>
+    <string name="snack">Snack</string>
+    <string name="description">Descripción</string>
+    <string name="recipe_description_placeholder">Introduce la descripción del platillo</string>
+    <string name="next">Siguiente</string>
+    <string name="nutrimental_label">Información nutrimental</string>
+    <string name="addImage">Adjuntar imagen</string>
+    <string name="reload">Volver a cargar</string>
+    <string name="reload_image_placeholder">Presiona para cargar una imagen</string>
+    <string name="save">Guardar</string>
+    <string name="ingredients">Ingredientes</string>
+    <string name="recipe_ingredients_placeholder">Introduce el nombre del ingrediente</string>
+    <string name="preparation">Preparación</string>
+    <string name="recipe_steps_placeholder">Introduce los pasos de preparación del platillo</string>
+    <string name="routine_name_placeholder">Introduce el nombre de la rutina</string>
+    <string name="addVideo">Adjuntar vídeo</string>
+    <string name="reload_video_placeholder">Imagen de un vídeo</string>
+    <string name="load_video_placeholder">Presiona para cargar un vídeo</string>
+    <string name="excersice_name_placeholder">Introduce el nombre del ejercicio</string>
+    <string name="series">Series</string>
+    <string name="cant">Cant</string>
+    <string name="repetitions">Repeticiones</string>
+    <string name="add">Agregar</string>
+    <string name="content_image_video">Reproducir video</string>
+    <string name="recipe_name_example_one">Huevo con pollo</string>
+    <string name="content_description_edit">Lapiz para editar</string>
+    <string name="content_description_arrow">Flecha de siguiente</string>
+    <string name="content_description_add">Botón de agregar</string>
+    <string name="routine_name_exampleOne">Sin asignar</string>
+    <string name="diet">Dieta</string>
+    <string name="exercises">Ejercicios</string>
+    <string name="anthropometry">Antropometría</string>
 </resources>

@@ -2,10 +2,9 @@ package com.nutrikares.nutrideskapp.presenters
 
 import android.app.Activity
 import com.google.firebase.auth.FirebaseAuth
-import com.nutrikares.nutrideskapp.models.UnLoggedUser
+import com.nutrikares.nutrideskapp.data.models.UnLoggedUser
 import com.nutrikares.nutrideskapp.views.SignInUserView
 import com.nutrikares.nutrideskapp.views.View
-import kotlin.properties.Delegates
 
 interface SignInPresenter<T: View> : Presenter<T> {
     fun logIn(email: String, password: String)
