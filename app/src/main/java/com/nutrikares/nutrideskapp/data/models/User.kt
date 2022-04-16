@@ -2,11 +2,9 @@ package com.nutrikares.nutrideskapp.data.models
 
 class User{
 
-    private lateinit var name: String
-    private lateinit var role: String
+    var name: String = ""
+    var role: String = ""
 
-    fun getName() = name
-    fun getRole() = role
 }
 
 data class UnLoggedUser(private var email: String, private var password: String ){

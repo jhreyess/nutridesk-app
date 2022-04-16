@@ -21,15 +21,14 @@ class FragmentFood : Fragment() {
     ): View {
 
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
-
-        // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, Datasource.weekStart, Datasource.weekEnd)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Bindings
+        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, Datasource.weekStart, Datasource.weekEnd)
 
         // Adapter with custom layout
         val customLayoutManager = GridLayoutManager(activity, 2)

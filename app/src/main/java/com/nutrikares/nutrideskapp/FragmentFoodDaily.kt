@@ -56,18 +56,16 @@ class FragmentFoodDaily : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentFoodDailyBinding.inflate(inflater, container, false)
-
-        // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.menu_date, date(menuDay), menuDay)
-        binding.backButton.setOnClickListener { findNavController().popBackStack() }
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Bindings
+        binding.fragmentLabel.text = resources.getString(R.string.menu_date, date(menuDay), menuDay)
+        binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         // Adapter with custom layout
         val customLayoutManager = GridLayoutManager(activity, 2)

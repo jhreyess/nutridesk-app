@@ -30,9 +30,12 @@ class FragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         // Bindings
         binding.weightDisplay.text = resources.getString(R.string.weight_placeholder, Datasource.userWeight)
         binding.imcDisplay.text = resources.getString(R.string.imc_placeholder, Datasource.userIMC)
@@ -46,8 +49,8 @@ class FragmentHome : Fragment() {
             findNavController().navigate(action)
         }
 
-        return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
