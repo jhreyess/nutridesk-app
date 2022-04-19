@@ -13,8 +13,8 @@
     <string name="imc">IMC</string>
     <string name="weight">Tu Peso</string>
     <string name="progress">Tu Progreso</string>
-    <string name="weight_placeholder">%1$d kg</string>
-    <string name="imc_placeholder">%1$d kg/m2</string>
+    <string name="weight_placeholder">%1$.1f kg</string>
+    <string name="imc_placeholder">%1$.1f kg/m2</string>
     <string name="daily_routine">Tu rutina diaria</string>
     <string name="daily_menu">El menú de hoy</string>
 
@@ -55,6 +55,7 @@
     <string name="congrats">¡Enhorabuena!</string>
     <string name="empty_exercise">No tienes rutinas para el día de hoy</string>
     <string name="routine_name">Rutina - %1$s</string>
+    <string name="sets_reps">%1$s series x %2$s repeticiones</string>
 
     <!-- ANALYTICS -->
     <string name="weight_label">Peso (kg)</string>
@@ -82,7 +83,7 @@
     <string name="assign_recipe">Asignar receta</string>
     <string name="assign_routine">Asignar rutina</string>
     <string name="sign_out">Cerrar Sesión</string>
-    <string name="measure">%1$d cm</string>
+    <string name="measure">%1$.1f cm</string>
     <string name="prompt_email">Correo electrónico</string>
     <string name="prompt_password">Contraseña</string>
     <string name="current_password">Contraseña actual</string>
@@ -139,7 +140,7 @@
     <string name="next">Siguiente</string>
     <string name="nutrimental_label">Información nutrimental</string>
     <string name="addImage">Adjuntar imagen</string>
-    <string name="reload">Volver a cargar</string>
+    <string name="load">Cargar</string>
     <string name="reload_image_placeholder">Presiona para cargar una imagen</string>
     <string name="save">Guardar</string>
     <string name="ingredients">Ingredientes</string>

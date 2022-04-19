@@ -204,7 +204,14 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             app:cardElevation="0dp"
-            app:cardCornerRadius="12dp"/>
+            app:cardCornerRadius="12dp">
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/progress_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

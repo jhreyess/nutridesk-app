@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentProfileBinding
 
 class FragmentProfile : Fragment() {
@@ -26,11 +27,12 @@ class FragmentProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Bindings
+        binding.profileName.text = Datasource.user.name
         binding.signOutBtn.setOnClickListener {
             Firebase.auth.signOut()
             val intent = Intent(activity, SignIn::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(Intent(activity, SignIn::class.java))
+            startActivity(intent)
         }
     }
 

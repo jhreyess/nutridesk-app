@@ -8,13 +8,10 @@ import android.view.View
 import android.widget.Toast
 import com.nutrikares.nutrideskapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.User
 import com.nutrikares.nutrideskapp.presenters.SignInPresenter
 import com.nutrikares.nutrideskapp.presenters.SignInUser
@@ -54,28 +51,26 @@ class SignIn : AppCompatActivity(), SignInUserView {
     }
 
     override fun launchApp(){
+
         val userId = auth.currentUser!!.uid
+
         if (!TextUtils.isEmpty(userId)){
             lateinit var userInfo: User
             val queryRef = database.child("users").child(userId)
-            val listener = object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                       userInfo = snapshot.getValue(User::class.java)!!
-                        val activity = when(userInfo.role){
-                            "admin" -> AdminMainActivity::class.java
-                            else -> MainActivity::class.java
-                        }
-                        val intent = Intent(this@SignIn, activity)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                    }
-
-                    override fun onCancelled(err: DatabaseError) {
-                        Toast.makeText(applicationContext,"Something went wrong!",Toast.LENGTH_SHORT).show()
-                    }
+            queryRef.keepSynced(true)
+            queryRef.get().addOnSuccessListener{ data ->
+                userInfo = data.getValue(User::class.java)!!
+                Datasource.user = userInfo
+                val activity = when(userInfo.role){
+                    "admin" -> AdminMainActivity::class.java
+                    else -> MainActivity::class.java
                 }
-
-            queryRef.addListenerForSingleValueEvent(listener)
+                val intent = Intent(baseContext, activity)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }.addOnFailureListener {
+                Toast.makeText(applicationContext,"Something went wrong!",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

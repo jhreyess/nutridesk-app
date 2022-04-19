@@ -95,7 +95,8 @@
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/video_textView"
@@ -106,51 +107,20 @@
                 android:text="@string/addVideo" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@id/uploadVideo_button"
+                android:id="@+id/uploadVideo_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:background="@android:color/transparent"
-                android:text="@string/reload"
+                android:text="@string/load"
                 app:icon="@drawable/ic_upload" />
 
         </RelativeLayout>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/uploadVideo_button"
+        <VideoView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="194dp"
-                    android:padding="40dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/play_video"
-                    android:contentDescription="@string/content_image_video" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Title, secondary and supporting text -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/load_video_placeholder"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
-                </LinearLayout>
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_height="200dp"
+            android:layout_margin="8dp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -207,7 +177,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:id="@+id/series_layout"

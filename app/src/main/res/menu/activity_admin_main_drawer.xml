@@ -18,5 +18,10 @@
             android:id="@+id/navigation_routines"
             android:icon="@drawable/ic_routines"
             android:title="@string/menu_routines" />
+
+        <item
+            android:id="@+id/navigation_logout"
+            android:icon="@drawable/ic_power"
+            android:title="@string/sign_out" />
     </group>
 </menu>

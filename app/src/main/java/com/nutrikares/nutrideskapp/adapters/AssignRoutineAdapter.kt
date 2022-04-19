@@ -20,14 +20,14 @@ class AssignRoutineAdapter(private val context: AssignRoutineFragment?,) : Recyc
 
     override fun getItemCount(): Int = routines.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssignRoutineAdapter.RoutineViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoutineViewHolder {
         val layout = LayoutInflater.from(parent.context)
             .inflate(R.layout.routines_list_items, parent, false)
 
-        return AssignRoutineAdapter.RoutineViewHolder(layout)
+        return RoutineViewHolder(layout)
     }
 
-    override fun onBindViewHolder(holder: AssignRoutineAdapter.RoutineViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RoutineViewHolder, position: Int) {
         print(routines)
         val routine = routines[position]
         holder.preview.text = routine

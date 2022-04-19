@@ -8,16 +8,14 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Nutrideskapp.AppBarOverlay">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Nutrideskapp.PopupOverlay"
-            android:backgroundTint="?attr/colorSecondaryVariant" />
+            android:background="?attr/colorSecondaryVariant"
+            app:titleTextColor="?attr/colorOnSecondary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

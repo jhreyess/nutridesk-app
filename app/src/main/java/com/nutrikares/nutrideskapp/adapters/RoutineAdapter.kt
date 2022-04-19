@@ -29,7 +29,6 @@ class RoutineAdapter (private val context: RoutinesFragment?,) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: RoutineAdapter.RoutineViewHolder, position: Int) {
-        print(routines)
         val routine = routines[position]
         holder.preview.text = routine
     }

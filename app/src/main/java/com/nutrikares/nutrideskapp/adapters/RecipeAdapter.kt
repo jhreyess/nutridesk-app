@@ -29,7 +29,6 @@ class RecipeAdapter(private val context: RecipesFragment?,) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: RecipeAdapter.RecipeViewHolder, position: Int) {
-        print(recipes)
         val recipe = recipes[position]
         holder.preview.text = recipe
     }

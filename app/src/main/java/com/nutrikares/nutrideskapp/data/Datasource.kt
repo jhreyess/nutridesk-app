@@ -1,11 +1,10 @@
 package com.nutrikares.nutrideskapp.data
 
-import com.nutrikares.nutrideskapp.data.models.Exercise
-import com.nutrikares.nutrideskapp.data.models.Food
-import com.nutrikares.nutrideskapp.data.models.FoodDayMenu
-import com.nutrikares.nutrideskapp.data.models.Routine
+import com.nutrikares.nutrideskapp.data.models.*
 
 object Datasource {
+
+    lateinit var user: User
 
     private val ingredients = listOf("Ingredients")
     private val steps = listOf("Steps")
