@@ -45,6 +45,7 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/nameRecipe_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
@@ -82,6 +83,7 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/idRecipe_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
@@ -113,12 +115,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/timeRecipe_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/recipe_time_placeholder"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -134,28 +137,29 @@
         <RadioGroup
             android:id="@+id/radioGroup1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/breakfast_radioButton">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/breakfast_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/breakfast" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/meal_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/meal" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/dinner_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dinner" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/snack_radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/snack" />
@@ -179,6 +183,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/descRecipe_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"

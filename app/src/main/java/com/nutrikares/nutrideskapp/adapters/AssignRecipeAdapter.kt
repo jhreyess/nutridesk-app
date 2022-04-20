@@ -9,9 +9,9 @@ import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment
 
-class AssignRecipeAdapter (private val context: AssingRecipeFragment?,) : RecyclerView.Adapter<AssignRecipeAdapter.RecipeViewHolder>() {
+class AssignRecipeAdapter (private val context: AssingRecipeFragment?,private var recipes: MutableList<String>) : RecyclerView.Adapter<AssignRecipeAdapter.RecipeViewHolder>() {
 
-    private var recipes = Datasource.recipes
+    //private var recipes = Datasource.recipes
 
     class RecipeViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         val preview: TextView = view!!.findViewById(R.id.recipe_preview)

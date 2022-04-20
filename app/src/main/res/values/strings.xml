@@ -146,7 +146,7 @@
     <string name="ingredients">Ingredientes</string>
     <string name="recipe_ingredients_placeholder">Introduce el nombre del ingrediente</string>
     <string name="preparation">Preparación</string>
-    <string name="recipe_steps_placeholder">Introduce los pasos de preparación del platillo</string>
+    <string name="recipe_steps_placeholder">Introduce un paso de la preparación</string>
     <string name="routine_name_placeholder">Introduce el nombre de la rutina</string>
     <string name="addVideo">Adjuntar vídeo</string>
     <string name="reload_video_placeholder">Imagen de un vídeo</string>

@@ -1,20 +1,38 @@
 package com.nutrikares.nutrideskapp.data
 
+import android.util.Log
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.data.models.*
+import java.lang.Exception
 
 object Datasource {
-
+    private lateinit var database : DatabaseReference
     lateinit var user: User
+    private val ingredients = mutableListOf("Ingredients")
+    private val steps = mutableListOf("Steps")
+    private var currentRecipe =  Food("",10, "", "",  0, ingredients, steps)
+    var newRecipe =  Food("",10, "", "", 0,  ingredients, steps)
+    var newRecipeId = ""
+    fun setCurrentRecipe(recipe : Food){
+        currentRecipe = recipe
+    }
 
-    private val ingredients = listOf("Ingredients")
-    private val steps = listOf("Steps")
+    fun getCurrentRecipe():Food{
+        return currentRecipe
+    }
+
+    init{
+        database = Firebase.database.reference
+    }
 
     private val foods: List<Food> = listOf(
-        Food("Desayuno", "Huevo", "Desc 1", 10, 0, ingredients, steps),
-        Food("Comida", "Chilaquiles", "Desc 2", 10, 0, ingredients, steps),
-        Food("Cena", "Molletes", "Desc 3", 10, 0, ingredients, steps),
-        Food("Snack", "Avena", "Desc 4", 10, 0, ingredients, steps),
-        Food("Snack", "Fruta", "Desc 5", 10, 0, ingredients, steps),
+        Food("Desayuno",15, "Huevo", "Desc 1",  0, ingredients, steps),
+        Food("Comida", 30,"Chilaquiles", "Desc 2",  0, ingredients, steps),
+        Food("Cena", 30,"Molletes", "Desc 3",  0, ingredients, steps),
+        Food("Snack", 15,"Avena", "Desc 4",  0, ingredients, steps),
+        Food("Snack", 10,"Fruta", "Desc 5",  0, ingredients, steps),
     )
 
     val weekStart: String = "21 Mar"
@@ -39,59 +57,97 @@ object Datasource {
 
     val getExercisesSize = exercises.size
 
+    /*Tengo dos colecciones porque en una se guarda la key, que es el necesario para poder consultar la b de d
+    y en la otra las puras strings pq no supe como usar el HashMap en el Adapter.*/
 
-    val patients: MutableList<String> = mutableListOf(
-        "Gala Vaquero Madrigal",
-        "Pili Ainara Cardona Escalona",
-        "Carmina Tamara Plana Lillo",
-        "Merche Berrocal Cardona",
-        "Teófilo Coronado-Giménez",
-        "Gracia Castillo-Grau",
-        "Montserrat Gibert-Barceló",
-        "Félix Bustos Machado",
-        "Héctor Cobos España",
-        "Olimpia Ferrán",
-        "Abraham Román Cuadrado",
-        "María Cueto Cazorla",
-        "Haydée Somoza-España",
-        "Jose Carlos Yuste-Cabello",
-        "Patricio Belda Portero",
-    )
+    fun getPatients(): MutableList<String>{
+        database.child("users").get().addOnSuccessListener {
+            mapOfPatients.clear()
+            patients.clear()
+            for (ds in it.children) {
+                if(ds.child("role").getValue().toString().equals("patient")){
+                    mapOfPatients.put(ds.child("name").getValue().toString(),ds.key.toString())
+                    patients.add(ds.child("name").getValue().toString())
+                }
+            }
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        return patients
+    }
 
-    val recipes: MutableList<String> = mutableListOf(
-        "Receta 1",
-        "Receta 2",
-        "Receta 3",
-        "Receta 4",
-        "Receta 5",
-        "Receta 6",
-        "Receta 7",
-        "Receta 8",
-        "Receta 9",
-        "Receta 10",
-        "Receta 11",
-        "Receta 12",
-        "Receta 13",
-        "Receta 14",
-        "Receta 15",
-        "Receta 16"
-    )
-    val routines: MutableList<String> = mutableListOf(
-        "Rutina 1",
-        "Rutina 2",
-        "Rutina 3",
-        "Rutina 4",
-        "Rutina 5",
-        "Rutina 6",
-        "Rutina 7",
-        "Rutina 8",
-        "Rutina 9",
-        "Rutina 10",
-        "Rutina 11",
-        "Rutina 12",
-        "Rutina 13",
-        "Rutina 14",
-        "Rutina 15",
-        "Rutina 16"
-    )
+    fun getRecipes():MutableList<String>{
+        database.child("recipes").get().addOnSuccessListener {
+            mapOfRecipes.clear()
+            recipes.clear()
+            for (ds in it.children) {
+                //var recipe : Food = ds.getValue(Food::class.java)!!
+                mapOfRecipes.put(ds.child("name").getValue().toString(),ds.key.toString())
+                recipes.add(ds.child("name").getValue().toString())
+            }
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        return recipes
+    }
+
+    /*fun getRoutines():MutableList<String>{
+        database.child("trainings").get().addOnSuccessListener {
+            mapOfRoutines.clear()
+            routines.clear()
+            for (ds in it.children) {
+                mapOfRoutines.put(ds.key.toString(),ds.child("name").getValue().toString())
+                routines.add(ds.child("name").getValue().toString())
+            }
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+        return recipes
+    }*/
+
+    val mapOfPatients: HashMap<String, String> = hashMapOf()
+    private val patients: MutableList<String> = mutableListOf()
+
+    val mapOfRecipes: HashMap<String, String> = hashMapOf()
+    private val recipes:MutableList<String> = mutableListOf()
+
+    val mapOfRoutines: HashMap<String, String> = hashMapOf()
+    val routines: MutableList<String> = mutableListOf()
+
+    private var clickOnRecipe = false
+
+    fun getClickOnRecipe():Boolean{
+        return clickOnRecipe
+    }
+    fun setClickOnRecipe(value : Boolean){
+        clickOnRecipe = value
+    }
+
+    fun queryRecipe(key:String){
+        database.child("recipes").child(key).get().addOnSuccessListener {
+            currentRecipe= it.getValue(Food::class.java)!!
+            //Log.v("Firebase",it.value.toString())
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+    }
+
+    fun addRecipe():Boolean{
+        try{
+            database.child("recipes").child(newRecipeId).setValue(newRecipe)
+            return true
+        }catch (e : Exception){
+            Log.d("Exception",e.toString())
+            return false
+        }
+    }
+    fun updateRecipe():Boolean{
+        try{
+            database.child("recipes").child(mapOfRecipes[currentRecipe.name].toString()).setValue(newRecipe)
+            return true
+        }catch (e : Exception){
+            Log.d("Exception",e.toString())
+            return false
+        }
+    }
 }

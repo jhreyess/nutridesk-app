@@ -26,22 +26,159 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:id="@+id/nutrients_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/nutritionalinfo_textView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recipeCalories_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calorías"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="?attr/colorSurface"
+                app:boxStrokeColor="@color/gray"
+                android:layout_marginEnd="10dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/recipeCalories_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="no"
+                    android:background="@android:color/transparent"
+                    android:hint="Introduce la cantidad de calorías"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/recipeCarbs_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carbohidratos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="?attr/colorSurface"
+                app:boxStrokeColor="@color/gray"
+                android:layout_marginEnd="10dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/recipeCarbs_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="no"
+                    android:background="@android:color/transparent"
+                    android:hint="Introduce la cantidad de carbohidratos (g)"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/recipeFats_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grasa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="?attr/colorSurface"
+                app:boxStrokeColor="@color/gray"
+                android:layout_marginEnd="10dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/recipeFats_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="no"
+                    android:background="@android:color/transparent"
+                    android:hint="Introduce la cantidad de grasa (g)"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/recipeProtein_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Proteínas"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="?attr/colorSurface"
+                app:boxStrokeColor="@color/gray"
+                android:layout_marginEnd="10dp"
+                app:hintEnabled="false">
+
+                <EditText
+                    android:id="@+id/recipeProtein_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="no"
+                    android:background="@android:color/transparent"
+                    android:hint="Introduce la cantidad de proteínas (g)"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/uploadimage_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addImage"
-            app:layout_constraintTop_toBottomOf="@+id/nutritionalinfo_textView"
+            app:layout_constraintTop_toBottomOf="@+id/nutrients_linearLayout"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="16dp"
             />
 
         <Button
             android:layout_width="180dp"
             android:layout_height="33dp"
             android:layout_marginEnd="-10dp"
-            android:layout_marginBottom="192dp"
+            android:layout_marginBottom="145dp"
             android:background="@android:color/transparent"
             android:text="@string/load"
             android:textAlignment="viewEnd"
@@ -58,7 +195,7 @@
         <Button
             android:id="@+id/uploadimage_button"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:backgroundTint="@color/light_gray"
             android:text="@string/reload_image_placeholder"
             android:textAlignment="center"
@@ -68,7 +205,6 @@
             app:iconTint="@color/gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uploadimage_textView" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
