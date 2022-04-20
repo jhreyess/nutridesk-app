@@ -165,4 +165,5 @@
     <string name="diet">Dieta</string>
     <string name="exercises">Ejercicios</string>
     <string name="anthropometry">Antropometría</string>
+    <string name="separator">/</string>
 </resources>

@@ -27,7 +27,7 @@ class FragmentProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // Bindings
-        binding.profileName.text = Datasource.user.name
+        binding.profileName.text = Datasource.getUserInfo().name
         binding.signOutBtn.setOnClickListener {
             Firebase.auth.signOut()
             val intent = Intent(activity, SignIn::class.java)

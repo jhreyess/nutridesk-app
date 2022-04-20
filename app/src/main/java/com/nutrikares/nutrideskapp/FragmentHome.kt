@@ -38,7 +38,7 @@ class FragmentHome : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val userStats = Datasource.user.stats
+        val userStats = Datasource.getUserInfo().stats
 
         // Bindings
         binding.weightDisplay.text = resources.getString(R.string.weight_placeholder, userStats.weight)

@@ -19,7 +19,7 @@ class FragmentAnalytics : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        userStats = Datasource.user.stats
+        userStats = Datasource.getUserInfo().stats
     }
 
     override fun onCreateView(

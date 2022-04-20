@@ -8,11 +8,10 @@ data class Food (
     var time: Int = 0,
     var name: String = "",
     var description: String = "",
-    //@DrawableRes var imageResourceId: Int = 0,
     var imageResourceId: String = "",
     var ingredients: MutableList<String> = mutableListOf(),
     var steps: MutableList<String> = mutableListOf(),
-    var info:Nutrients = Nutrients()
+    var info: MutableMap<String, Int> = mutableMapOf()
 )
 
 data class FoodDayMenu (
@@ -21,9 +20,10 @@ data class FoodDayMenu (
     val foods: List<Food> = listOf()
 )
 
-data class Nutrients(
-    var calories:Int = 0,
-    var carbs: Int = 0,
-    var fats:Int=0,
-    var protein:Int = 0
+data class FoodIdMap(
+    var meal: String = "",
+    var breakfast: String = "",
+    var dinner: String = "",
+    var snack1: String = "",
+    var snack2: String = ""
 )

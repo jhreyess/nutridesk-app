@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.nutrikares.nutrideskapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.data.Datasource
-import com.nutrikares.nutrideskapp.data.models.User
+import com.nutrikares.nutrideskapp.data.models.*
 import com.nutrikares.nutrideskapp.presenters.SignInPresenter
 import com.nutrikares.nutrideskapp.presenters.SignInUser
 import com.nutrikares.nutrideskapp.views.SignInUserView
@@ -42,27 +44,38 @@ class SignIn : AppCompatActivity(), SignInUserView {
     override fun onStart() {
         super.onStart()
         val user = FirebaseAuth.getInstance().currentUser
-        if(user != null){ launchApp() }
+        if (user != null) {
+            launchApp()
+        }
     }
 
-    private fun login(){
+    private fun login() {
         val email = binding.userEmail.editText?.text.toString()
         val password = binding.userPassword.editText?.text.toString()
         presenter.logIn(email, password)
     }
 
-    override fun launchApp(){
+    override fun launchApp() {
 
         val userId = auth.currentUser!!.uid
 
-        if (!TextUtils.isEmpty(userId)){
-            lateinit var userInfo: User
+        if (!TextUtils.isEmpty(userId)) {
             val queryRef = database.child("users").child(userId)
             queryRef.keepSynced(true)
-            queryRef.get().addOnSuccessListener{ data ->
-                userInfo = data.getValue(User::class.java)!!
-                Datasource.user = userInfo
-                val activity = when(userInfo.role){
+            queryRef.get().addOnSuccessListener { data ->
+                val userInfo = data.getValue(UserInfo::class.java)!!
+                when(userInfo.role){
+                    "admin" -> { Datasource.retrieveAllData() }
+                    else -> { Datasource.retrieveUserData(userId) }
+                }
+//                retrieveUserData(userId)
+//                val userData = retrieveUserData(userId)
+//                Datasource.setUserInfo(userInfo)
+//                userData.let {
+//                    Datasource.setUserDiets(it["diets"] as UserDiets)
+//                    Datasource.setUserRoutines(it["trainings"] as UserRoutines)
+//                }
+                val activity = when(userInfo.role) {
                     "admin" -> AdminMainActivity::class.java
                     else -> MainActivity::class.java
                 }
@@ -70,7 +83,8 @@ class SignIn : AppCompatActivity(), SignInUserView {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }.addOnFailureListener {
-                Toast.makeText(applicationContext,"Something went wrong!",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Something went wrong!", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -92,5 +106,4 @@ class SignIn : AppCompatActivity(), SignInUserView {
         super.onDestroy()
         presenter.onDestroy()
     }
-
 }
