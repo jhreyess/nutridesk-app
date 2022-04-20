@@ -1,5 +1,6 @@
 package com.nutrikares.nutrideskapp.data
 
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -12,8 +13,8 @@ object Datasource {
     lateinit var user: User
     private val ingredients = mutableListOf("Ingredients")
     private val steps = mutableListOf("Steps")
-    private var currentRecipe =  Food("",10, "", "",  0, ingredients, steps)
-    var newRecipe =  Food("",10, "", "", 0,  ingredients, steps)
+    private var currentRecipe =  Food("",10, "", "",  "", ingredients, steps)
+    var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
     fun setCurrentRecipe(recipe : Food){
         currentRecipe = recipe
@@ -28,11 +29,11 @@ object Datasource {
     }
 
     private val foods: List<Food> = listOf(
-        Food("Desayuno",15, "Huevo", "Desc 1",  0, ingredients, steps),
-        Food("Comida", 30,"Chilaquiles", "Desc 2",  0, ingredients, steps),
-        Food("Cena", 30,"Molletes", "Desc 3",  0, ingredients, steps),
-        Food("Snack", 15,"Avena", "Desc 4",  0, ingredients, steps),
-        Food("Snack", 10,"Fruta", "Desc 5",  0, ingredients, steps),
+        Food("Desayuno",15, "Huevo", "Desc 1",  "", ingredients, steps),
+        Food("Comida", 30,"Chilaquiles", "Desc 2",  "", ingredients, steps),
+        Food("Cena", 30,"Molletes", "Desc 3",  "", ingredients, steps),
+        Food("Snack", 15,"Avena", "Desc 4", "", ingredients, steps),
+        Food("Snack", 10,"Fruta", "Desc 5", "", ingredients, steps),
     )
 
     val weekStart: String = "21 Mar"

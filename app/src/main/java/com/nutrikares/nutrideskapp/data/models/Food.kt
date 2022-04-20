@@ -1,5 +1,6 @@
 package com.nutrikares.nutrideskapp.data.models
 
+import android.net.Uri
 import androidx.annotation.DrawableRes
 
 data class Food (
@@ -7,7 +8,8 @@ data class Food (
     var time: Int = 0,
     var name: String = "",
     var description: String = "",
-    @DrawableRes var imageResourceId: Int = 0,
+    //@DrawableRes var imageResourceId: Int = 0,
+    var imageResourceId: String = "",
     var ingredients: MutableList<String> = mutableListOf(),
     var steps: MutableList<String> = mutableListOf(),
     var info:Nutrients = Nutrients()
