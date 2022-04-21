@@ -33,6 +33,7 @@ object Datasource {
     private val steps = mutableListOf("Steps")
 
     private var currentRecipe = Food("", 10, "", "", "", ingredients, steps)
+    private var currentRoutine = Routine()
     var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
 
@@ -42,6 +43,14 @@ object Datasource {
 
     fun getCurrentRecipe():Food{
         return currentRecipe
+    }
+
+    fun setCurrentRoutine(routine : Routine){
+        currentRoutine = routine
+    }
+
+    fun getCurrentRoutine():Routine{
+        return currentRoutine
     }
     /* TODO: BORRAR DATOS DE PRUEBA */
 
@@ -95,6 +104,16 @@ object Datasource {
     fun setClickOnRecipe(value : Boolean){
         clickOnRecipe = value
     }
+
+    private var clickOnRoutine = false
+
+    fun getClickOnRoutine():Boolean{
+        return clickOnRoutine
+    }
+    fun setClickOnRoutine(value : Boolean){
+        clickOnRoutine = value
+    }
+
 
     fun queryRecipe(key:String){
         database.child("recipes").child(key).get().addOnSuccessListener {

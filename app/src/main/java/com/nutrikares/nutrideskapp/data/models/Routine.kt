@@ -13,7 +13,7 @@ data class Exercise(
 data class Routine(
     var id: String = "",
     var name: String = "",
-    var exercises: List<Exercise> = listOf(),
+    var exercises: MutableList<Exercise> = mutableListOf(),
     var videoUri: Uri? = null,
     var videoPath: String = ""
 )

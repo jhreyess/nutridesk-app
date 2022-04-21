@@ -43,6 +43,7 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/routineName_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
@@ -80,6 +81,7 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/routineId_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
@@ -119,7 +121,7 @@
 
         <VideoView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_margin="8dp" />
 
         <RelativeLayout
@@ -139,9 +141,9 @@
                 android:id="@+id/addExcercise_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_add"
+                android:layout_alignParentEnd="true"
                 android:importantForAccessibility="no"
-                android:layout_alignParentEnd="true"/>
+                android:src="@drawable/ic_add" />
 
         </RelativeLayout>
 
@@ -164,6 +166,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/routineExName_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
@@ -206,15 +209,17 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/routineSeries_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
                         android:hint="@string/cant"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
                 </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -242,18 +247,30 @@
                     app:hintEnabled="false">
 
                     <EditText
+                        android:id="@+id/routineRep_editText"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autofillHints="no"
                         android:background="@android:color/transparent"
                         android:hint="@string/cant"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
         </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/listOfExcercises_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
 
     </LinearLayout>
 

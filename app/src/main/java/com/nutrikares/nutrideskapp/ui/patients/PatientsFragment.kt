@@ -23,7 +23,7 @@ class PatientsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        users = Datasource.getUsers().map { it!!.name }
+        //users = Datasource.getUsers().map { it!!.name }
 
     }
 
@@ -37,10 +37,12 @@ class PatientsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d("Debug", users.toString())
+        //Log.d("Debug", users.toString())
         // Bindings
-        binding.patientsRecycler.adapter = PatientAdapter(this, users)
-        binding.patientsRecycler.setHasFixedSize(true)
+        //binding.patientsRecycler.adapter = PatientAdapter(this, users)
+        //binding.patientsRecycler.setHasFixedSize(true)
+        getPatients()
+
         binding.createPatientButton.setOnClickListener {
             findNavController().navigate(R.id.action_nav_patients_to_createPatientFragment)
         }
@@ -67,6 +69,9 @@ class PatientsFragment : Fragment() {
                     Datasource.patients.add(ds.child("name").getValue().toString())
                 }
             }
+
+            binding.patientsRecycler.adapter = PatientAdapter(this, Datasource.patients)
+            binding.patientsRecycler.setHasFixedSize(true)
 
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
