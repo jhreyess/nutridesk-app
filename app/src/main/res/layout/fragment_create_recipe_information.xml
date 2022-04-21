@@ -175,6 +175,7 @@
             />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/updateImage_Button"
             android:layout_width="180dp"
             android:layout_height="33dp"
@@ -207,6 +208,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uploadimage_textView" />
         <ImageView
+            android:visibility="gone"
             android:id="@+id/recipeImage_imageView"
             android:layout_marginTop="5dp"
             android:scaleType="centerCrop"

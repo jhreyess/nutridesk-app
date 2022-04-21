@@ -39,8 +39,6 @@ object Datasource {
     fun getUserDiets() = user.diets
 
     var videoUri: Uri? = null
-
-    private val foods: List<Food> = listOf()
     private val users: List<User> = listOf()
     private val trainings: List<Routine> = listOf()
     
@@ -79,20 +77,6 @@ object Datasource {
 
     val getExercisesSize = exercises.size
 
-    /*fun getRoutines():MutableList<String>{
-        database.child("trainings").get().addOnSuccessListener {
-            mapOfRoutines.clear()
-            routines.clear()
-            for (ds in it.children) {
-                mapOfRoutines.put(ds.key.toString(),ds.child("name").getValue().toString())
-                routines.add(ds.child("name").getValue().toString())
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        return recipes
-    }*/
-
     val mapOfPatients: HashMap<String, String> = hashMapOf()
     val patients: MutableList<String> = mutableListOf()
 
@@ -116,7 +100,7 @@ object Datasource {
         val dietsRef = database.child("diets")
         val trainingsRef = database.child("trainings")
 
-        val usersListener = object: ValueEventListener{
+        /*val usersListener = object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 TODO("Not yet implemented")
             }
@@ -148,7 +132,7 @@ object Datasource {
 
         usersRef.addValueEventListener(usersListener)
         dietsRef.addValueEventListener(dietsListener)
-        trainingsRef.addValueEventListener(routinesListener)
+        trainingsRef.addValueEventListener(routinesListener)*/
     }
 
     fun retrieveUserData(uid: String) {

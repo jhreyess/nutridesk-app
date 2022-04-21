@@ -11,13 +11,20 @@ data class Food (
     var imageResourceId: String = "",
     var ingredients: MutableList<String> = mutableListOf(),
     var steps: MutableList<String> = mutableListOf(),
-    var info: MutableMap<String, Int> = mutableMapOf()
+    var info: Nutrients= Nutrients()
 )
 
 data class FoodDayMenu (
     val id: String = "",
     @DrawableRes val imageResourceId: Int = 0,
     val foods: List<Food> = listOf()
+)
+
+data class Nutrients(
+    var calories:Int = 0,
+    var carbs:Int = 0,
+    var fats:Int=0,
+    var protein:Int=0
 )
 
 data class FoodIdMap(

@@ -1,23 +1,18 @@
 package com.nutrikares.nutrideskapp.ui.recipes
 
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -26,10 +21,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeInformationBinding
-import java.io.ByteArrayOutputStream
-import java.io.InputStream
-import java.net.URL
-import java.util.*
 
 
 class CreateRecipeInformationFragment : Fragment() {
@@ -54,9 +45,6 @@ class CreateRecipeInformationFragment : Fragment() {
         downloadUri = Uri.parse("")
         fileUri = Uri.parse("")
         clickDone=false
-        binding.uploadimageButton.visibility = View.VISIBLE
-        binding.recipeImageImageView.visibility = View.GONE
-        binding.updateImageButton.visibility = View.GONE
 
         if(Datasource.getClickOnRecipe()) {
             binding.uploadimageButton.visibility = View.GONE
@@ -69,6 +57,11 @@ class CreateRecipeInformationFragment : Fragment() {
             binding.recipeCarbsEditText.setText(recipe.info.carbs.toString())
             binding.recipeFatsEditText.setText(recipe.info.fats.toString())
             binding.recipeProteinEditText.setText(recipe.info.protein.toString())
+            if(!recipe.imageResourceId.equals("")){
+                Glide.with(this)
+                    .load("${recipe.imageResourceId}kjdjkdjd")
+                    .into(binding.recipeImageImageView)
+            }
         }
 
         binding.acceptButton.setOnClickListener {
@@ -106,7 +99,7 @@ class CreateRecipeInformationFragment : Fragment() {
         Datasource.newRecipe.info.fats = Integer.parseInt(binding.recipeFatsEditText.text.toString())
         Datasource.newRecipe.info.protein = Integer.parseInt(binding.recipeProteinEditText.text.toString())
         Datasource.newRecipe.imageResourceId = downloadUri.toString()
-        Log.v("Data-final",Datasource.newRecipe.toString())
+        //Log.v("Data-final",Datasource.newRecipe.toString())
     }
 
     fun addRecipe(){
@@ -132,19 +125,18 @@ class CreateRecipeInformationFragment : Fragment() {
     }
 
     fun uploadRecipeData(){
-        if(((!fileUri.toString().equals("")) || (!downloadUri.toString().equals(""))) && clickDone){
-            //Subimos la imagen
+        if(!fileUri.toString().equals("") && clickDone){
             val storageRef = storage.reference
             val file = fileUri
             val recipesImageRef = storageRef.child("images/${fileUri.lastPathSegment}")
             val uploadTask = recipesImageRef.putFile(file)
 
             uploadTask.addOnFailureListener{
-                Toast.makeText(this.context, "Error al cargar la imagen", Toast.LENGTH_LONG).show();
-                Log.v("Cloud","Imagen no puedo ser subida")
+                Toast.makeText(this.context, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
+                //Log.v("Cloud","Imagen no puedo ser subida")
             }.addOnSuccessListener {
-                Toast.makeText(this.context, "Imagen cargada", Toast.LENGTH_LONG).show();
-                Log.v("Cloud","Imagen subida")
+                Toast.makeText(this.context, "Imagen cargada", Toast.LENGTH_SHORT).show();
+                //Log.v("Cloud","Imagen subida")
             }
             val urlTask = uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
@@ -156,7 +148,7 @@ class CreateRecipeInformationFragment : Fragment() {
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     downloadUri = task.result
-                    Log.v("Cloud",downloadUri.toString())
+                    //Log.v("Cloud",downloadUri.toString())
                     attachData()
                     if(Datasource.getClickOnRecipe()){
                         //Es modificación
@@ -190,7 +182,7 @@ class CreateRecipeInformationFragment : Fragment() {
             if (resultCode == Activity.RESULT_OK) {
                 //Image Uri will not be null for RESULT_OK
                 fileUri = data?.data!!
-                Log.v("ImagePicker",fileUri.toString())
+                //Log.v("ImagePicker",fileUri.toString())
                 binding.uploadimageButton.visibility = View.GONE
                 binding.recipeImageImageView.visibility = View.VISIBLE
                 binding.updateImageButton.visibility = View.VISIBLE
@@ -211,13 +203,4 @@ class CreateRecipeInformationFragment : Fragment() {
                 startForProfileImageResult.launch(intent)
             }
     }
-
-    /*fun getBitImage(uri : Uri) : Bitmap{
-        val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireContext().contentResolver, uri))
-        } else {
-            MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
-        }
-        return bitmap
-    }*/
 }
