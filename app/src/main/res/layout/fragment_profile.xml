@@ -72,6 +72,7 @@
             android:text="@string/current_password" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/currentPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -100,6 +101,7 @@
             android:text="@string/new_password" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/newPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -128,6 +130,7 @@
             android:text="@string/confirm_password" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/confirmPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -150,11 +153,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtn"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:backgroundTint="?attr/colorSecondaryVariant"
+            android:background="?attr/colorSecondaryVariant"
             android:text="@string/save"
             android:paddingStart="30dp"
             android:paddingEnd="30dp"

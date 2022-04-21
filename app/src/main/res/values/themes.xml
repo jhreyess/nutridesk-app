@@ -3,7 +3,7 @@
     <style name="Theme.Nutrideskapp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_purple</item>
+        <item name="colorPrimary">@color/purple</item>
         <item name="colorOnPrimary">@color/dark_gray</item>
 
         <!-- Secondary brand color. -->
@@ -20,10 +20,4 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSecondaryVariant</item>
         <item name="android:windowBackground">@color/light_bg</item>
     </style>
-
-    <style name="Theme.Nutrideskapp.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
 </resources>
