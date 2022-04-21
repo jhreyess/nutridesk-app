@@ -6,26 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.github.mikephil.charting.data.LineDataSet
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentHomeBinding
-import java.util.*
+import com.nutrikares.nutrideskapp.utils.Calendar
 
 class FragmentHome : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    private val date = {x: Int -> when(x){
-        Calendar.MONDAY -> "Lunes"
-        Calendar.TUESDAY -> "Martes"
-        Calendar.WEDNESDAY -> "Miércoles"
-        Calendar.THURSDAY -> "Jueves"
-        Calendar.FRIDAY -> "Viernes"
-        Calendar.SATURDAY -> "Sábado"
-        Calendar.SUNDAY -> "Domingo"
-        else -> "Undefined"
-    } }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,8 +36,8 @@ class FragmentHome : Fragment() {
             findNavController().navigate(action)
         }
         binding.todaysMenu.setOnClickListener {
-            val today = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
-            val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = date(today))
+            val weekDay = Calendar().getDate("es")
+            val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = weekDay)
             findNavController().navigate(action)
         }
 //        LineDataSet(userStats.progress)

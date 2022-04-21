@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.Stats
 import com.nutrikares.nutrideskapp.databinding.FragmentAnalyticsBinding
-import com.nutrikares.nutrideskapp.databinding.FragmentHomeBinding
 
 class FragmentAnalytics : Fragment() {
 

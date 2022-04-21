@@ -1,6 +1,7 @@
 package com.nutrikares.nutrideskapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,8 +28,11 @@ class FragmentFood : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val data = Datasource.getUserDiets()
+        Log.d("Debug", "$data")
+
         // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, Datasource.weekStart, Datasource.weekEnd)
+        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, data.weekStart, data.weekEnd)
 
         // Adapter with custom layout
         val customLayoutManager = GridLayoutManager(activity, 2)
@@ -37,8 +41,9 @@ class FragmentFood : Fragment() {
                 return if (position == 0) 2 else 1
             }
         }
+
         binding.weekMenu.layoutManager = customLayoutManager
-        binding.weekMenu.adapter = FoodWeekAdapter(this, Datasource.weekMenu)
+        binding.weekMenu.adapter = FoodWeekAdapter(this, data.days.values.toList())
         binding.weekMenu.setHasFixedSize(true)
     }
 

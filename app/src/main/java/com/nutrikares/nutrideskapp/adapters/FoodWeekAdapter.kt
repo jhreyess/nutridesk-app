@@ -44,16 +44,16 @@ class FoodWeekAdapter(
     override fun getItemCount(): Int = days.size
 
     override fun onBindViewHolder(holder: FoodDayViewHolder, position: Int) {
-        val day = days[position]
+        val dayMenu = days[position]
         val resources = context?.resources
 
         holder.dayTextView.text = resources?.getString(R.string.card_day, position.inc().toString())
-        holder.dateTextView.text =  day.id
+        holder.dateTextView.text =  dayMenu.day
         //holder.previewImageSource.setImageResource(day.imageResourceId)
 
         // Assign onClickListener to each card
         holder.cardButton.setOnClickListener {
-            val action = FragmentFoodDirections.actionFragmentFoodToFragmentFoodDaily(dayIndex = day.id)
+            val action = FragmentFoodDirections.actionFragmentFoodToFragmentFoodDaily(dayIndex = dayMenu.day)
             holder.view?.findNavController()!!.navigate(action)
         }
     }

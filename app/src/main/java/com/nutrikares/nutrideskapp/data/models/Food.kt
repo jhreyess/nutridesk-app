@@ -1,8 +1,5 @@
 package com.nutrikares.nutrideskapp.data.models
 
-import android.net.Uri
-import androidx.annotation.DrawableRes
-
 data class Food (
     var type: String = "",
     var time: Int = 0,
@@ -11,26 +8,41 @@ data class Food (
     var imageResourceId: String = "",
     var ingredients: MutableList<String> = mutableListOf(),
     var steps: MutableList<String> = mutableListOf(),
-    var info: Nutrients= Nutrients()
-)
-
-data class FoodDayMenu (
-    val id: String = "",
-    @DrawableRes val imageResourceId: Int = 0,
-    val foods: List<Food> = listOf()
+    var info: Nutrients = Nutrients()
 )
 
 data class Nutrients(
-    var calories:Int = 0,
-    var carbs:Int = 0,
-    var fats:Int=0,
-    var protein:Int=0
+    val carbs: Int = 0,
+    val fats: Int = 0,
+    val calories: Int = 0,
+    val protein: Int = 0
 )
 
-data class FoodIdMap(
-    var meal: String = "",
-    var breakfast: String = "",
-    var dinner: String = "",
-    var snack1: String = "",
-    var snack2: String = ""
+data class FoodDayMenu (
+    var day: String = "",
+    val imageUri: String = "",
+    val foods: MutableMap<String, Food> = mutableMapOf()
 )
+
+data class FoodWeekMenu(
+    var weekStart: String = "",
+    var weekEnd: String = "",
+    var days: MutableMap<String, FoodDayMenu> = mutableMapOf()
+)
+
+private object FoodType {
+    const val BREAKFAST = 0
+    const val DINNER = 1
+    const val MEAL = 2
+    const val SNACK1 = 3
+    const val SNACK2 = 4
+}
+
+val mealIndex = {x: String -> when(x){
+    "breakfast" -> FoodType.BREAKFAST
+    "dinner" -> FoodType.DINNER
+    "meal" -> FoodType.MEAL
+    "snack1" -> FoodType.SNACK1
+    "snack2" -> FoodType.SNACK2
+    else -> 0
+}}

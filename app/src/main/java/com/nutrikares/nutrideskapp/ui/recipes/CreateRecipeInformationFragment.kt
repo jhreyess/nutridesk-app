@@ -67,6 +67,21 @@ class CreateRecipeInformationFragment : Fragment() {
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
                 uploadRecipeData()
+                //attachData()
+                if(Datasource.getClickOnRecipe()){
+                    if(Datasource.updateRecipe()){
+                        Toast.makeText(this.context, "Receta modificada exitosamente", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(this.context, "La receta no pudo ser modificada", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    if(Datasource.addRecipe()){
+                        Toast.makeText(this.context, "Receta agregada exitosamente", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(this.context, "La receta no pudo ser agregada", Toast.LENGTH_LONG).show();
+                    }
+                }
+                findNavController().navigate(R.id.action_createRecipeInformationFragment_to_nav_recipes)
             }else{
                 Toast.makeText(this.context, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }
@@ -93,6 +108,7 @@ class CreateRecipeInformationFragment : Fragment() {
                 ((fileUri.toString().equals("")) && (downloadUri.toString().equals(""))))
     }
 
+<<<<<<< Updated upstream
     fun attachData(){
         Datasource.newRecipe.info.calories = Integer.parseInt(binding.recipeCaloriesEditText.text.toString())
         Datasource.newRecipe.info.carbs = Integer.parseInt(binding.recipeCarbsEditText.text.toString())
@@ -112,6 +128,16 @@ class CreateRecipeInformationFragment : Fragment() {
             Toast.makeText(this.context, "La receta no pudo ser agregada", Toast.LENGTH_LONG).show();
         }
     }
+=======
+//    fun attachData(){
+//        Datasource.newRecipe.info.calories = Integer.parseInt(binding.recipeCaloriesEditText.text.toString())
+//        Datasource.newRecipe.info.carbs = Integer.parseInt(binding.recipeCarbsEditText.text.toString())
+//        Datasource.newRecipe.info.fats = Integer.parseInt(binding.recipeFatsEditText.text.toString())
+//        Datasource.newRecipe.info.protein = Integer.parseInt(binding.recipeProteinEditText.text.toString())
+//        //Datasource.newRecipe.imageResourceId=uploadImage().toString()
+//        Log.v("Data-final",Datasource.newRecipe.toString())
+//    }
+>>>>>>> Stashed changes
 
     fun updateRecipe(){
         try{

@@ -16,7 +16,9 @@ class FoodDayAdapter(
     dayIndex: String
 ): RecyclerView.Adapter<FoodDayAdapter.FoodDayViewHolder>() {
 
-    private val menu = Datasource.weekMenu.single{ it.id == dayIndex }.foods
+    private val data = Datasource.getUserDiets().days.values.toList().single { it.day == dayIndex }
+    private val menu = data.foods.values.toList()
+
 
     class FoodDayViewHolder(val view: View?): RecyclerView.ViewHolder(view!!) {
         // Declare and initialize all of the list item UI components

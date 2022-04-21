@@ -9,34 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nutrikares.nutrideskapp.adapters.FoodDayAdapter
 import com.nutrikares.nutrideskapp.databinding.FragmentFoodDailyBinding
+import com.nutrikares.nutrideskapp.utils.Calendar
 
 class FragmentFoodDaily : Fragment() {
 
     companion object{
         const val DAY = "dayIndex"
-        const val TODAY = "todayDate"
     }
-
-    object Days {
-        const val MONDAY = 1
-        const val TUESDAY = 2
-        const val WEDNESDAY = 3
-        const val THURSDAY = 4
-        const val FRIDAY = 5
-        const val SATURDAY = 6
-        const val SUNDAY = 7
-    }
-
-    private val date = {x: String -> when(x){
-            "Lunes" -> Days.MONDAY
-            "Martes" -> Days.TUESDAY
-            "Miércoles" -> Days.WEDNESDAY
-            "Jueves" -> Days.THURSDAY
-            "Viernes" -> Days.FRIDAY
-            "Sábado" -> Days.SATURDAY
-            "Domingo" -> Days.SUNDAY
-            else -> 0
-    }}
 
     private var _binding: FragmentFoodDailyBinding? = null
     private val binding get() = _binding!!
@@ -64,7 +43,7 @@ class FragmentFoodDaily : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.menu_date, date(menuDay), menuDay)
+        binding.fragmentLabel.text = resources.getString(R.string.menu_date, Calendar().dateIndex(menuDay), menuDay)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         // Adapter with custom layout

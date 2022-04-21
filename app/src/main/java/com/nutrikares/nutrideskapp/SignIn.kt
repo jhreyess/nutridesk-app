@@ -3,15 +3,11 @@ package com.nutrikares.nutrideskapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.nutrikares.nutrideskapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.data.Datasource
@@ -57,30 +53,17 @@ class SignIn : AppCompatActivity(), SignInUserView {
 
     override fun launchApp() {
 
-        val userId = auth.currentUser!!.uid
-
-        if (!TextUtils.isEmpty(userId)) {
-            val queryRef = database.child("users").child(userId)
+        val userId = auth.currentUser?.uid
+        userId?.let { uid ->
+            val queryRef = database.child("users").child(uid)
             queryRef.keepSynced(true)
             queryRef.get().addOnSuccessListener { data ->
                 val userInfo = data.getValue(UserInfo::class.java)!!
-                when(userInfo.role){
-                    "admin" -> { Datasource.retrieveAllData() }
-                    else -> { Datasource.retrieveUserData(userId) }
-                }
-//                retrieveUserData(userId)
-//                val userData = retrieveUserData(userId)
-//                Datasource.setUserInfo(userInfo)
-//                userData.let {
-//                    Datasource.setUserDiets(it["diets"] as UserDiets)
-//                    Datasource.setUserRoutines(it["trainings"] as UserRoutines)
-//                }
-                val activity = when(userInfo.role) {
-                    "admin" -> AdminMainActivity::class.java
-                    else -> MainActivity::class.java
-                }
+                Datasource.setUserInfo(userInfo)
+                val activity = if (userInfo.role == "admin") AdminMainActivity::class.java else MainActivity::class.java
                 val intent = Intent(baseContext, activity)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                Datasource.retrieveData(userInfo.role, uid)
                 startActivity(intent)
             }.addOnFailureListener {
                 Toast.makeText(applicationContext, "Something went wrong!", Toast.LENGTH_SHORT)
@@ -88,6 +71,8 @@ class SignIn : AppCompatActivity(), SignInUserView {
             }
         }
     }
+
+
 
     override fun showLoadingScreen() {
         binding.errorMessage.text = ""

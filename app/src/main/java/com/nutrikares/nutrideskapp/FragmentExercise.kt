@@ -17,7 +17,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.adapters.ExercisesAdapter
 import com.nutrikares.nutrideskapp.data.Datasource
-
+import com.nutrikares.nutrideskapp.data.models.Routine
 
 class FragmentExercise : Fragment() {
 
@@ -30,15 +30,15 @@ class FragmentExercise : Fragment() {
     private lateinit var videoView: StyledPlayerView
     private var videoUri: Uri? = null
 
-    private lateinit var userTrainingIds: Map<String, String>
+    private lateinit var userTraining: Routine
 
     private var hasData: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //userTrainingIds = Datasource.getUserRoutines().routines
-        //hasData = userTrainingIds.isNotEmpty()
-        videoUri = Datasource.videoUri
+        userTraining = Datasource.getUserRoutines()
+        hasData = userTraining.exercises.isNotEmpty()
+        videoUri = userTraining.videoUri
         val database = Firebase.database.reference
         database.child("trainings")
     }
@@ -66,10 +66,10 @@ class FragmentExercise : Fragment() {
             val label = view.findViewById<TextView>(R.id.fragment_label)
             videoView = view.findViewById(R.id.routine_video)
 
-            if(/*videoUri == null*/ false){
-                Firebase.storage.reference.child("TestVideo.mp4").downloadUrl
+            if(videoUri == null){
+                Firebase.storage.reference.child("videos").child(userTraining.videoPath).downloadUrl
                     .addOnSuccessListener { uri ->
-                        Datasource.videoUri = uri
+                        Datasource.getUserRoutines().videoUri = uri
                         initializePlayer(uri)
                     }.addOnFailureListener {
                         Toast.makeText(context,"No es posible reproducir el video",
@@ -92,8 +92,8 @@ class FragmentExercise : Fragment() {
                 }
             }
 
-            //routineNameView.text = resources.getString(R.string.routine_name, userTraining.name)
-            //listView.adapter = ExercisesAdapter(view.context, userTraining.exercises)
+            routineNameView.text = resources.getString(R.string.routine_name, userTraining.name)
+            listView.adapter = ExercisesAdapter(view.context, userTraining.exercises)
         }
     }
 
