@@ -10,6 +10,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.Food
@@ -18,12 +21,9 @@ import kotlinx.coroutines.CoroutineScope
 
 class RecipeAdapter(private val context: RecipesFragment, private var recipes:MutableList<String>) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
-    //private var recipes = Datasource.recipes
-
     class RecipeViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         val preview: TextView = view!!.findViewById(R.id.recipe_preview)
         val cardButton: MaterialCardView = view!!.findViewById(R.id.card_recipe)
-        //val favorite = view.findViewById<ImageView>(R.id.favorite)
     }
 
     override fun getItemCount(): Int = recipes.size
@@ -40,11 +40,20 @@ class RecipeAdapter(private val context: RecipesFragment, private var recipes:Mu
         holder.preview.text = recipe
 
         holder.cardButton.setOnClickListener {
-            //Log.v("Firebase",Datasource.mapOfRecipes[recipe].toString())
-            //Log.v("Firebase-recipe",Datasource.getCurrentRecipe().toString())
-            Datasource.queryRecipe(Datasource.mapOfRecipes[recipe].toString())
+            queryRecipe(holder, Datasource.mapOfRecipes[recipe].toString())
+        }
+    }
+
+
+    fun queryRecipe(holder: RecipeAdapter.RecipeViewHolder, key:String){
+        var database : DatabaseReference = Firebase.database.reference
+
+        database.child("recipes").child(key).get().addOnSuccessListener {
+            Datasource.setCurrentRecipe(it.getValue(Food::class.java)!!)
             Datasource.setClickOnRecipe(true)
             holder.view?.findNavController()?.navigate(R.id.action_nav_recipes_to_createRecipeFragment)
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
         }
     }
 

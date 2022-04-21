@@ -15,13 +15,11 @@ import com.nutrikares.nutrideskapp.databinding.FragmentRecipesBinding
 
 
 class AssingRecipeFragment : Fragment() {
-    lateinit var listOfRecipes : MutableList<String>
     private var _binding: FragmentAssingRecipeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        listOfRecipes= Datasource.getRecipes()
     }
 
     override fun onCreateView(
@@ -38,7 +36,7 @@ class AssingRecipeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Recycler Viewer
-        binding.recipesRecycler.adapter = AssignRecipeAdapter(this,listOfRecipes)
+        binding.recipesRecycler.adapter = AssignRecipeAdapter(this,Datasource.recipes)
         binding.recipesRecycler.setHasFixedSize(true)
         binding.assignButton.setOnClickListener{
             findNavController().navigate(R.id.action_assingRecipeFragment_to_dayRecipeFragment)

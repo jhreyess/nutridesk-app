@@ -14,12 +14,12 @@ import java.lang.Exception
 object Datasource {
 
     private var database : DatabaseReference = Firebase.database.reference
-
     private val ingredients = mutableListOf("Ingredients")
     private val steps = mutableListOf("Steps")
     private var currentRecipe =  Food("",10, "", "",  "", ingredients, steps)
     var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
+
     fun setCurrentRecipe(recipe : Food){
         currentRecipe = recipe
     }
@@ -52,6 +52,14 @@ object Datasource {
 //        Food("Snack",0, "Fruta", "Desc 5", "", ingredients, steps),
 //    )
 
+    private val foods: List<Food> = listOf(
+        Food("Desayuno",15, "Huevo", "Desc 1",  "", ingredients, steps),
+        Food("Comida", 30,"Chilaquiles", "Desc 2",  "", ingredients, steps),
+        Food("Cena", 30,"Molletes", "Desc 3",  "", ingredients, steps),
+        Food("Snack", 15,"Avena", "Desc 4", "", ingredients, steps),
+        Food("Snack", 10,"Fruta", "Desc 5", "", ingredients, steps),
+    )
+
     val weekStart: String = "21 Mar"
     val weekEnd: String = "27 Mar"
 
@@ -71,37 +79,6 @@ object Datasource {
 
     val getExercisesSize = exercises.size
 
-    fun getPatients(): MutableList<String>{
-        database.child("users").get().addOnSuccessListener {
-            mapOfPatients.clear()
-            patients.clear()
-            for (ds in it.children) {
-                if(ds.child("role").getValue().toString().equals("patient")){
-                    mapOfPatients.put(ds.child("name").getValue().toString(),ds.key.toString())
-                    patients.add(ds.child("name").getValue().toString())
-                }
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        return patients
-    }
-
-    fun getRecipes():MutableList<String>{
-        database.child("recipes").get().addOnSuccessListener {
-            mapOfRecipes.clear()
-            recipes.clear()
-            for (ds in it.children) {
-                //var recipe : Food = ds.getValue(Food::class.java)!!
-                mapOfRecipes.put(ds.child("name").getValue().toString(),ds.key.toString())
-                recipes.add(ds.child("name").getValue().toString())
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        return recipes
-    }
-
     /*fun getRoutines():MutableList<String>{
         database.child("trainings").get().addOnSuccessListener {
             mapOfRoutines.clear()
@@ -117,10 +94,10 @@ object Datasource {
     }*/
 
     val mapOfPatients: HashMap<String, String> = hashMapOf()
-    private val patients: MutableList<String> = mutableListOf()
+    val patients: MutableList<String> = mutableListOf()
 
     val mapOfRecipes: HashMap<String, String> = hashMapOf()
-    private val recipes:MutableList<String> = mutableListOf()
+    val recipes:MutableList<String> = mutableListOf()
 
     val mapOfRoutines: HashMap<String, String> = hashMapOf()
     val routines: MutableList<String> = mutableListOf()
@@ -132,34 +109,6 @@ object Datasource {
     }
     fun setClickOnRecipe(value : Boolean){
         clickOnRecipe = value
-    }
-
-    fun queryRecipe(key:String){
-        database.child("recipes").child(key).get().addOnSuccessListener {
-            currentRecipe= it.getValue(Food::class.java)!!
-            //Log.v("Firebase",it.value.toString())
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-    }
-
-    fun addRecipe():Boolean{
-        try{
-            database.child("recipes").child(newRecipeId).setValue(newRecipe)
-            return true
-        }catch (e : Exception){
-            Log.d("Exception",e.toString())
-            return false
-        }
-    }
-    fun updateRecipe():Boolean{
-        try{
-            database.child("recipes").child(mapOfRecipes[currentRecipe.name].toString()).setValue(newRecipe)
-            return true
-        }catch (e : Exception){
-            Log.d("Exception",e.toString())
-            return false
-        }
     }
 
     fun retrieveAllData(){
