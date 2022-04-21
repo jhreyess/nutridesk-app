@@ -17,14 +17,13 @@ import com.nutrikares.nutrideskapp.ui.patients.PatientsFragment
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragmentDirections
 import com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment
 
-class PatientAdapter (private val context: PatientsFragment?, private var patients : MutableList<String>) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
-
-    //private var patients = Datasource.patients
+class PatientAdapter(
+    private val context: PatientsFragment?,
+    private var patients : List<String>) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
 
     class PatientViewHolder(val view: View?) : RecyclerView.ViewHolder(view!!) {
         val preview: TextView = view!!.findViewById(R.id.patient_preview)
         val cardButton: MaterialCardView = view!!.findViewById(R.id.card_patient)
-        //val favorite = view.findViewById<ImageView>(R.id.favorite)
     }
 
     override fun getItemCount(): Int = patients.size

@@ -63,7 +63,6 @@ class SignIn : AppCompatActivity(), SignInUserView {
                 val activity = if (userInfo.role == "admin") AdminMainActivity::class.java else MainActivity::class.java
                 val intent = Intent(baseContext, activity)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                Datasource.retrieveData(userInfo.role, uid)
                 startActivity(intent)
             }.addOnFailureListener {
                 Toast.makeText(applicationContext, "Something went wrong!", Toast.LENGTH_SHORT)

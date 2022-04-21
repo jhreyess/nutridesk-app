@@ -27,7 +27,7 @@ class FragmentHome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val userStats = Datasource.getUserInfo().stats
-
+        
         // Bindings
         binding.weightDisplay.text = resources.getString(R.string.weight_placeholder, userStats.weight)
         binding.imcDisplay.text = resources.getString(R.string.imc_placeholder, userStats.imc)
@@ -40,8 +40,6 @@ class FragmentHome : Fragment() {
             val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = weekDay)
             findNavController().navigate(action)
         }
-//        LineDataSet(userStats.progress)
-        //binding.progressChart.data =
     }
 
     override fun onDestroyView() {

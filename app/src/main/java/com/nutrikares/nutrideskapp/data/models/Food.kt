@@ -12,10 +12,10 @@ data class Food (
 )
 
 data class Nutrients(
-    val carbs: Int = 0,
-    val fats: Int = 0,
-    val calories: Int = 0,
-    val protein: Int = 0
+    var carbs: Int = 0,
+    var fats: Int = 0,
+    var calories: Int = 0,
+    var protein: Int = 0
 )
 
 data class FoodDayMenu (
