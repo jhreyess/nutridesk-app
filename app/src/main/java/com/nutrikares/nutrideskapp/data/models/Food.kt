@@ -1,5 +1,8 @@
 package com.nutrikares.nutrideskapp.data.models
 
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
 data class Food (
     var type: String = "",
     var time: Int = 0,

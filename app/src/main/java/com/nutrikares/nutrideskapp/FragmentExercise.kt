@@ -72,8 +72,10 @@ class FragmentExercise : Fragment() {
                         Datasource.getUserRoutines().videoUri = uri
                         initializePlayer(uri)
                     }.addOnFailureListener {
-                        Toast.makeText(context,"No es posible reproducir el video",
-                            Toast.LENGTH_SHORT).show()
+                        activity?.runOnUiThread{
+                            Toast.makeText(activity,"No es posible reproducir el video",
+                                Toast.LENGTH_SHORT).show()
+                        }
                     }
             }
 

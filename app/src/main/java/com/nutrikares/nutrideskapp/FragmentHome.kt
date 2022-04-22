@@ -1,14 +1,20 @@
 package com.nutrikares.nutrideskapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentHomeBinding
 import com.nutrikares.nutrideskapp.utils.Calendar
+import com.nutrikares.nutrideskapp.utils.ChartMarker
 
 class FragmentHome : Fragment() {
 
@@ -39,6 +45,39 @@ class FragmentHome : Fragment() {
             val weekDay = Calendar().getDate("es")
             val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = weekDay)
             findNavController().navigate(action)
+        }
+
+        // Setting data
+        val chartColor = ContextCompat.getColor(requireContext(), R.color.teal_200)
+        val chartFill = ContextCompat.getDrawable(requireContext(), R.drawable.gradient_chart)
+        val entries = userStats.progress.mapIndexed { idx, value -> Entry(idx.toFloat(), value.toFloat()) }
+
+        // Line
+        val lineDataset = LineDataSet(entries, "Peso (kg)")
+        lineDataset.apply {
+            color = chartColor
+            lineWidth = 3f
+            mode = LineDataSet.Mode.CUBIC_BEZIER
+            setDrawValues(false)
+            setDrawCircles(false)
+            setDrawFilled(true)
+            fillDrawable = chartFill
+        }
+
+        // Chart
+        val chartData = LineData(lineDataset)
+        val chart = binding.progressChart
+        chart.apply {
+            data = chartData
+            description.text = ""
+            marker = ChartMarker(context, R.string.weight_card_label)
+            setPinchZoom(false)
+            minOffset = 0f
+            axisLeft.isEnabled = false
+            axisRight.isEnabled = false
+            xAxis.isEnabled = false
+            legend.isEnabled = false
+            invalidate()
         }
     }
 

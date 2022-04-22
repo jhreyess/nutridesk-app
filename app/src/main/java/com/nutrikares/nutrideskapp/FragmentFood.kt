@@ -29,7 +29,6 @@ class FragmentFood : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val data = Datasource.getUserDiets()
-        Log.d("Debug", "$data")
 
         // Bindings
         binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, data.weekStart, data.weekEnd)

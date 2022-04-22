@@ -53,6 +53,7 @@
         <entry key="..\:/Users/jhrey/.gradle/caches/transforms-3/62dac17b2ab14df18640e916df7b3cc4/transformed/exoplayer-ui-2.17.1/res/layout/exo_player_control_view.xml" value="0.1" />
         <entry key="..\:/Users/jhrey/.gradle/caches/transforms-3/ba02a2acee6273f530252cae210b7277/transformed/material-1.6.0-beta01/res/drawable-v21/material_cursor_drawable.xml" value="0.1" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_blue.xml" value="0.273" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_chart.xml" value="0.151" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_foreground.xml" value="0.3045" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/gradient_yellow.xml" value="0.273" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/drawable/ic_logo.xml" value="0.218" />
@@ -66,6 +67,8 @@
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/app_bar_admin_main.xml" value="0.25" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/chart_marker.xml" value="0.67" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/chart_marker_view.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/content_admin_main.xml" value="0.22" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/exercise_list_items.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/exo_player_control_view.xml" value="0.12" />
@@ -76,7 +79,7 @@
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/food_daily_list_items_bigger.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/food_days_list_items.xml" value="0.2975630611372381" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/food_days_list_items_bigger.xml" value="0.2975630611372381" />
-        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_analytics.xml" value="0.33" />
+        <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_analytics.xml" value="0.25" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_anthropometry_patient.xml" value="0.14542415378186377" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_create_patient.xml" value="0.15220179563916203" />
         <entry key="..\:/Users/jhrey/Documents/Node-apps/nutridesk-app/nutridesk-app/app/src/main/res/layout/fragment_create_recipe.xml" value="0.21033544877606528" />

@@ -14,6 +14,7 @@
     <string name="weight">Tu Peso</string>
     <string name="progress">Tu Progreso</string>
     <string name="weight_placeholder">%1$.1f kg</string>
+    <string name="weight_card_label">Peso: %1$.1f kg</string>
     <string name="imc_placeholder">%1$.1f kg/m2</string>
     <string name="daily_routine">Tu rutina diaria</string>
     <string name="daily_menu">El menú de hoy</string>
@@ -60,6 +61,7 @@
     <!-- ANALYTICS -->
     <string name="weight_label">Peso (kg)</string>
     <string name="weight_relative">Grasa relativa (kg)</string>
+    <string name="weight_relative_card_label">%1$.1f kg</string>
     <string name="IMC_prompt">IMC</string>
     <string name="waist_prompt">Medida cintura</string>
     <string name="hip_prompt">Medida cadera</string>
