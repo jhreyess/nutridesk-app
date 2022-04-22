@@ -146,6 +146,15 @@
                 android:text="@string/description" />
 
             <ImageView
+                android:id="@+id/removeExcercise_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_toLeftOf="@id/addExcercise_imageView"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_remove" />
+
+            <ImageView
                 android:id="@+id/addExcercise_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeBinding
-import kotlin.math.atan
 
 class CreateRecipeFragment : Fragment() {
 
@@ -48,7 +47,7 @@ class CreateRecipeFragment : Fragment() {
                 attachData()
                 findNavController().navigate(R.id.action_createRecipeFragment_to_createRecipePreparationFragment)
             }else{
-                Toast.makeText(this.context, "Faltan datos por llenar",Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Faltan datos por llenar",Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.exoplayer2.ExoPlayer
@@ -116,6 +115,10 @@ class CreateRoutineFragment : Fragment() {
             addExercise()
         }
 
+        binding.removeExcerciseImageView.setOnClickListener{
+            removeExercise()
+        }
+
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
                 uploadRoutineData()
@@ -129,6 +132,7 @@ class CreateRoutineFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
     //Exo
     private fun initializePlayer(uri: Uri) {
         player = context?.let {
@@ -278,6 +282,13 @@ class CreateRoutineFragment : Fragment() {
             binding.routineExNameEditText.setText("")
             binding.routineRepEditText.setText("")
             binding.routineSeriesEditText.setText("")
+        }
+    }
+
+    fun removeExercise(){
+        if(!(excercises.size==0)){
+            excercises.removeLast()
+            binding.listOfExcercisesTextView.setText(convertListIntoString(excercises))
         }
     }
 

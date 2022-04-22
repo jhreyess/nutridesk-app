@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipePreparationBinding
-import javax.sql.DataSource
 
 
 class CreateRecipePreparationFragment : Fragment() {
@@ -45,13 +44,19 @@ class CreateRecipePreparationFragment : Fragment() {
         binding.addRecipeStepImageButton.setOnClickListener{
             addStep()
         }
+        binding.removeRecipeIngredientImageView.setOnClickListener{
+            removeIngredient()
+        }
+        binding.removeRecipeStepImageView.setOnClickListener{
+            removeStep()
+        }
 
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
                 attachData()
                 findNavController().navigate(R.id.action_createRecipePreparationFragment_to_createRecipeInformationFragment)
             }else{
-                Toast.makeText(this.context, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -81,6 +86,12 @@ class CreateRecipePreparationFragment : Fragment() {
             binding.recipeIngredientEditText.setText("")
         }
     }
+    fun removeIngredient(){
+        if(!(ingredients.size==0)){
+            ingredients.removeLast()
+            binding.listOfIngredientsTextView.setText(convertListIntoString(ingredients))
+        }
+    }
     fun addStep(){
         if(!binding.recipeStepEditText.text.isEmpty()){
             val step = binding.recipeStepEditText.text.toString()
@@ -89,6 +100,13 @@ class CreateRecipePreparationFragment : Fragment() {
             binding.recipeStepEditText.setText("")
         }
     }
+    fun removeStep(){
+        if(!(steps.size==0)){
+            steps.removeLast()
+            binding.listOfStepsTextView.setText(convertListIntoString(steps))
+        }
+    }
+
     fun attachData(){
         Datasource.newRecipe.ingredients = ingredients
         Datasource.newRecipe.steps = steps

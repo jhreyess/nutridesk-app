@@ -77,7 +77,7 @@ class CreateRecipeInformationFragment : Fragment() {
             if(checkFields()){
                 uploadRecipeData()
             }else{
-                Toast.makeText(this.context, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
+                Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }
         }
 
@@ -114,22 +114,22 @@ class CreateRecipeInformationFragment : Fragment() {
     fun addRecipe(){
         try{
             database.child("recipes").child(Datasource.newRecipeId).setValue(Datasource.newRecipe)
-            Toast.makeText(this.context, "Receta agregada exitosamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Receta agregada exitosamente", Toast.LENGTH_LONG).show();
             findNavController().navigate(R.id.action_createRecipeInformationFragment_to_nav_recipes)
         }catch (e : Exception){
             Log.d("Exception",e.toString())
-            Toast.makeText(this.context, "La receta no pudo ser agregada", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "La receta no pudo ser agregada", Toast.LENGTH_LONG).show();
         }
     }
 
     fun updateRecipe(){
         try{
             database.child("recipes").child(Datasource.mapOfRecipes[Datasource.getCurrentRecipe().name].toString()).setValue(Datasource.newRecipe)
-            Toast.makeText(this.context, "Receta modificada exitosamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Receta modificada exitosamente", Toast.LENGTH_LONG).show();
             findNavController().navigate(R.id.action_createRecipeInformationFragment_to_nav_recipes)
         }catch (e : Exception){
             Log.d("Exception",e.toString())
-            Toast.makeText(this.context, "La receta no pudo ser modificada", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "La receta no pudo ser modificada", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -143,10 +143,10 @@ class CreateRecipeInformationFragment : Fragment() {
 
             uploadTask.addOnFailureListener{
                 progressDialog.dismiss()
-                Toast.makeText(this.context, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
                 //Log.v("Cloud","Imagen no puedo ser subida")
             }.addOnSuccessListener {
-                Toast.makeText(this.context, "Imagen cargada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Imagen cargada", Toast.LENGTH_SHORT).show();
                 //Log.v("Cloud","Imagen subida")
             }
             val urlTask = uploadTask.continueWithTask { task ->
@@ -195,9 +195,9 @@ class CreateRecipeInformationFragment : Fragment() {
                 binding.updateImageButton.visibility = View.VISIBLE
                 binding.recipeImageImageView.setImageURI(fileUri)
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
-                Toast.makeText(this.context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this.context, "Task Cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Task Cancelled", Toast.LENGTH_SHORT).show()
             }
         }
 
