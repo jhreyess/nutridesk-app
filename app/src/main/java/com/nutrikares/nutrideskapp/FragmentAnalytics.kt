@@ -76,8 +76,6 @@ class FragmentAnalytics : Fragment() {
             legend.isEnabled = false
             invalidate()
         }
-
-
     }
 
     override fun onDestroyView() {

@@ -40,12 +40,9 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navbar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         style="@style/Navbar"
-        android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/nav_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

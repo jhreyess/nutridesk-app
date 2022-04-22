@@ -25,6 +25,6 @@ class ChartMarker constructor(
     }
 
     override fun getOffset(): MPPointF {
-        return MPPointF(-(width / 2f), -(height.toFloat() + 20f))
+        return MPPointF(-(width / 2f), -(height.toFloat() + 25f))
     }
 }

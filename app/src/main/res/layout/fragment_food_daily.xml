@@ -18,14 +18,14 @@
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
             android:background="@android:color/transparent"
-            app:layout_constraintTop_toTopOf="@id/fragment_label"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_label"
-            app:layout_constraintStart_toStartOf="parent"
+            android:importantForAccessibility="no"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/fragment_label"
             app:tint="?attr/colorOnPrimary" />
 
         <TextView
@@ -46,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/food_daily_list_items"
+        android:clipToPadding="false"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
         app:spanCount="2"

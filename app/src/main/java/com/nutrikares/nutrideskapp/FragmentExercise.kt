@@ -1,23 +1,33 @@
 package com.nutrikares.nutrideskapp
 
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.TextView
+import android.widget.Toast
+import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
+import com.google.android.exoplayer2.util.Log
 import com.google.android.exoplayer2.util.Util
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.adapters.ExercisesAdapter
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.Routine
+import java.io.File
 
 class FragmentExercise : Fragment() {
 
@@ -58,7 +68,6 @@ class FragmentExercise : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         if(hasData) {
             // Bindings
             val routineNameView = view.findViewById<TextView>(R.id.routine_name)
@@ -67,8 +76,14 @@ class FragmentExercise : Fragment() {
             videoView = view.findViewById(R.id.routine_video)
 
             if(videoUri == null){
-                Firebase.storage.reference.child("videos").child(userTraining.videoPath).downloadUrl
-                    .addOnSuccessListener { uri ->
+                val tempFile = File.createTempFile("videos", ".mp4")
+                Log.d("Debug", tempFile.path.toString())
+                tempFile.deleteOnExit()
+                Firebase.storage.reference.child("videos").child(userTraining.videoPath).getFile(tempFile)
+                    .addOnSuccessListener {
+                        val uri = tempFile.toUri()
+                        Log.d("Debug", uri.toString())
+                        Log.d("Debug", tempFile.path.toString())
                         Datasource.getUserRoutines().videoUri = uri
                         initializePlayer(uri)
                     }.addOnFailureListener {
@@ -79,18 +94,18 @@ class FragmentExercise : Fragment() {
                     }
             }
 
-            videoUri?.let {
-                val defaultHeight = videoView.layoutParams.height
-                videoView.setControllerOnFullScreenModeChangedListener {fullscreen ->
-                    if(fullscreen){
-                        videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-                        label.visibility = View.GONE
-                        listView.visibility = View.GONE
-                    }else{
-                        videoView.layoutParams.height = defaultHeight
-                        label.visibility = View.VISIBLE
-                        listView.visibility = View.VISIBLE
-                    }
+            val defaultHeight = videoView.layoutParams.height
+            videoView.setControllerOnFullScreenModeChangedListener {fullscreen ->
+                if(fullscreen){
+                    videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+                    label.visibility = View.GONE
+                    listView.visibility = View.GONE
+                    hideSystemUI()
+                }else{
+                    videoView.layoutParams.height = defaultHeight
+                    label.visibility = View.VISIBLE
+                    listView.visibility = View.VISIBLE
+                    showSystemUI()
                 }
             }
 
@@ -121,6 +136,28 @@ class FragmentExercise : Fragment() {
             release()
         }
         player = null
+        showSystemUI()
+    }
+
+    private fun hideSystemUI() {
+        val decorView = requireActivity().window.decorView
+        WindowInsetsControllerCompat(requireActivity().window, decorView).let { controller ->
+            controller.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+        }
+        requireActivity().findViewById<BottomNavigationView>(R.id.navbar).visibility = View.GONE
+        requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.appbar).visibility = View.GONE
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, false)
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
+    }
+
+    private fun showSystemUI() {
+        val decorView = requireActivity().window.decorView
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
+        requireActivity().findViewById<BottomNavigationView>(R.id.navbar).visibility = View.VISIBLE
+        requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.appbar).visibility = View.VISIBLE
+        WindowInsetsControllerCompat(requireActivity().window, decorView).show(WindowInsetsCompat.Type.systemBars())
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
     }
 
     override fun onStart() {
@@ -153,5 +190,4 @@ class FragmentExercise : Fragment() {
             releasePlayer()
         }
     }
-
 }

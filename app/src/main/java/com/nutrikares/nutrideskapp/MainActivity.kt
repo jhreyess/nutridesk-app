@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.navbar) as NavigationBarView
         bottomNavigationView.setupWithNavController(navController)
-
+        bottomNavigationView.setOnApplyWindowInsetsListener(null)
         bottomNavigationView.setOnItemReselectedListener { navController.navigate(it.itemId) }
     }
 
