@@ -1,5 +1,6 @@
 package com.nutrikares.nutrideskapp.data
 
+import android.net.Uri
 import android.util.Log
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
@@ -36,6 +37,7 @@ object Datasource {
     private var currentRoutine = Routine()
     var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
+    var newRoutine = Routine("","", mutableListOf(), null,"")
 
     fun setCurrentRecipe(recipe : Food){
         currentRecipe = recipe
@@ -53,39 +55,6 @@ object Datasource {
         return currentRoutine
     }
     /* TODO: BORRAR DATOS DE PRUEBA */
-
-    @JvmName("getPatients1")
-    fun getPatients(): MutableList<String>{
-        database.child("users").get().addOnSuccessListener {
-            mapOfPatients.clear()
-            patients.clear()
-            for (ds in it.children) {
-                if(ds.child("role").value.toString() == "patient"){
-                    mapOfPatients.put(ds.child("name").value.toString(),ds.key.toString())
-                    patients.add(ds.child("name").value.toString())
-                }
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        return patients
-    }
-
-    @JvmName("getRecipes1")
-    fun getRecipes():MutableList<String>{
-        database.child("recipes").get().addOnSuccessListener {
-            mapOfRecipes.clear()
-            recipes.clear()
-            for (ds in it.children) {
-                //var recipe : Food = ds.getValue(Food::class.java)!!
-                mapOfRecipes.put(ds.child("name").value.toString(),ds.key.toString())
-                recipes.add(ds.child("name").value.toString())
-            }
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-        return recipes
-    }
 
     val mapOfPatients: HashMap<String, String> = hashMapOf()
     val patients: MutableList<String> = mutableListOf()
@@ -112,34 +81,5 @@ object Datasource {
     }
     fun setClickOnRoutine(value : Boolean){
         clickOnRoutine = value
-    }
-
-
-    fun queryRecipe(key:String){
-        database.child("recipes").child(key).get().addOnSuccessListener {
-            currentRecipe= it.getValue(Food::class.java)!!
-            //Log.v("Firebase",it.value.toString())
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }
-    }
-
-    fun addRecipe():Boolean{
-        return try{
-            database.child("recipes").child(newRecipeId).setValue(newRecipe)
-            true
-        }catch (e : Exception){
-            Log.d("Exception",e.toString())
-            false
-        }
-    }
-    fun updateRecipe():Boolean{
-        return try{
-            database.child("recipes").child(mapOfRecipes[currentRecipe.name].toString()).setValue(newRecipe)
-            true
-        }catch (e : Exception){
-            Log.d("Exception",e.toString())
-            false
-        }
     }
 }

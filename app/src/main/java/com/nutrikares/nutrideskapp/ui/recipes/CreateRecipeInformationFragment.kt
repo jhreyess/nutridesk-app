@@ -1,6 +1,7 @@
 package com.nutrikares.nutrideskapp.ui.recipes
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -26,11 +27,14 @@ import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeInformationBi
 class CreateRecipeInformationFragment : Fragment() {
     private var _binding: FragmentCreateRecipeInformationBinding? = null
     private val binding get() = _binding!!
+    //Firebase
     private val storage :FirebaseStorage = FirebaseStorage.getInstance()
     var database : DatabaseReference = Firebase.database.reference
+    //Variables for this fragment
     lateinit var fileUri: Uri
     lateinit var downloadUri : Uri
     var clickDone = false
+    private lateinit var progressDialog : ProgressDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +46,11 @@ class CreateRecipeInformationFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        progressDialog = ProgressDialog(activity)
+        progressDialog.setTitle("Por favor espera")
+        progressDialog.setMessage("Subiendo imagen")
+        progressDialog.setCanceledOnTouchOutside(false)
+
         downloadUri = Uri.parse("")
         fileUri = Uri.parse("")
         clickDone=false
@@ -59,7 +68,7 @@ class CreateRecipeInformationFragment : Fragment() {
             binding.recipeProteinEditText.setText(recipe.info.protein.toString())
             if(!recipe.imageResourceId.equals("")){
                 Glide.with(this)
-                    .load("${recipe.imageResourceId}kjdjkdjd")
+                    .load(recipe.imageResourceId)
                     .into(binding.recipeImageImageView)
             }
         }
@@ -67,21 +76,6 @@ class CreateRecipeInformationFragment : Fragment() {
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
                 uploadRecipeData()
-                //attachData()
-                if(Datasource.getClickOnRecipe()){
-                    if(Datasource.updateRecipe()){
-                        Toast.makeText(this.context, "Receta modificada exitosamente", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(this.context, "La receta no pudo ser modificada", Toast.LENGTH_LONG).show();
-                    }
-                }else{
-                    if(Datasource.addRecipe()){
-                        Toast.makeText(this.context, "Receta agregada exitosamente", Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(this.context, "La receta no pudo ser agregada", Toast.LENGTH_LONG).show();
-                    }
-                }
-                findNavController().navigate(R.id.action_createRecipeInformationFragment_to_nav_recipes)
             }else{
                 Toast.makeText(this.context, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }
@@ -141,12 +135,14 @@ class CreateRecipeInformationFragment : Fragment() {
 
     fun uploadRecipeData(){
         if(!fileUri.toString().equals("") && clickDone){
+            progressDialog.show()
             val storageRef = storage.reference
             val file = fileUri
             val recipesImageRef = storageRef.child("images/${fileUri.lastPathSegment}")
             val uploadTask = recipesImageRef.putFile(file)
 
             uploadTask.addOnFailureListener{
+                progressDialog.dismiss()
                 Toast.makeText(this.context, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
                 //Log.v("Cloud","Imagen no puedo ser subida")
             }.addOnSuccessListener {
@@ -166,9 +162,11 @@ class CreateRecipeInformationFragment : Fragment() {
                     //Log.v("Cloud",downloadUri.toString())
                     attachData()
                     if(Datasource.getClickOnRecipe()){
+                        progressDialog.dismiss()
                         //Es modificación
                         updateRecipe()
                     }else{
+                        progressDialog.dismiss()
                         //Es adición
                         addRecipe()
                     }
@@ -178,13 +176,7 @@ class CreateRecipeInformationFragment : Fragment() {
             }
         }else{
             attachData()
-            if(Datasource.getClickOnRecipe()){
-                //Es modificación
-                updateRecipe()
-            }else{
-                //Es adición
-                addRecipe()
-            }
+            updateRecipe()
         }
     }
 

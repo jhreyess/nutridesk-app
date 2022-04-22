@@ -119,10 +119,18 @@
 
         </RelativeLayout>
 
-        <VideoView
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:id="@+id/routineVideo_videoView"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_margin="8dp" />
+            app:show_timeout="5000"
+            app:use_controller="true" />
+
+        <!--<VideoView
+            android:id="@+id/routineVideo_videoView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="8dp" />-->
 
         <RelativeLayout
             android:layout_width="match_parent"

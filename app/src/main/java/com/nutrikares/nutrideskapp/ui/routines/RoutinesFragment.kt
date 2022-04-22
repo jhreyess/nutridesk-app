@@ -35,6 +35,7 @@ class RoutinesFragment : Fragment() {
         getRoutines()
 
         binding.createRoutineButton.setOnClickListener {
+            Datasource.setClickOnRoutine(false)
             findNavController().navigate(R.id.action_nav_routines_to_createRoutineFragment)
         }
     }
