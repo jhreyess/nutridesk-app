@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
-import com.google.android.exoplayer2.util.Log
 import com.google.android.exoplayer2.util.Util
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.ktx.database
@@ -77,13 +75,10 @@ class FragmentExercise : Fragment() {
 
             if(videoUri == null){
                 val tempFile = File.createTempFile("videos", ".mp4")
-                Log.d("Debug", tempFile.path.toString())
                 tempFile.deleteOnExit()
                 Firebase.storage.reference.child("videos").child(userTraining.videoPath).getFile(tempFile)
                     .addOnSuccessListener {
                         val uri = tempFile.toUri()
-                        Log.d("Debug", uri.toString())
-                        Log.d("Debug", tempFile.path.toString())
                         Datasource.getUserRoutines().videoUri = uri
                         initializePlayer(uri)
                     }.addOnFailureListener {

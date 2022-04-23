@@ -154,15 +154,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveBtn"
-            style="@style/Widget.MaterialComponents.Button"
+            android:theme="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:background="?attr/colorSecondaryVariant"
             android:text="@string/save"
             android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:textColor="?attr/colorOnSecondary" />
+            android:paddingEnd="30dp" />
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.nutrikares.nutrideskapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -24,7 +25,7 @@ class SignIn : AppCompatActivity(), SignInUserView {
     private lateinit var database: DatabaseReference
 
     private val presenter: SignInPresenter<SignInUserView> by lazy {
-        SignInUser(this, auth, this)
+        SignInUser(this, auth)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,14 +33,14 @@ class SignIn : AppCompatActivity(), SignInUserView {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
         database = Firebase.database.reference
         binding.signInBtn.setOnClickListener { login() }
     }
 
     override fun onStart() {
         super.onStart()
-        val user = FirebaseAuth.getInstance().currentUser
+        val user = Firebase.auth.currentUser
         if (user != null) {
             launchApp()
         }

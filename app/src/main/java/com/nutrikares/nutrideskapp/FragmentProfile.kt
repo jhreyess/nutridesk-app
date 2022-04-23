@@ -2,6 +2,8 @@ package com.nutrikares.nutrideskapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +39,26 @@ class FragmentProfile : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
-        binding.saveBtn.setOnClickListener {
+
+        val isFieldEmpty = object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {  }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {  }
+            override fun onTextChanged(str: CharSequence?, start: Int, before: Int, count: Int) {
+                val currentPassword = binding.currentPassword.editText!!.text
+                val newPassword = binding.currentPassword.editText!!.text
+                val confirmPassword = binding.currentPassword.editText!!.text
+                binding.saveBtn.isEnabled =
+                    !(currentPassword.isBlank() or newPassword.isBlank() or confirmPassword.isBlank())
+            }
+        }
+        binding.currentPassword.editText!!.addTextChangedListener(isFieldEmpty)
+        binding.newPassword.editText!!.addTextChangedListener(isFieldEmpty)
+        binding.confirmPassword.editText!!.addTextChangedListener(isFieldEmpty)
+        binding.saveBtn.setOnClickListener { btn -> updatePassword(btn) }
+    }
+
+    private fun updatePassword(btn: View){
+        if(btn.isEnabled){
             val user = Firebase.auth.currentUser!!
             val currentPassword = binding.currentPassword.editText!!.text.toString()
             val newPassword = binding.newPassword.editText!!.text.toString()
