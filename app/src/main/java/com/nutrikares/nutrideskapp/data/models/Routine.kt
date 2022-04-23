@@ -17,3 +17,15 @@ data class Routine(
     var videoUri: Uri? = null,
     var videoPath: String = ""
 )
+
+/*data class RoutineWeek(
+    var days: MutableMap<String, Routine> = mutableMapOf(
+        "monday" to Routine(),
+        "tuesday" to Routine(),
+        "wednesday" to Routine(),
+        "thursday" to Routine(),
+        "friday" to Routine(),
+        "saturday" to Routine(),
+        "sunday" to Routine()
+    )
+)*/

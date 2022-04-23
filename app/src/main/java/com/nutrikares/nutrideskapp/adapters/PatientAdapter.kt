@@ -13,6 +13,10 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
+import com.nutrikares.nutrideskapp.data.models.FoodWeekMenu
+import com.nutrikares.nutrideskapp.data.models.Routine
+import com.nutrikares.nutrideskapp.data.models.User
+import com.nutrikares.nutrideskapp.data.models.UserInfo
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragment
 import com.nutrikares.nutrideskapp.ui.patients.PatientsFragmentDirections
 import com.nutrikares.nutrideskapp.ui.patients.ViewPatientFragment
@@ -41,8 +45,37 @@ class PatientAdapter(
         holder.cardButton.setOnClickListener{
             Log.v("Firebase",Datasource.mapOfPatients[patient].toString())
             ViewPatientFragment.Nombre = patient
-            val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
-            holder.view?.findNavController()!!.navigate(action)
+            queryUser(holder, Datasource.mapOfPatients[patient].toString())
+            /*val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
+            holder.view?.findNavController()!!.navigate(action)*/
+        }
+    }
+
+    fun queryUser(holder: PatientAdapter.PatientViewHolder, key:String){
+        var database : DatabaseReference = Firebase.database.reference
+
+        database.child("users").child(key).get().addOnSuccessListener {
+            val userInfo = it.getValue(UserInfo::class.java)!!
+            database.child("users_diets").child(key).get().addOnSuccessListener {
+                val userDiets = it.getValue(FoodWeekMenu::class.java)!!
+                database.child("users_trainings").child(key).get().addOnSuccessListener {
+                    val userTrainings:MutableMap<String, Routine> = it.getValue() as MutableMap<String, Routine>
+                    val user : User = User()
+                    user.info = userInfo
+                    user.diets = userDiets
+                    user.routines = userTrainings
+                    Datasource.setCurrentUser(user)
+                    Log.v("firebase", Datasource.getCurrentUser().toString())
+                    val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
+                    holder.view?.findNavController()!!.navigate(action)
+                }.addOnFailureListener{
+                    Log.e("firebase", "Error getting data", it)
+                }
+            }.addOnFailureListener{
+                Log.e("firebase", "Error getting data", it)
+            }
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
         }
     }
 

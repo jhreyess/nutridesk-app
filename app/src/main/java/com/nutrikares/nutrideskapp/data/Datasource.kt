@@ -32,12 +32,22 @@ object Datasource {
     /* TODO: BORRAR DATOS DE PRUEBA */
     private val ingredients = mutableListOf("Ingredients")
     private val steps = mutableListOf("Steps")
-
     private var currentRecipe = Food("", 10, "", "", "", ingredients, steps)
     private var currentRoutine = Routine()
+    private var currentUser = User()
     var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
     var newRoutine = Routine("","", mutableListOf(), null,"")
+    var newUser = User()
+
+    fun setCurrentUser(user:User){
+        currentUser = user
+    }
+
+    fun getCurrentUser() : User{
+        return currentUser
+    }
+
 
     fun setCurrentRecipe(recipe : Food){
         currentRecipe = recipe

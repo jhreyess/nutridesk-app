@@ -36,6 +36,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/editPatientName_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
@@ -66,12 +67,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/editPatientAge_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_age_placeholder"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -96,6 +98,7 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/editPatientObjective_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
@@ -117,6 +120,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?attr/colorSecondaryVariant"
         android:textColor="?attr/colorOnSecondary"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:layout_marginBottom="16dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

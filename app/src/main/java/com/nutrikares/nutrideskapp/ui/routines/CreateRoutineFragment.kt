@@ -315,17 +315,6 @@ class CreateRoutineFragment : Fragment() {
                 }
             }
         }
-
-        /*
-        val mediaController = MediaController(activity)
-        mediaController.setAnchorView(binding.routineVideoVideoView)
-        binding.routineVideoVideoView.setMediaController(mediaController)
-        Log.v("Video",videoUri.toString())
-        binding.routineVideoVideoView.setVideoURI(videoUri)
-        binding.routineVideoVideoView.requestFocus()
-        binding.routineVideoVideoView.setOnPreparedListener{
-            binding.routineVideoVideoView.pause()
-        }*/
     }
 
      fun videoPickGallery(){

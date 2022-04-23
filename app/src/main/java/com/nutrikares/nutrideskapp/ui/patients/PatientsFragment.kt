@@ -21,12 +21,6 @@ class PatientsFragment : Fragment() {
 
     private lateinit var users: List<String>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //users = Datasource.getUsers().map { it!!.name }
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,10 +31,6 @@ class PatientsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //Log.d("Debug", users.toString())
-        // Bindings
-        //binding.patientsRecycler.adapter = PatientAdapter(this, users)
-        //binding.patientsRecycler.setHasFixedSize(true)
         getPatients()
 
         binding.createPatientButton.setOnClickListener {
@@ -56,7 +46,7 @@ class PatientsFragment : Fragment() {
     fun getPatients(){
 
         val database : DatabaseReference = Firebase.database.reference
-        val usersRef = database.child("users").orderByChild("role").equalTo("patient")
+        val usersRef = database.child("users")
 
         usersRef.get().addOnSuccessListener {
 

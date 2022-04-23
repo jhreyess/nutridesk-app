@@ -24,13 +24,27 @@ data class Nutrients(
 data class FoodDayMenu (
     var day: String = "",
     val imageUri: String = "",
-    val foods: MutableMap<String, Food> = mutableMapOf()
+    val foods: MutableMap<String, Food> = mutableMapOf(
+        "breakfast" to Food(),
+        "dinner" to Food(),
+        "meal" to Food(),
+        "snack1" to Food(),
+        "snack2" to Food()
+    )
 )
 
 data class FoodWeekMenu(
     var weekStart: String = "",
     var weekEnd: String = "",
-    var days: MutableMap<String, FoodDayMenu> = mutableMapOf()
+    var days: MutableMap<String, FoodDayMenu> = mutableMapOf(
+        "monday" to FoodDayMenu(),
+        "tuesday" to FoodDayMenu(),
+        "wednesday" to FoodDayMenu(),
+        "thursday" to FoodDayMenu(),
+        "friday" to FoodDayMenu(),
+        "saturday" to FoodDayMenu(),
+        "sunday" to FoodDayMenu()
+    )
 )
 
 private object FoodType {
