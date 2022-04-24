@@ -13,6 +13,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
+import com.nutrikares.nutrideskapp.data.models.User
 import com.nutrikares.nutrideskapp.data.models.UserInfo
 import com.nutrikares.nutrideskapp.databinding.FragmentEditPatientBinding
 import java.lang.Exception
@@ -24,6 +25,7 @@ class EditPatientFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var database : DatabaseReference
     lateinit var userInfo: UserInfo
+    lateinit var userName : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +42,18 @@ class EditPatientFragment : Fragment() {
         return root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.acceptButtonEdit.isFocusable = true
         userInfo = Datasource.getCurrentUser().info
         binding.editPatientNameEditText.setText(userInfo.name)
         binding.editPatientAgeEditText.setText(userInfo.age.toString())
         binding.editPatientObjectiveEditText.setText(userInfo.objective)
+        Log.d("PatientEdit - getData",userInfo.toString())
+        userName = userInfo.name
 
 
         binding.acceptButtonEdit.setOnClickListener {
             if(checkFields()){
+                Log.d("PatientEdit - intoCheckFields",userInfo.toString())
                 uploadPatientData()
             }else{
                 Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
@@ -79,14 +81,13 @@ class EditPatientFragment : Fragment() {
 
     fun uploadPatientData(){
         attachData()
+        val id = Datasource.mapOfPatients[userName].toString()
         try{
-            Datasource.mapOfPatients[Datasource.getCurrentUser().info.name]?.let {
-                database.child("users").child(it).setValue(userInfo)
-                    .addOnSuccessListener {
-                        Toast.makeText(activity, "Datos modificados exitosamente", Toast.LENGTH_LONG).show();
-                        findNavController().navigate(R.id.action_editPatientFragment_to_viewPatientFragment2)
-                    }
-            }
+            database.child("users").child(id).setValue(userInfo)
+                .addOnSuccessListener {
+                    Toast.makeText(activity, "Datos modificados exitosamente", Toast.LENGTH_LONG).show();
+                    findNavController().navigate(R.id.action_editPatientFragment_to_viewPatientFragment2)
+                }
         }catch (e : Exception){
             Log.d("Exception",e.toString())
             Toast.makeText(activity, "Los datos no pudieron ser modificados", Toast.LENGTH_LONG).show();

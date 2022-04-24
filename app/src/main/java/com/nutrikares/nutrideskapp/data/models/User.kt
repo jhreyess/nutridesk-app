@@ -29,8 +29,8 @@ data class Stats(
     var imc: Double = 0.0,
     var abs: Double = 0.0,
     var hip: Double = 0.0,
-    var progress: List<Int> = mutableListOf(),
-    var relative: List<Int> = mutableListOf()
+    var progress: List<Int> = mutableListOf(0),
+    var relative: List<Int> = mutableListOf(0)
 )
 
 data class UnLoggedUser(private var email: String, private var password: String ){

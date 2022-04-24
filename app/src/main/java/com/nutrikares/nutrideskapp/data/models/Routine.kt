@@ -12,7 +12,9 @@ data class Exercise(
 data class Routine(
     var id: String = "",
     var name: String = "",
-    var exercises: MutableList<Exercise> = mutableListOf(),
+    var exercises: MutableList<Exercise> = mutableListOf(
+        Exercise("Example",0,0)
+    ),
     var videoPath: String = ""
 )
 

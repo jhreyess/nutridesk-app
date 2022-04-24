@@ -5,17 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment
 
-class AssignRoutineAdapter(private val context: AssignRoutineFragment?,) : RecyclerView.Adapter<AssignRoutineAdapter.RoutineViewHolder>() {
+class AssignRoutineAdapter(private val context: AssignRoutineFragment?,private var routines:MutableList<String>) : RecyclerView.Adapter<AssignRoutineAdapter.RoutineViewHolder>() {
 
-    private var routines = Datasource.routines
 
-    class RoutineViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+    class RoutineViewHolder(var view: View?) : RecyclerView.ViewHolder(view!!) {
         val preview: TextView = view!!.findViewById(R.id.routine_preview)
-        //val favorite = view.findViewById<ImageView>(R.id.favorite)
+        val cardButton: MaterialCardView = view!!.findViewById(R.id.card_routine)
     }
 
     override fun getItemCount(): Int = routines.size
@@ -32,5 +31,4 @@ class AssignRoutineAdapter(private val context: AssignRoutineFragment?,) : Recyc
         val routine = routines[position]
         holder.preview.text = routine
     }
-
 }

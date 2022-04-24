@@ -1,12 +1,9 @@
 package com.nutrikares.nutrideskapp.data
 
-import android.net.Uri
-import android.util.Log
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.data.models.*
-import java.lang.Exception
 import kotlin.collections.HashMap
 
 object Datasource {
@@ -47,7 +44,6 @@ object Datasource {
     fun getCurrentUser() : User{
         return currentUser
     }
-
 
     fun setCurrentRecipe(recipe : Food){
         currentRecipe = recipe
@@ -92,4 +88,5 @@ object Datasource {
     fun setClickOnRoutine(value : Boolean){
         clickOnRoutine = value
     }
+
 }
