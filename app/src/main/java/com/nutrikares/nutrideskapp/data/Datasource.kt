@@ -37,7 +37,7 @@ object Datasource {
     private var currentUser = User()
     var newRecipe =  Food("",10, "", "", "",  ingredients, steps)
     var newRecipeId = ""
-    var newRoutine = Routine("","", mutableListOf(), null,"")
+    var newRoutine = Routine("","", mutableListOf(), "")
     var newUser = User()
 
     fun setCurrentUser(user:User){

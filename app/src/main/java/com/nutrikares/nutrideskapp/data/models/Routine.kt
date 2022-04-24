@@ -9,12 +9,10 @@ data class Exercise(
     val reps: Int = 0
 )
 
-@IgnoreExtraProperties
 data class Routine(
     var id: String = "",
     var name: String = "",
     var exercises: MutableList<Exercise> = mutableListOf(),
-    var videoUri: Uri? = null,
     var videoPath: String = ""
 )
 

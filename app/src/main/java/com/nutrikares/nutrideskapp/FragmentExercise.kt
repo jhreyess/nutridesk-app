@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.ui.StyledPlayerView
+import com.google.android.exoplayer2.util.Log
 import com.google.android.exoplayer2.util.Util
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.ktx.database
@@ -37,6 +38,7 @@ class FragmentExercise : Fragment() {
 
     private lateinit var videoView: StyledPlayerView
     private var videoUri: Uri? = null
+    private lateinit var videoPath: String
 
     private lateinit var userTraining: Routine
 
@@ -46,7 +48,7 @@ class FragmentExercise : Fragment() {
         super.onCreate(savedInstanceState)
         userTraining = Datasource.getUserRoutines()
         hasData = userTraining.exercises.isNotEmpty()
-        videoUri = userTraining.videoUri
+        videoPath = userTraining.videoPath
         val database = Firebase.database.reference
         database.child("trainings")
     }
@@ -73,13 +75,14 @@ class FragmentExercise : Fragment() {
             val label = view.findViewById<TextView>(R.id.fragment_label)
             videoView = view.findViewById(R.id.routine_video)
 
-            if(videoUri == null){
-                val tempFile = File.createTempFile("videos", ".mp4")
-                tempFile.deleteOnExit()
-                Firebase.storage.reference.child("videos").child(userTraining.videoPath).getFile(tempFile)
+            val cacheFile = File(requireActivity().cacheDir, videoPath)
+            if(cacheFile.exists()){
+                val uri = cacheFile.toUri()
+                initializePlayer(uri)
+            }else{
+                Firebase.storage.reference.child("videos").child(videoPath).getFile(cacheFile)
                     .addOnSuccessListener {
-                        val uri = tempFile.toUri()
-                        Datasource.getUserRoutines().videoUri = uri
+                        val uri = cacheFile.toUri()
                         initializePlayer(uri)
                     }.addOnFailureListener {
                         activity?.runOnUiThread{
