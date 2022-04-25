@@ -30,12 +30,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/weightStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_weight_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -57,12 +58,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/imcStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_imc_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -85,12 +87,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/waistStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_measure_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -112,12 +115,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/hipStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_measure_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -140,12 +144,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/absStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_measure_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
@@ -168,12 +173,13 @@
             app:hintEnabled="false">
 
             <EditText
+                android:id="@+id/relativeStatPatient_editText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:autofillHints="no"
                 android:background="@android:color/transparent"
                 android:hint="@string/patient_measure_placeholder"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 

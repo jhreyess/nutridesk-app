@@ -43,17 +43,13 @@ class PatientAdapter(
         holder.preview.text = patient
 
         holder.cardButton.setOnClickListener{
-            Log.v("Firebase",Datasource.mapOfPatients[patient].toString())
             ViewPatientFragment.Nombre = patient
             queryUser(holder, Datasource.mapOfPatients[patient].toString())
-            /*val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
-            holder.view?.findNavController()!!.navigate(action)*/
         }
     }
 
     fun queryUser(holder: PatientAdapter.PatientViewHolder, key:String){
         var database : DatabaseReference = Firebase.database.reference
-
         database.child("users").child(key).get().addOnSuccessListener {
             val userInfo = it.getValue(UserInfo::class.java)!!
             database.child("users_diets").child(key).get().addOnSuccessListener {
@@ -65,7 +61,6 @@ class PatientAdapter(
                     user.diets = userDiets
                     user.routines = userTrainings
                     Datasource.setCurrentUser(user)
-                    Log.v("firebase", Datasource.getCurrentUser().toString())
                     val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
                     holder.view?.findNavController()!!.navigate(action)
                 }.addOnFailureListener{
