@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.patients.AssingRecipeFragment"
+    tools:context=".ui.patients.AssignRecipeFragment"
     android:padding="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,6 +50,7 @@
                 app:hintEnabled="false">
 
                 <EditText
+                    android:id="@+id/searchRecipe_editText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autofillHints="no"

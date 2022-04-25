@@ -23,7 +23,7 @@ data class Nutrients(
 
 data class FoodDayMenu (
     var day: String = "",
-    val imageUri: String = "",
+    var imageUri: String = "",
     val foods: MutableMap<String, Food> = mutableMapOf(
         "breakfast" to Food(),
         "dinner" to Food(),

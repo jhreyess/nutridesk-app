@@ -111,5 +111,7 @@ object Datasource {
     }
 
     var routineDaySelected=""
+    var recipeDaySelected=""
+    var foodSelected=""
 
 }
