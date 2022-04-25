@@ -173,6 +173,7 @@
     <string name="content_description_arrow">Flecha de siguiente</string>
     <string name="content_description_add">Botón de agregar</string>
     <string name="routine_name_exampleOne">Sin asignar</string>
+    <string name="noAssigned">Sin asignar</string>
     <string name="diet">Dieta</string>
     <string name="exercises">Ejercicios</string>
     <string name="anthropometry">Antropometría</string>

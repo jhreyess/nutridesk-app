@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.GenericTypeIndicator
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
@@ -50,16 +51,19 @@ class PatientAdapter(
 
     fun queryUser(holder: PatientAdapter.PatientViewHolder, key:String){
         var database : DatabaseReference = Firebase.database.reference
-        database.child("users").child(key).get().addOnSuccessListener {
-            val userInfo = it.getValue(UserInfo::class.java)!!
+        database.child("users").child(key).get().addOnSuccessListener { snapshot ->
+            val userInfo = snapshot.getValue(UserInfo::class.java)!!
             database.child("users_diets").child(key).get().addOnSuccessListener {
                 val userDiets = it.getValue(FoodWeekMenu::class.java)!!
-                database.child("users_trainings").child(key).get().addOnSuccessListener {
-                    val userTrainings:MutableMap<String, Routine> = it.getValue() as MutableMap<String, Routine>
+                database.child("users_trainings").child(key).get().addOnSuccessListener { dataSnapshot ->
+                    val x = object : GenericTypeIndicator<MutableMap<String, Routine>>(){}
+                    val userTrainings: MutableMap<String, Routine>? = dataSnapshot.getValue(x)
                     val user : User = User()
                     user.info = userInfo
                     user.diets = userDiets
-                    user.routines = userTrainings
+                    if (userTrainings != null) {
+                        user.routines = userTrainings
+                    }
                     Datasource.setCurrentUser(user)
                     val action = PatientsFragmentDirections.actionNavPatientsToNavigationViewPatient()
                     holder.view?.findNavController()!!.navigate(action)

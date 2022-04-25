@@ -44,6 +44,7 @@ class ViewPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val currentUserName = Datasource.getCurrentUser().info.name
         binding.patientNameTextView.text = currentUserName
+        Log.v("Firebase",Datasource.getCurrentUser().toString())
 
         binding.editIcon.setOnClickListener {
             findNavController().navigate(R.id.action_viewPatientFragment2_to_editPatientFragment)

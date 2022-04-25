@@ -1,6 +1,7 @@
 package com.nutrikares.nutrideskapp.ui.patients
 
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.Stats
-import com.nutrikares.nutrideskapp.data.models.UserInfo
+import com.nutrikares.nutrideskapp.data.models.User
 import com.nutrikares.nutrideskapp.databinding.FragmentAnthropometryPatientBinding
 import java.lang.Exception
 
@@ -23,6 +24,7 @@ class AnthropometryPatientFragment : Fragment() {
     private var _binding: FragmentAnthropometryPatientBinding? = null
     private val binding get() = _binding!!
     private lateinit var database : DatabaseReference
+    lateinit var user: User
     lateinit var userInfoStats: Stats
     lateinit var userName : String
 
@@ -44,6 +46,7 @@ class AnthropometryPatientFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         userInfoStats = Datasource.getCurrentUser().info.stats
         userName = Datasource.getCurrentUser().info.name
+        user= Datasource.getCurrentUser()
 
         binding.absStatPatientEditText.setText(userInfoStats.abs.toString())
         binding.hipStatPatientEditText.setText(userInfoStats.hip.toString())
@@ -89,6 +92,7 @@ class AnthropometryPatientFragment : Fragment() {
         userInfoStats.weight =  binding.weightStatPatientEditText.text.toString().toDouble()
         userInfoStats.progress.removeAt(0)
         userInfoStats.progress.add(userInfoStats.weight)
+        user.info.stats = userInfoStats
     }
 
     fun uploadPatientData(){
@@ -97,6 +101,7 @@ class AnthropometryPatientFragment : Fragment() {
         try{
             database.child("users").child(id).child("stats").setValue(userInfoStats)
                 .addOnSuccessListener {
+                    Datasource.setCurrentUser(user)
                     Toast.makeText(activity, "Datos modificados exitosamente", Toast.LENGTH_LONG).show();
                     findNavController().navigate(R.id.action_anthropometryPatientFragment_to_viewPatientFragment2)
                 }

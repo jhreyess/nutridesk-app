@@ -110,4 +110,6 @@ object Datasource {
         }
     }
 
+    var routineDaySelected=""
+
 }

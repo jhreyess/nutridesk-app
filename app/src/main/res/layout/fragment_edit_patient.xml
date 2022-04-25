@@ -79,7 +79,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <!--<TextView
             android:id="@+id/textViewObjectiveEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>-->
 
     </LinearLayout>
 

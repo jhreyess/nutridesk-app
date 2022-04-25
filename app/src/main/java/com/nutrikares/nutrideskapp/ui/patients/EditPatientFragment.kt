@@ -24,7 +24,8 @@ class EditPatientFragment : Fragment() {
     private var _binding: FragmentEditPatientBinding? = null
     private val binding get() = _binding!!
     private lateinit var database : DatabaseReference
-    lateinit var userInfo: UserInfo
+    lateinit var user:User
+    lateinit var userInfo : UserInfo
     lateinit var userName : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +44,8 @@ class EditPatientFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        userInfo = Datasource.getCurrentUser().info
+        user = Datasource.getCurrentUser()
+        userInfo = user.info
         binding.editPatientNameEditText.setText(userInfo.name)
         binding.editPatientAgeEditText.setText(userInfo.age.toString())
         Log.d("PatientEdit - getData",userInfo.toString())
@@ -67,13 +69,13 @@ class EditPatientFragment : Fragment() {
 
     fun checkFields():Boolean{
         return !(binding.editPatientAgeEditText.text.isEmpty() ||
-                binding.editPatientNameEditText.text.isEmpty() ||
-                binding.editPatientObjectiveEditText.text.isEmpty())
+                binding.editPatientNameEditText.text.isEmpty())
     }
 
     fun attachData(){
         userInfo.name = binding.editPatientNameEditText.text.toString()
         userInfo.age = Integer.parseInt(binding.editPatientAgeEditText.text.toString())
+        user.info = userInfo
     }
 
     fun uploadPatientData(){
@@ -82,6 +84,7 @@ class EditPatientFragment : Fragment() {
         try{
             database.child("users").child(id).setValue(userInfo)
                 .addOnSuccessListener {
+                    Datasource.setCurrentUser(user)
                     Toast.makeText(activity, "Datos modificados exitosamente", Toast.LENGTH_LONG).show();
                     findNavController().navigate(R.id.action_editPatientFragment_to_viewPatientFragment2)
                 }
