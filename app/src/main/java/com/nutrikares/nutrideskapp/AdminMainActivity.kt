@@ -12,17 +12,21 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.ActivityAdminMainBinding
 
 class AdminMainActivity : AppCompatActivity() {
-
+    private lateinit var database : DatabaseReference
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityAdminMainBinding
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        database = Firebase.database.reference
 
         binding = ActivityAdminMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -51,6 +55,11 @@ class AdminMainActivity : AppCompatActivity() {
             startActivity(intent)
             true
         }
+
+        //
+        val usersRef = database.child("users")
+        usersRef.addValueEventListener(Datasource.patientsDataListener)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

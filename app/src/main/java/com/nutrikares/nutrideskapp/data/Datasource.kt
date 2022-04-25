@@ -1,9 +1,13 @@
 package com.nutrikares.nutrideskapp.data
 
+import android.util.Log
+import androidx.navigation.findNavController
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.nutrikares.nutrideskapp.adapters.PatientAdapter
 import com.nutrikares.nutrideskapp.data.models.*
+import com.nutrikares.nutrideskapp.ui.patients.PatientsFragmentDirections
 import kotlin.collections.HashMap
 
 object Datasource {
@@ -87,6 +91,23 @@ object Datasource {
     }
     fun setClickOnRoutine(value : Boolean){
         clickOnRoutine = value
+    }
+
+
+    val patientsDataListener = object : ValueEventListener {
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+            mapOfPatients.clear()
+            patients.clear()
+            for (ds in dataSnapshot.children) {
+                if(ds.child("role").getValue().toString().equals("patient")){
+                    mapOfPatients.put(ds.child("name").getValue().toString(),ds.key.toString())
+                    patients.add(ds.child("name").getValue().toString())
+                }
+            }
+        }
+        override fun onCancelled(databaseError: DatabaseError) {
+            Log.w("Firebase", "loadPost:onCancelled", databaseError.toException())
+        }
     }
 
 }
