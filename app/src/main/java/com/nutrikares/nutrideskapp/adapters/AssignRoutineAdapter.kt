@@ -9,7 +9,9 @@ import com.google.android.material.card.MaterialCardView
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment
 
-class AssignRoutineAdapter(private val context: AssignRoutineFragment?,private var routines:MutableList<String>) : RecyclerView.Adapter<AssignRoutineAdapter.RoutineViewHolder>() {
+class AssignRoutineAdapter(
+    private var routines:MutableList<String>
+    ) : RecyclerView.Adapter<AssignRoutineAdapter.RoutineViewHolder>() {
 
 
     class RoutineViewHolder(var view: View?) : RecyclerView.ViewHolder(view!!) {

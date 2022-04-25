@@ -1,13 +1,16 @@
 package com.nutrikares.nutrideskapp
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -44,6 +47,10 @@ class FragmentHome : Fragment() {
         binding.todaysMenu.setOnClickListener {
             val weekDay = Calendar().getDate("es")
             val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = weekDay)
+            findNavController().navigate(action)
+        }
+        binding.settingsBtn.setOnClickListener {
+            val action = FragmentHomeDirections.actionFragmentHomeToSettingsFragment()
             findNavController().navigate(action)
         }
 

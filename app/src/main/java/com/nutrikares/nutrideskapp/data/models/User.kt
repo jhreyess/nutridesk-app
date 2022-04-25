@@ -1,5 +1,8 @@
 package com.nutrikares.nutrideskapp.data.models
 
+import com.google.firebase.database.IgnoreExtraProperties
+
+@IgnoreExtraProperties
 data class User(
     var info: UserInfo = UserInfo(),
     var diets: FoodWeekMenu = FoodWeekMenu(),
@@ -19,7 +22,6 @@ data class UserInfo(
     var name: String = "",
     var age: Int = 0,
     var role: String = "",
-    var objective:String = "",
     var stats: Stats = Stats()
 )
 

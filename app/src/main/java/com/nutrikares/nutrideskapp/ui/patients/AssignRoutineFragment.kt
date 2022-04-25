@@ -15,8 +15,8 @@ import com.nutrikares.nutrideskapp.adapters.AssignRoutineAdapter
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentAssignRoutineBinding
 
-
 class AssignRoutineFragment : Fragment() {
+
     private var _binding: FragmentAssignRoutineBinding? = null
     private val binding get() = _binding!!
 
@@ -24,12 +24,11 @@ class AssignRoutineFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentAssignRoutineBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

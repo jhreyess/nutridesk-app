@@ -46,10 +46,8 @@ class EditPatientFragment : Fragment() {
         userInfo = Datasource.getCurrentUser().info
         binding.editPatientNameEditText.setText(userInfo.name)
         binding.editPatientAgeEditText.setText(userInfo.age.toString())
-        binding.editPatientObjectiveEditText.setText(userInfo.objective)
         Log.d("PatientEdit - getData",userInfo.toString())
         userName = userInfo.name
-
 
         binding.acceptButtonEdit.setOnClickListener {
             if(checkFields()){
@@ -76,7 +74,6 @@ class EditPatientFragment : Fragment() {
     fun attachData(){
         userInfo.name = binding.editPatientNameEditText.text.toString()
         userInfo.age = Integer.parseInt(binding.editPatientAgeEditText.text.toString())
-        userInfo.objective = binding.editPatientObjectiveEditText.text.toString()
     }
 
     fun uploadPatientData(){

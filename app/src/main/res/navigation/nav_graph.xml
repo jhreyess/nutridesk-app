@@ -63,6 +63,9 @@
             <action
                 android:id="@+id/action_fragmentHome_to_fragmentExercise_home"
                 app:destination="@id/fragmentExercise_home" />
+            <action
+                android:id="@+id/action_fragmentHome_to_settingsFragment"
+                app:destination="@id/settingsFragment" />
         </fragment>
         <fragment
             android:id="@+id/fragmentFoodDaily_home"
@@ -78,6 +81,14 @@
             android:name="com.nutrikares.nutrideskapp.FragmentExercise"
             android:label="fragment_exercise_empty"
             tools:layout="@layout/fragment_exercise_empty" />
+        <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.nutrikares.nutrideskapp.SettingsFragment"
+            android:label="SettingsFragment" >
+            <action
+                android:id="@+id/action_settingsFragment_to_fragmentHome"
+                app:destination="@id/fragmentHome" />
+        </fragment>
     </navigation>
 
 </navigation>

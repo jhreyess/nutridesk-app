@@ -7,6 +7,7 @@
     <string name="exercise_label">Ejercicios</string>
     <string name="analytics_label">Antropometría</string>
     <string name="profile_label">Perfil</string>
+    <string name="settings_label">Ajustes</string>
 
     <!-- HOME -->
     <string name="home_toolbar">¡Bienvenido!</string>
@@ -19,32 +20,13 @@
     <string name="daily_routine">Tu rutina diaria</string>
     <string name="daily_menu">El menú de hoy</string>
 
-    <string name="title_activity_admin_main">AdminMainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="menu_routines">Rutinas de ejercicio</string>
-    <string name="create_routine">Nueva Rutina</string>
-
-    <string name="menu_patients">Pacientes</string>
-    <string name="create_patient">Nuevo Paciente</string>
-    <string name="view_patient">Paciente</string>
-    <string name="edit_patient">Editar Paciente</string>
-    <string name="anthropometry_patient">Antropometría</string>
-
-    <string name="menu_recipes">Recetas</string>
-    <string name="create_recipe">Nueva Receta</string>
-    <string name="create_preparation_recipe">Nueva Receta - Preparación</string>
-    <string name="create_information_recipe">Nueva Receta - Información</string>
-
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <!-- SETTINGS -->
+    <string name="customization">Personalización</string>
+    <string name="memory">Memoria</string>
+    <string name="clear_cache">Borrar caché</string>
+    <string name="clear_cache_desc">Elimina los datos temporales almacenados en el dispositivo.</string>
+    <string name="set_theme">Tema</string>
+    <string name="set_theme_desc">Personaliza el tema por defecto de la aplicación.</string>
 
     <!-- FOOD -->
     <string name="food_toolbar">Semana del %1$s al %2$s</string>
@@ -80,6 +62,33 @@
     <!-- RECIPES OF THE DAY-->
     <string name="recipes_day">Dieta del día</string>
 
+
+    <string name="title_activity_admin_main">AdminMainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_routines">Rutinas de ejercicio</string>
+    <string name="create_routine">Nueva Rutina</string>
+
+    <string name="menu_patients">Pacientes</string>
+    <string name="create_patient">Nuevo Paciente</string>
+    <string name="view_patient">Paciente</string>
+    <string name="edit_patient">Editar Paciente</string>
+    <string name="anthropometry_patient">Antropometría</string>
+
+    <string name="menu_recipes">Recetas</string>
+    <string name="create_recipe">Nueva Receta</string>
+    <string name="create_preparation_recipe">Nueva Receta - Preparación</string>
+    <string name="create_information_recipe">Nueva Receta - Información</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 
     <!-- MISCELLANEOUS -->
     <string name="assign_recipe">Asignar receta</string>
@@ -168,4 +177,18 @@
     <string name="exercises">Ejercicios</string>
     <string name="anthropometry">Antropometría</string>
     <string name="separator">/</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

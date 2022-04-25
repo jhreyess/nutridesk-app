@@ -21,5 +21,7 @@
         <item name="android:windowBackground">@color/dark_bg</item>
 
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="dialogTheme">@style/Theme.MaterialComponents.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.MaterialComponents.Dialog</item>
     </style>
 </resources>

@@ -59,7 +59,6 @@ class CreatePatientFragment : Fragment() {
         Datasource.newUser.info.name= binding.patientNameEditText.text.toString()
         Datasource.newUser.info.age=Integer.parseInt(binding.patientAgeEditText.text.toString())
         Datasource.newUser.info.role = "patient"
-        Datasource.newUser.info.objective = binding.patientObjectiveEditText.text.toString()
     }
 
     fun addPatient(){

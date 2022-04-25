@@ -77,17 +77,32 @@ class FragmentExercise : Fragment() {
 
             val cacheFile = File(requireActivity().cacheDir, videoPath)
             if(cacheFile.exists()){
+                Log.d("Debug", "Cached video found!")
                 val uri = cacheFile.toUri()
                 initializePlayer(uri)
             }else{
+                Log.d("Debug", "Cached video NOT found!")
                 Firebase.storage.reference.child("videos").child(videoPath).getFile(cacheFile)
-                    .addOnSuccessListener {
-                        val uri = cacheFile.toUri()
-                        initializePlayer(uri)
-                    }.addOnFailureListener {
-                        activity?.runOnUiThread{
-                            Toast.makeText(activity,"No es posible reproducir el video",
-                                Toast.LENGTH_SHORT).show()
+                    .addOnCompleteListener {
+                        Log.d("Debug", "Firebase completed task...")
+                        if(it.isSuccessful) {
+                            val uri = cacheFile.toUri()
+                            initializePlayer(uri)
+                        }else {
+                            activity?.runOnUiThread {
+                                Toast.makeText(
+                                    activity, "No es posible reproducir el video",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                    }.addOnCanceledListener {
+                        Log.d("Debug", "Firebase completed task...")
+                        activity?.runOnUiThread {
+                            Toast.makeText(
+                                activity, "Algo salió mal",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
             }

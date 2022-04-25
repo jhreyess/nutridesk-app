@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity() {
         database = Firebase.database.reference
         uid = Firebase.auth.currentUser!!.uid
 
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.appbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -82,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 val weekMenu = snapshot.getValue(FoodWeekMenu::class.java)!!
                 val meals = weekMenu.days
                 meals.map { it.value.day = Calendar().translate(it.key) }
-                val days = weekMenu.days.toSortedMap(compareBy { Calendar().dateIndex(it) })
+                val days = meals.toSortedMap(compareBy { Calendar().dateIndex(it) })
                 days.values.forEach { it.foods.toSortedMap(compareBy { type -> mealIndex(type) })}
                 val diets = FoodWeekMenu(weekMenu.weekStart, weekMenu.weekEnd, days)
                 Datasource.setUserDiets(diets)
@@ -126,4 +130,5 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         stopListening()
     }
+
 }

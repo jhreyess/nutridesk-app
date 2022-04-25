@@ -19,6 +19,10 @@
         <!-- Status bar & Background color -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorSecondaryVariant</item>
         <item name="android:windowBackground">@color/light_bg</item>
+
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="dialogTheme">@style/Theme.MaterialComponents.Dialog</item>
+        <item name="alertDialogTheme">@style/Theme.MaterialComponents.Dialog</item>
     </style>
 
     <!-- Custom components-->
@@ -26,5 +30,9 @@
         <item name="colorOnPrimary">?attr/colorOnSecondary</item>
         <item name="colorPrimary">?attr/colorSecondaryVariant</item>
         <item name="colorOnSurface">?attr/colorSecondary</item>
+    </style>
+
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="android:tint">@color/gray</item>
     </style>
 </resources>

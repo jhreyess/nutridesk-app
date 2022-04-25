@@ -27,15 +27,19 @@
             android:textColor="?attr/colorSecondary"
             style="@style/Headline6" />
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/settingsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_config"
+            app:layout_constraintBottom_toBottomOf="@id/fragment_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/fragment_label"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_label"
-            android:src="@drawable/ic_config"
-            android:importantForAccessibility="no"
-            app:tint="?attr/colorSecondary"/>
+            app:tint="?attr/colorSecondary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
