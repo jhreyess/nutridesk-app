@@ -5,30 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.data.Datasource
-import com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment
 
-class AssignRecipeAdapter (private val context: AssingRecipeFragment?,private var recipes: MutableList<String>) : RecyclerView.Adapter<AssignRecipeAdapter.RecipeViewHolder>() {
-
-    //private var recipes = Datasource.recipes
+class AssignRecipeAdapter (
+    private var recipes: MutableList<String>,
+    private var callback: AdapterListener
+    ) : RecyclerView.Adapter<AssignRecipeAdapter.RecipeViewHolder>() {
 
     class RecipeViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
         val preview: TextView = view!!.findViewById(R.id.recipe_preview)
+        val cardButton: MaterialCardView = view!!.findViewById(R.id.card_recipe)
     }
 
     override fun getItemCount(): Int = recipes.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssignRecipeAdapter.RecipeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val layout = LayoutInflater.from(parent.context)
             .inflate(R.layout.recipes_list_items, parent, false)
 
-        return AssignRecipeAdapter.RecipeViewHolder(layout)
+        return RecipeViewHolder(layout)
     }
 
-    override fun onBindViewHolder(holder: AssignRecipeAdapter.RecipeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
         print(recipes)
         val recipe = recipes[position]
         holder.preview.text = recipe
+        holder.cardButton.setOnClickListener{
+            callback.onItemClick(recipe)
+        }
     }
 }

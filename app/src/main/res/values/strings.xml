@@ -117,7 +117,7 @@
     <string name="imc_label">IMC (kg/m2)</string>
     <string name="admin">Administrador</string>
     <string name="name_label">Nombre:</string>
-    <string name="selected_text">Seleccionada:</string>
+    <string name="selected_text">Seleccionada: %1$s</string>
     <string name="searchRoutine">Buscar rutina</string>
     <string name="search_recipe">Buscar receta</string>
     <string name="patient_weight_placeholder">Introduce el peso del paciente</string>

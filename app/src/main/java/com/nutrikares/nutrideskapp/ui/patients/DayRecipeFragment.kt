@@ -35,19 +35,19 @@ class DayRecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.dayNameTextView.text = Day
         binding.breakfastRecipeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
+            findNavController().navigate(R.id.action_dayRecipeFragment_to_assignRecipeFragment)
         }
         binding.mealRecipeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
+            findNavController().navigate(R.id.action_dayRecipeFragment_to_assignRecipeFragment)
         }
         binding.dinnerRecipeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
+            findNavController().navigate(R.id.action_dayRecipeFragment_to_assignRecipeFragment)
         }
         binding.firstSnackRecipeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
+            findNavController().navigate(R.id.action_dayRecipeFragment_to_assignRecipeFragment)
         }
         binding.secondSnackRecipeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_dayRecipeFragment_to_assingRecipeFragment)
+            findNavController().navigate(R.id.action_dayRecipeFragment_to_assignRecipeFragment)
         }
     }
 

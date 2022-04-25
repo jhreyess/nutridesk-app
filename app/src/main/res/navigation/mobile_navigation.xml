@@ -171,8 +171,8 @@
                     android:label="@string/recipes_day"
                     tools:layout="@layout/fragment_day_recipe">
                     <action
-                        android:id="@+id/action_dayRecipeFragment_to_assingRecipeFragment"
-                        app:destination="@id/assingRecipeFragment" />
+                        android:id="@+id/action_dayRecipeFragment_to_assignRecipeFragment"
+                        app:destination="@id/assignRecipeFragment" />
                 </fragment>
                 <fragment
                     android:id="@+id/recipeDaysFragment"
@@ -184,12 +184,12 @@
                         app:destination="@id/dayRecipeFragment" />
                 </fragment>
                 <fragment
-                    android:id="@+id/assingRecipeFragment"
-                    android:name="com.nutrikares.nutrideskapp.ui.patients.AssingRecipeFragment"
+                    android:id="@+id/assignRecipeFragment"
+                    android:name="com.nutrikares.nutrideskapp.ui.patients.AssignRecipeFragment"
                     android:label="@string/assign_recipe"
-                    tools:layout="@layout/fragment_assing_recipe" >
+                    tools:layout="@layout/fragment_assign_recipe" >
                     <action
-                        android:id="@+id/action_assingRecipeFragment_to_dayRecipeFragment"
+                        android:id="@+id/action_assignRecipeFragment_to_dayRecipeFragment"
                         app:destination="@id/dayRecipeFragment"
                         app:popUpTo="@+id/dayRecipeFragment"
                         app:popUpToInclusive="true"/>

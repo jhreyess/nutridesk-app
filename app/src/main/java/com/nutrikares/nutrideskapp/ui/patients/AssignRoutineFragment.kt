@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.nutrikares.nutrideskapp.R
+import com.nutrikares.nutrideskapp.adapters.AdapterListener
 import com.nutrikares.nutrideskapp.adapters.AssignRoutineAdapter
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentAssignRoutineBinding
@@ -27,16 +28,20 @@ class AssignRoutineFragment : Fragment() {
     ): View {
 
         _binding = FragmentAssignRoutineBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.selectedRoutineTextView.text = resources.getString(R.string.selected_text, "")
         if(Datasource.routines.size==0){
             getRoutines()
         }else{
             // Recycler Viewer
-            binding.routinesRecycler.adapter = AssignRoutineAdapter(this,Datasource.routines)
+            binding.routinesRecycler.adapter = AssignRoutineAdapter(Datasource.routines, object : AdapterListener {
+                override fun onItemClick(p0: String) {
+                    binding.selectedRoutineTextView.text = resources.getString(R.string.selected_text, p0)
+                }
+            })
             binding.routinesRecycler.setHasFixedSize(true)
         }
 
@@ -54,7 +59,7 @@ class AssignRoutineFragment : Fragment() {
     }
 
     fun getRoutines(){
-        var database : DatabaseReference = Firebase.database.reference
+        val database : DatabaseReference = Firebase.database.reference
 
         database.child("trainings").get().addOnSuccessListener {
 
@@ -62,12 +67,16 @@ class AssignRoutineFragment : Fragment() {
             Datasource.routines.clear()
 
             for (ds in it.children) {
-                Datasource.mapOfRoutines.put(ds.child("name").getValue().toString(),ds.key.toString())
-                Datasource.routines.add(ds.child("name").getValue().toString())
+                Datasource.mapOfRoutines.put(ds.child("name").value.toString(),ds.key.toString())
+                Datasource.routines.add(ds.child("name").value.toString())
             }
 
             // Recycler Viewer
-            binding.routinesRecycler.adapter = AssignRoutineAdapter(this,Datasource.routines)
+            binding.routinesRecycler.adapter = AssignRoutineAdapter(Datasource.routines, object : AdapterListener{
+                override fun onItemClick(p0: String) {
+                    binding.selectedRoutineTextView.text = resources.getString(R.string.selected_text, p0)
+                }
+            })
             binding.routinesRecycler.setHasFixedSize(true)
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)

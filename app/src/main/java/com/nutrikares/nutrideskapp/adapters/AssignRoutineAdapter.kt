@@ -7,10 +7,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.nutrikares.nutrideskapp.R
-import com.nutrikares.nutrideskapp.ui.patients.AssignRoutineFragment
+
+interface AdapterListener {
+    fun onItemClick(p0: String)
+}
 
 class AssignRoutineAdapter(
-    private var routines:MutableList<String>
+    private var routines:MutableList<String>,
+    private var callback: AdapterListener
     ) : RecyclerView.Adapter<AssignRoutineAdapter.RoutineViewHolder>() {
 
 
@@ -32,5 +36,8 @@ class AssignRoutineAdapter(
         print(routines)
         val routine = routines[position]
         holder.preview.text = routine
+        holder.cardButton.setOnClickListener {
+            callback.onItemClick(routine)
+        }
     }
 }
