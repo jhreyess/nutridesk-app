@@ -53,8 +53,18 @@ class EditPatientFragment : Fragment() {
 
         binding.acceptButtonEdit.setOnClickListener {
             if(checkFields()){
-                Log.d("PatientEdit - intoCheckFields",userInfo.toString())
-                uploadPatientData()
+                val lastName = Datasource.getCurrentUser().info.name
+                var nameRepeated=false
+                for (patient in Datasource.patients){
+                    if(!lastName.equals(binding.editPatientNameEditText.text.toString())){
+                        if (patient.equals(binding.editPatientNameEditText.text.toString())) nameRepeated = true
+                    }
+                }
+                if (!nameRepeated){
+                    uploadPatientData()
+                }else{
+                    Toast.makeText(activity, "El nombre ya existe", Toast.LENGTH_LONG).show();
+                }
             }else{
                 Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }

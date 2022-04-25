@@ -75,7 +75,33 @@ class CreateRecipeInformationFragment : Fragment() {
 
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
-                uploadRecipeData()
+                val lastName = Datasource.getCurrentRecipe().name
+                var nameRepeated=false
+                var idRepeated=false
+                if(Datasource.getClickOnRecipe()){
+                    //Modificación
+                    for (recipe in Datasource.recipes){
+                        if(!lastName.equals(Datasource.newRecipe.name)){
+                            if (recipe.equals(Datasource.newRecipe.name)) nameRepeated = true
+                        }
+                    }
+                    if (!nameRepeated){
+                        uploadRecipeData()
+                    }else{
+                        Toast.makeText(activity, "El nombre ya existe", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    //Es adición
+                    for (recipe in Datasource.recipes){
+                        if (recipe.equals(Datasource.newRecipe.name)) nameRepeated = true
+                        if (Datasource.mapOfRecipes[recipe].equals(Datasource.newRecipeId)) idRepeated = true
+                    }
+                    if(nameRepeated || idRepeated){
+                        Toast.makeText(activity, "El nombre o id ya existen", Toast.LENGTH_LONG).show();
+                    }else{
+                        uploadRecipeData()
+                    }
+                }
             }else{
                 Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }

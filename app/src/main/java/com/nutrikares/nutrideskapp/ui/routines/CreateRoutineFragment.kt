@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -121,7 +122,33 @@ class CreateRoutineFragment : Fragment() {
 
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
-                uploadRoutineData()
+                val lastName = Datasource.getCurrentRoutine().name
+                var nameRepeated=false
+                var idRepeated=false
+                if(Datasource.getClickOnRoutine()){
+                    //Modificación
+                    for (routine in Datasource.routines){
+                        if(!lastName.equals(binding.routineNameEditText.text.toString())){
+                            if (routine.equals(binding.routineNameEditText.text.toString())) nameRepeated = true
+                        }
+                    }
+                    if (!nameRepeated){
+                        uploadRoutineData()
+                    }else{
+                        Toast.makeText(activity, "El nombre ya existe", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    //Es adición
+                    for (routine in Datasource.routines){
+                        if (routine.equals(binding.routineNameEditText.text.toString())) nameRepeated = true
+                        if (Datasource.mapOfRoutines[routine].equals(binding.routineIdEditText.text.toString())) idRepeated = true
+                    }
+                    if(nameRepeated || idRepeated){
+                        Toast.makeText(activity, "El nombre o id ya existen", Toast.LENGTH_LONG).show();
+                    }else{
+                        uploadRoutineData()
+                    }
+                }
             }else{
                 Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }

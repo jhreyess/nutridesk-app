@@ -1,5 +1,6 @@
 package com.nutrikares.nutrideskapp.ui.patients
 
+import android.app.ProgressDialog
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -25,6 +26,7 @@ class CreatePatientFragment : Fragment() {
     private lateinit var database: DatabaseReference
     private var _binding: FragmentCreatePatientBinding? = null
     private val binding get() = _binding!!
+    private lateinit var progressDialog : ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         database = Firebase.database.reference
@@ -42,9 +44,22 @@ class CreatePatientFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        progressDialog = ProgressDialog(activity)
+        progressDialog.setTitle("Por favor espera")
+        progressDialog.setMessage("Creando paciente")
+        progressDialog.setCanceledOnTouchOutside(false)
+
         binding.acceptButton.setOnClickListener {
             if(checkFields()){
-                addPatient()
+                var nameRepeated=false
+                for (patient in Datasource.patients){
+                    if (patient.equals(binding.patientNameEditText.text.toString())) nameRepeated = true
+                }
+                if (!nameRepeated){
+                    addPatient()
+                }else{
+                    Toast.makeText(activity, "El nombre ya existe", Toast.LENGTH_LONG).show();
+                }
             }else{
                 Toast.makeText(activity, "Faltan datos por llenar", Toast.LENGTH_LONG).show();
             }
@@ -62,6 +77,7 @@ class CreatePatientFragment : Fragment() {
     }
 
     fun addPatient(){
+        progressDialog.show()
         val  auth = Firebase.auth
         attachData()
         val email = binding.patientEmailEditText.text.toString()
@@ -80,12 +96,14 @@ class CreatePatientFragment : Fragment() {
                                     Log.d(TAG, "signInWithEmail:success")
                                     addData(userId)
                                 } else {
+                                    progressDialog.dismiss()
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(activity, "Error al crear nuevo paciente", Toast.LENGTH_LONG).show();
                                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                                 }
                             }
                     } else {
+                        progressDialog.dismiss()
                         Log.w("Firebase", "createUserWithEmail:failure")
                         Toast.makeText(activity, "Error al registrar las credenciales", Toast.LENGTH_LONG).show();
                     }
@@ -99,10 +117,12 @@ class CreatePatientFragment : Fragment() {
             database.child("users_diets").child(userId).setValue(Datasource.newUser.diets)
             database.child("users_trainings").child(userId).setValue(Datasource.newUser.routines)
                 .addOnCompleteListener {
+                    progressDialog.dismiss()
                     Toast.makeText(activity, "Paciente registrado :)", Toast.LENGTH_LONG).show();
                     findNavController().navigate(R.id.action_createPatientFragment_to_nav_patients)
                 }
         }catch(e : Exception){
+            progressDialog.dismiss()
             Log.d("Exception",e.toString())
             Toast.makeText(activity, "Error al cargar datos del paciente", Toast.LENGTH_LONG).show();
         }
