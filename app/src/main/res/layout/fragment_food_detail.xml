@@ -117,7 +117,7 @@
                 android:text="@string/ingredients"
                 style="@style/Subtitle1"/>
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipe_ingredients_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 android:text="@string/preparation"
                 style="@style/Subtitle1"/>
 
-            <ListView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipe_steps_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

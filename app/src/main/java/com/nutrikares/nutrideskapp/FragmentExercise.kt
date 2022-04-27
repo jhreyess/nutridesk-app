@@ -47,7 +47,7 @@ class FragmentExercise : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userTraining = Datasource.getUserRoutines()
-        hasData = userTraining.exercises.isNotEmpty()
+        hasData = userTraining.hasRoutines
         videoPath = userTraining.videoPath
         val database = Firebase.database.reference
         database.child("trainings")
@@ -76,15 +76,12 @@ class FragmentExercise : Fragment() {
             videoView = view.findViewById(R.id.routine_video)
 
             val cacheFile = File(requireActivity().cacheDir, videoPath)
-            if(cacheFile.exists()){
-                Log.d("Debug", "Cached video found!")
+            if(cacheFile.exists() && videoPath.isNotBlank()){
                 val uri = cacheFile.toUri()
                 initializePlayer(uri)
             }else{
-                Log.d("Debug", "Cached video NOT found!")
                 Firebase.storage.reference.child("videos").child(videoPath).getFile(cacheFile)
                     .addOnCompleteListener {
-                        Log.d("Debug", "Firebase completed task...")
                         if(it.isSuccessful) {
                             val uri = cacheFile.toUri()
                             initializePlayer(uri)

@@ -53,7 +53,7 @@ class FoodDayAdapter(
     override fun onBindViewHolder(holder: FoodDayViewHolder, position: Int) {
         val dish = menu[position]
 
-        holder.dishType.text = dish.type
+        holder.dishType.text = dish.translateFoodType()
 
         val imagePath = dish.imageResourceId
         val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
@@ -72,8 +72,7 @@ class FoodDayAdapter(
         // Assign onClickListener to each card
         holder.cardButton.setOnClickListener {
             Datasource.setCurrentDay(dayIndex)
-            val dishType = dish.getFoodType()
-            val action = FragmentFoodDailyDirections.actionFragmentFoodDailyToFoodDetail(recipeType = dishType)
+            val action = FragmentFoodDailyDirections.actionFragmentFoodDailyToFoodDetail(recipeType = dish.type)
             holder.view?.findNavController()!!.navigate(action)
         }
     }

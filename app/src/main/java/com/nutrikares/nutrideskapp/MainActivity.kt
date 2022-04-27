@@ -87,7 +87,11 @@ class MainActivity : AppCompatActivity() {
                 val meals = weekMenu.days
                 meals.map { it.value.day = Calendar().translate(it.key) }
                 val days = meals.toSortedMap(compareBy { Calendar().dateIndex(it) })
-                days.values.forEach { it.foods.toSortedMap(compareBy { type -> mealIndex(type) })}
+                days.values.forEach {
+                    it.foods = it.foods.toSortedMap(compareBy { type -> mealIndex(type) })
+                        .also { sorted -> sorted.mapValues { food -> food.value.type = food.key }
+                    }
+                }
                 val diets = FoodWeekMenu(weekMenu.weekStart, weekMenu.weekEnd, days)
                 Datasource.setUserDiets(diets)
             }

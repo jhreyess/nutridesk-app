@@ -1,14 +1,12 @@
 package com.nutrikares.nutrideskapp.ui.patients
 
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -69,7 +67,7 @@ class AssignRoutineFragment : Fragment() {
         }
 
         binding.assignRoutineButton.setOnClickListener{
-            if(!selectedRoutine.equals("")){
+            if(selectedRoutine != ""){
                 setRoutine()
             }else{
                 Toast.makeText(activity, "No hay una rutina seleccionada", Toast.LENGTH_LONG).show();
@@ -85,7 +83,7 @@ class AssignRoutineFragment : Fragment() {
         _binding = null
     }
 
-    fun searchRoutines(text : String){
+    private fun searchRoutines(text : String){
         if(text.isEmpty()){
             binding.routinesRecycler.adapter = AssignRoutineAdapter(Datasource.routines, object : AdapterListener {
                 override fun onItemClick(p0: String) {
@@ -111,7 +109,7 @@ class AssignRoutineFragment : Fragment() {
         }
     }
 
-    fun getRoutines(){
+    private fun getRoutines(){
         database.child("trainings").get().addOnSuccessListener {
 
             Datasource.mapOfRoutines.clear()
@@ -135,7 +133,7 @@ class AssignRoutineFragment : Fragment() {
         }
     }
 
-    fun setRoutine(){
+    private fun setRoutine(){
         val key = Datasource.mapOfRoutines[selectedRoutine].toString()
         database.child("trainings").child(key).get().addOnSuccessListener {
             val routine = it.getValue(Routine::class.java)!!
@@ -143,6 +141,7 @@ class AssignRoutineFragment : Fragment() {
             val day = Datasource.routineDaySelected
             user.routines[day] = routine
             try{
+                routine.hasRoutines = true
                 database.child("users_trainings").child(id).child(day).setValue(routine)
                     .addOnSuccessListener {
                         Datasource.setCurrentUser(user)
@@ -158,7 +157,7 @@ class AssignRoutineFragment : Fragment() {
         }
     }
 
-    fun setVoidRoutine(){
+    private fun setVoidRoutine(){
         val voidRoutine = Routine()
         val id = Datasource.mapOfPatients[Datasource.getCurrentUser().info.name].toString()
         val day = Datasource.routineDaySelected

@@ -13,14 +13,14 @@ data class Food (
     var steps: MutableList<String> = mutableListOf(),
     var info: Nutrients = Nutrients()
 ){
-    fun getFoodType() : String{
+    fun translateFoodType() : String{
         return when(type){
-            "Desayuno" -> "breakfast"
-            "Comida" -> "meal"
-            "Cena" -> "dinner"
-            "Snack 1" -> "snack1"
-            "Snack 2" -> "snack2"
-            else -> ""
+            "breakfast" -> "Desayuno"
+            "meal" -> "Comida"
+            "dinner" -> "Cena"
+            "snack1" -> "Snack"
+            "snack2" -> "Snack"
+            else -> "Sin asignar"
         }
     }
 }
@@ -35,7 +35,7 @@ data class Nutrients(
 data class FoodDayMenu (
     var day: String = "",
     var imageUri: String = "",
-    val foods: MutableMap<String, Food> = mutableMapOf(
+    var foods: MutableMap<String, Food> = mutableMapOf(
         "breakfast" to Food(),
         "dinner" to Food(),
         "meal" to Food(),
@@ -72,5 +72,5 @@ val mealIndex = {x: String -> when(x){
     "meal" -> FoodType.MEAL
     "snack1" -> FoodType.SNACK1
     "snack2" -> FoodType.SNACK2
-    else -> 0
+    else -> 5
 }}

@@ -1,13 +1,15 @@
 package com.nutrikares.nutrideskapp
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.data.Datasource
@@ -15,6 +17,7 @@ import com.nutrikares.nutrideskapp.data.models.Food
 import com.nutrikares.nutrideskapp.databinding.FragmentFoodDetailBinding
 import com.nutrikares.nutrideskapp.utils.Calendar
 import java.io.File
+
 
 class FoodDetail : Fragment() {
 
@@ -35,7 +38,6 @@ class FoodDetail : Fragment() {
             recipeType = it.getString(RECIPE_TYPE).toString()
         }
         val selectedDate = Calendar().translate(Datasource.getCurrentDay(), "en")
-        Log.d("Food", recipeType)
         recipe = Datasource.getUserDiets().days[selectedDate]?.foods?.get(recipeType)
     }
 
@@ -74,16 +76,39 @@ class FoodDetail : Fragment() {
         recipe?.let {
             binding.recipeTiming.text = resources.getString(R.string.minutes, it.time)
             binding.recipeDescContent.text = it.description
-            binding.recipeIngredientsContent.adapter = ArrayAdapter(requireContext(), R.layout.list_items, R.id.adapterTextView, it.ingredients)
-            binding.recipeStepsContent.adapter = ArrayAdapter(requireContext(), R.layout.list_items, R.id.adapterTextView, it.steps)
+            binding.recipeIngredientsContent.adapter = ListAdapter(it.ingredients)
+            binding.recipeIngredientsContent.setHasFixedSize(true)
+            binding.recipeStepsContent.adapter = ListAdapter(it.steps)
+            binding.recipeStepsContent.setHasFixedSize(true)
         }
 
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+}
+
+class ListAdapter(
+    val data: List<String>
+) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+
+    class ViewHolder(view: View?) : RecyclerView.ViewHolder(view!!) {
+        val textView: TextView = view!!.findViewById(R.id.adapterTextView)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.list_items, parent, false)
+
+        return ViewHolder(layout)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val text = data[position]
+        holder.textView.text = text
+    }
+
+    override fun getItemCount() = data.size
 }
