@@ -10,17 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:layout_scrollFlags="exitUntilCollapsed"
-            android:adjustViewBounds="true"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop"
-            android:foreground="@drawable/gradient_foreground_rotated"
-            tools:src="@drawable/diet" />
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorSecondaryVariant"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:adjustViewBounds="true"
+                app:layout_collapseMode="parallax"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:foreground="@drawable/gradient_foreground_rotated"
+                tools:src="@drawable/diet" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll"
+                app:contentInsetStart="0dp">
+
+                <ImageButton
+                    android:id="@+id/back_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:importantForAccessibility="no"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_arrow_left" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -117,17 +143,26 @@
                 android:text="@string/ingredients"
                 style="@style/Subtitle1"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/recipe_ingredients_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/recipe_ingredients"
-                tools:listitem="@layout/list_items"
-                android:clickable="false"
-                android:focusable="false"
-                android:listSelector="@android:color/transparent"
-                android:overScrollMode="ifContentScrolls"
-                android:layout_marginTop="12dp" />
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recipe_ingredients_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/list_items"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:listSelector="@android:color/transparent"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_marginTop="12dp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/recipe_steps"
@@ -139,17 +174,26 @@
                 android:text="@string/preparation"
                 style="@style/Subtitle1"/>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:id="@+id/recipe_steps_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false"
-                android:listSelector="@android:color/transparent"
                 app:layout_constraintTop_toBottomOf="@id/recipe_steps"
-                tools:listitem="@layout/list_items"
-                android:overScrollMode="ifContentScrolls"
-                android:layout_marginTop="12dp" />
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recipe_steps_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:listSelector="@android:color/transparent"
+                    tools:listitem="@layout/list_items"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_marginTop="12dp" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

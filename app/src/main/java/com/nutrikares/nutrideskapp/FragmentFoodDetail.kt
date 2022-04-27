@@ -1,14 +1,13 @@
 package com.nutrikares.nutrideskapp
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -53,6 +52,8 @@ class FoodDetail : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.backBtn.setOnClickListener { findNavController().navigateUp() }
+
         var imagePath = ""
         binding.recipeTiming.text = ""
         recipe?.let {
@@ -76,10 +77,10 @@ class FoodDetail : Fragment() {
         recipe?.let {
             binding.recipeTiming.text = resources.getString(R.string.minutes, it.time)
             binding.recipeDescContent.text = it.description
-            binding.recipeIngredientsContent.adapter = ListAdapter(it.ingredients)
-            binding.recipeIngredientsContent.setHasFixedSize(true)
-            binding.recipeStepsContent.adapter = ListAdapter(it.steps)
-            binding.recipeStepsContent.setHasFixedSize(true)
+            binding.recipeIngredientsRecycler.adapter = ListAdapter(it.ingredients)
+            binding.recipeIngredientsRecycler.setHasFixedSize(true)
+            binding.recipeStepsRecycler.adapter = ListAdapter(it.steps)
+            binding.recipeStepsRecycler.setHasFixedSize(true)
         }
 
     }
