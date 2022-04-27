@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentCreateRecipeInformationBinding
@@ -61,16 +62,20 @@ class CreateRecipeInformationFragment : Fragment() {
             binding.updateImageButton.visibility = View.VISIBLE
 
             val recipe = Datasource.getCurrentRecipe()
-            downloadUri = Uri.parse(recipe.imageResourceId)
+            val storageRef = Firebase.storage.reference
+            storageRef.child("images").child(recipe.imageResourceId).downloadUrl.addOnSuccessListener { uri->
+                downloadUri = uri
+                val path = downloadUri.toString()
+                if(!path.equals("")){
+                    Glide.with(this)
+                        .load(path)
+                        .into(binding.recipeImageImageView)
+                }
+            }
             binding.recipeCaloriesEditText.setText(recipe.info.calories.toString())
             binding.recipeCarbsEditText.setText(recipe.info.carbs.toString())
             binding.recipeFatsEditText.setText(recipe.info.fats.toString())
             binding.recipeProteinEditText.setText(recipe.info.protein.toString())
-            if(!recipe.imageResourceId.equals("")){
-                Glide.with(this)
-                    .load(recipe.imageResourceId)
-                    .into(binding.recipeImageImageView)
-            }
         }
 
         binding.acceptButton.setOnClickListener {
@@ -133,8 +138,7 @@ class CreateRecipeInformationFragment : Fragment() {
         Datasource.newRecipe.info.carbs = Integer.parseInt(binding.recipeCarbsEditText.text.toString())
         Datasource.newRecipe.info.fats = Integer.parseInt(binding.recipeFatsEditText.text.toString())
         Datasource.newRecipe.info.protein = Integer.parseInt(binding.recipeProteinEditText.text.toString())
-        Datasource.newRecipe.imageResourceId = downloadUri.toString()
-        //Log.v("Data-final",Datasource.newRecipe.toString())
+        Datasource.newRecipe.imageResourceId = if(!fileUri.toString().equals("") && clickDone) downloadUri.toString() else Datasource.getCurrentRecipe().imageResourceId
     }
 
     fun addRecipe(){
@@ -170,35 +174,19 @@ class CreateRecipeInformationFragment : Fragment() {
             uploadTask.addOnFailureListener{
                 progressDialog.dismiss()
                 Toast.makeText(activity, "Error al cargar la imagen", Toast.LENGTH_SHORT).show();
-                //Log.v("Cloud","Imagen no puedo ser subida")
             }.addOnSuccessListener {
+                downloadUri = Uri.parse(fileUri.lastPathSegment)
+                attachData()
+                if(Datasource.getClickOnRecipe()){
+                    progressDialog.dismiss()
+                    //Es modificación
+                    updateRecipe()
+                }else{
+                    progressDialog.dismiss()
+                    //Es adición
+                    addRecipe()
+                }
                 Toast.makeText(activity, "Imagen cargada", Toast.LENGTH_SHORT).show();
-                //Log.v("Cloud","Imagen subida")
-            }
-            val urlTask = uploadTask.continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    task.exception?.let {
-                        throw it
-                    }
-                }
-                recipesImageRef.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    downloadUri = task.result
-                    //Log.v("Cloud",downloadUri.toString())
-                    attachData()
-                    if(Datasource.getClickOnRecipe()){
-                        progressDialog.dismiss()
-                        //Es modificación
-                        updateRecipe()
-                    }else{
-                        progressDialog.dismiss()
-                        //Es adición
-                        addRecipe()
-                    }
-                } else {
-
-                }
             }
         }else{
             attachData()

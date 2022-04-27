@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.data.models.Exercise
@@ -87,29 +88,30 @@ class CreateRoutineFragment : Fragment() {
         if(Datasource.getClickOnRoutine()) {
             val routine = Datasource.getCurrentRoutine()
             excercises=routine.exercises
-            downloadUri = Uri.parse(routine.videoPath)
-            binding.routineNameEditText.setText(routine.name)
-            binding.routineIdEditText.setText(routine.id)
-            binding.routineIdEditText.isFocusable = false
-            binding.listOfExcercisesTextView.setText(convertListIntoString(excercises))
+            val storageRef = Firebase.storage.reference
+            storageRef.child("videos").child(routine.videoPath).downloadUrl.addOnSuccessListener {uri ->
+                downloadUri = uri
+                if(!downloadUri.toString().equals("")){
+                    displayVideoUri = downloadUri
+                    videoView = view.findViewById(R.id.routineVideo_videoView)
+                    initializePlayer(displayVideoUri!!)
 
-            if(!downloadUri.toString().equals("")){
-                displayVideoUri = downloadUri
-                videoView = view.findViewById(R.id.routineVideo_videoView)
-                initializePlayer(displayVideoUri!!)
-
-                displayVideoUri?.let {
-                    val defaultHeight = videoView.layoutParams.height
-                    videoView.setControllerOnFullScreenModeChangedListener {fullscreen ->
-                        if(fullscreen){
-                            videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-                        }else{
-                            videoView.layoutParams.height = defaultHeight
+                    displayVideoUri?.let {
+                        val defaultHeight = videoView.layoutParams.height
+                        videoView.setControllerOnFullScreenModeChangedListener {fullscreen ->
+                            if(fullscreen){
+                                videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+                            }else{
+                                videoView.layoutParams.height = defaultHeight
+                            }
                         }
                     }
                 }
             }
-
+            binding.routineNameEditText.setText(routine.name)
+            binding.routineIdEditText.setText(routine.id)
+            binding.routineIdEditText.isFocusable = false
+            binding.listOfExcercisesTextView.setText(convertListIntoString(excercises))
         }
 
         binding.addExcerciseImageView.setOnClickListener{
@@ -229,31 +231,18 @@ class CreateRoutineFragment : Fragment() {
                 progressDialog.dismiss()
                 Toast.makeText(activity, "Error al cargar el video", Toast.LENGTH_SHORT).show();
             }.addOnSuccessListener {
+                downloadUri = Uri.parse(videoUri.lastPathSegment)
+                attachData()
+                if(Datasource.getClickOnRoutine()){
+                    progressDialog.dismiss()
+                    //Es modificación
+                    updateRoutine()
+                }else{
+                    progressDialog.dismiss()
+                    //Es adición
+                    addRoutine()
+                }
                 Toast.makeText(activity, "Video cargado", Toast.LENGTH_SHORT).show();
-            }
-            val urlTask = uploadTask.continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    task.exception?.let {
-                        throw it
-                    }
-                }
-                storageReference.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    downloadUri = task.result
-                    attachData()
-                    if(Datasource.getClickOnRoutine()){
-                        progressDialog.dismiss()
-                        //Es modificación
-                        updateRoutine()
-                    }else{
-                        progressDialog.dismiss()
-                        //Es adición
-                        addRoutine()
-                    }
-                } else {
-
-                }
             }
         }else{
             attachData()
@@ -265,7 +254,7 @@ class CreateRoutineFragment : Fragment() {
         Datasource.newRoutine.name = binding.routineNameEditText.text.toString()
         Datasource.newRoutine.id = binding.routineIdEditText.text.toString()
         Datasource.newRoutine.exercises = excercises
-        Datasource.newRoutine.videoPath = downloadUri.toString()
+        Datasource.newRoutine.videoPath = if(!videoUri.toString().equals("") && clickDone) downloadUri.toString() else  Datasource.getCurrentRoutine().videoPath
     }
 
     fun addRoutine(){
