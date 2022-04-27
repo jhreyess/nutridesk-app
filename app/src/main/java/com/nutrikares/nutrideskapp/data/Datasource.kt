@@ -23,6 +23,9 @@ object Datasource {
     fun getUserInfo() = user.info
     fun getUserRoutines() = user.routine
     fun getUserDiets() = user.diets
+    private lateinit var currentDay: String
+    fun setCurrentDay(selected: String) { currentDay = selected }
+    fun getCurrentDay() = currentDay
 
     private val usersList: MutableList<UserInfo?> = mutableListOf()
     private val routinesList: MutableList<Routine?> = mutableListOf()
@@ -30,7 +33,6 @@ object Datasource {
 
     fun getUsers() = usersList
 
-    /* TODO: BORRAR DATOS DE PRUEBA */
     private val ingredients = mutableListOf("Ingredients")
     private val steps = mutableListOf("Steps")
     private var currentRecipe = Food("", 10, "", "", "", ingredients, steps)
@@ -64,7 +66,6 @@ object Datasource {
     fun getCurrentRoutine():Routine{
         return currentRoutine
     }
-    /* TODO: BORRAR DATOS DE PRUEBA */
 
     val mapOfPatients: HashMap<String, String> = hashMapOf()
     val patients: MutableList<String> = mutableListOf()

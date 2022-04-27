@@ -12,7 +12,18 @@ data class Food (
     var ingredients: MutableList<String> = mutableListOf(),
     var steps: MutableList<String> = mutableListOf(),
     var info: Nutrients = Nutrients()
-)
+){
+    fun getFoodType() : String{
+        return when(type){
+            "Desayuno" -> "breakfast"
+            "Comida" -> "meal"
+            "Cena" -> "dinner"
+            "Snack 1" -> "snack1"
+            "Snack 2" -> "snack2"
+            else -> ""
+        }
+    }
+}
 
 data class Nutrients(
     var carbs: Int = 0,

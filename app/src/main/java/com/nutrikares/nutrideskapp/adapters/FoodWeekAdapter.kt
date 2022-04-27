@@ -5,13 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.FragmentFood
 import com.nutrikares.nutrideskapp.FragmentFoodDirections
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.models.FoodDayMenu
+import java.io.File
 
 class FoodWeekAdapter(
     private val context: FragmentFood?,
@@ -49,7 +53,20 @@ class FoodWeekAdapter(
 
         holder.dayTextView.text = resources?.getString(R.string.card_day, position.inc().toString())
         holder.dateTextView.text =  dayMenu.day
-        //holder.previewImageSource.setImageResource(day.imageResourceId)
+
+        val imagePath = dayMenu.imageUri
+        val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
+        if(cacheFile.exists()){
+            holder.previewImageSource.setImageURI(cacheFile.toUri())
+        }else{
+            Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
+                .addOnCompleteListener {
+                    if(it.isSuccessful) {
+                        val uri = cacheFile.toUri()
+                        holder.previewImageSource.setImageURI(uri)
+                    }
+                }
+        }
 
         // Assign onClickListener to each card
         holder.cardButton.setOnClickListener {

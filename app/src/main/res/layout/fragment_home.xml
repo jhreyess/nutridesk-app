@@ -57,7 +57,9 @@
             android:clipToPadding="false"
             android:paddingTop="10dp"
             android:paddingStart="18dp"
-            android:paddingEnd="18dp">
+            android:paddingEnd="18dp"
+            android:paddingBottom="18dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="88dp">

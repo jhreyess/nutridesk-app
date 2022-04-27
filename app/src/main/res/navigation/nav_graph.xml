@@ -29,6 +29,21 @@
             <action
                 android:id="@+id/action_fragmentFoodDaily_to_fragmentFood"
                 app:destination="@id/fragmentFood" />
+            <action
+                android:id="@+id/action_fragmentFoodDaily_to_foodDetail"
+                app:destination="@id/foodDetail" />
+        </fragment>
+        <fragment
+            android:id="@+id/foodDetail"
+            android:name="com.nutrikares.nutrideskapp.FoodDetail"
+            android:label="fragment_food_detail"
+            tools:layout="@layout/fragment_food_detail" >
+            <action
+                android:id="@+id/action_foodDetail_to_fragmentFoodDaily"
+                app:destination="@id/fragmentFoodDaily" />
+            <argument
+                android:name="recipeType"
+                app:argType="string" />
         </fragment>
 
 

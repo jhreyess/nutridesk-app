@@ -5,15 +5,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.nutrikares.nutrideskapp.FragmentFoodDaily
+import com.nutrikares.nutrideskapp.FragmentFoodDailyDirections
 import com.nutrikares.nutrideskapp.R
 import com.nutrikares.nutrideskapp.data.Datasource
+import java.io.File
 
 class FoodDayAdapter(
     private val context: FragmentFoodDaily?,
-    dayIndex: String
+    private val dayIndex: String
 ): RecyclerView.Adapter<FoodDayAdapter.FoodDayViewHolder>() {
 
     private val data = Datasource.getUserDiets().days.values.toList().single { it.day == dayIndex }
@@ -46,15 +52,29 @@ class FoodDayAdapter(
 
     override fun onBindViewHolder(holder: FoodDayViewHolder, position: Int) {
         val dish = menu[position]
-        val resources = context?.resources
 
         holder.dishType.text = dish.type
-        //holder.previewImageSource.setImageResource(menu.imageResourceId)
+
+        val imagePath = dish.imageResourceId
+        val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
+        if(cacheFile.exists()){
+            holder.previewImageSource.setImageURI(cacheFile.toUri())
+        }else{
+            Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
+                .addOnCompleteListener {
+                    if(it.isSuccessful) {
+                        val uri = cacheFile.toUri()
+                        holder.previewImageSource.setImageURI(uri)
+                    }
+                }
+        }
 
         // Assign onClickListener to each card
         holder.cardButton.setOnClickListener {
-            //val action = FoodDayFragmentDirections.actionHomeFragmentToQuotesListFragment(foods = menu.foods)
-            //holder.view?.findNavController()!!.navigate(action)
+            Datasource.setCurrentDay(dayIndex)
+            val dishType = dish.getFoodType()
+            val action = FragmentFoodDailyDirections.actionFragmentFoodDailyToFoodDetail(recipeType = dishType)
+            holder.view?.findNavController()!!.navigate(action)
         }
     }
 }
