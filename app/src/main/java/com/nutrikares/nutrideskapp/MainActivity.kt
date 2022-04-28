@@ -85,14 +85,14 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val weekMenu = snapshot.getValue(FoodWeekMenu::class.java)!!
                 val meals = weekMenu.days
-                meals.map { it.value.day = Calendar().translate(it.key) }
-                val days = meals.toSortedMap(compareBy { Calendar().dateIndex(it) })
+                meals.map { it.value.day = Calendar.translate(it.key) }
+                val days = meals.toSortedMap(compareBy { Calendar.dateIndex(it) })
                 days.values.forEach {
                     it.foods = it.foods.toSortedMap(compareBy { type -> mealIndex(type) })
                         .also { sorted -> sorted.mapValues { food -> food.value.type = food.key }
                     }
                 }
-                val diets = FoodWeekMenu(weekMenu.weekStart, weekMenu.weekEnd, days)
+                val diets = FoodWeekMenu(days)
                 Datasource.setUserDiets(diets)
             }
             override fun onCancelled(error: DatabaseError) { }
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startListeningRoutinesQuery(){
-        val today = Calendar().getDate("en")
+        val today = Calendar.getDate("en")
         trainingRef = database.child("users_trainings").child(uid).child(today)
         trainingRef.keepSynced(true)
 

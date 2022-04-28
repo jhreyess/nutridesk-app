@@ -56,24 +56,28 @@ class FoodDayAdapter(
         holder.dishType.text = dish.translateFoodType()
 
         val imagePath = dish.imageResourceId
-        val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
-        if(cacheFile.exists()){
-            holder.previewImageSource.setImageURI(cacheFile.toUri())
-        }else{
-            Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
-                .addOnCompleteListener {
-                    if(it.isSuccessful) {
-                        val uri = cacheFile.toUri()
-                        holder.previewImageSource.setImageURI(uri)
+        if(imagePath.isNotBlank()){
+            val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
+            if(cacheFile.exists()){
+                holder.previewImageSource.setImageURI(cacheFile.toUri())
+            }else{
+                Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
+                    .addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            val uri = cacheFile.toUri()
+                            holder.previewImageSource.setImageURI(uri)
+                        }
                     }
-                }
+            }
         }
 
-        // Assign onClickListener to each card
-        holder.cardButton.setOnClickListener {
-            Datasource.setCurrentDay(dayIndex)
-            val action = FragmentFoodDailyDirections.actionFragmentFoodDailyToFoodDetail(recipeType = dish.type)
-            holder.view?.findNavController()!!.navigate(action)
+        if(dish.name.isNotBlank()){
+            // Assign onClickListener to each card
+            holder.cardButton.setOnClickListener {
+                Datasource.setCurrentDay(dayIndex)
+                val action = FragmentFoodDailyDirections.actionFragmentFoodDailyToFoodDetail(recipeType = dish.type)
+                holder.view?.findNavController()!!.navigate(action)
+            }
         }
     }
 }

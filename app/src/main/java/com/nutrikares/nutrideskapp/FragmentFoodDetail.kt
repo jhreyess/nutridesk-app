@@ -36,7 +36,7 @@ class FoodDetail : Fragment() {
         arguments?.let {
             recipeType = it.getString(RECIPE_TYPE).toString()
         }
-        val selectedDate = Calendar().translate(Datasource.getCurrentDay(), "en")
+        val selectedDate = Calendar.translate(Datasource.getCurrentDay(), "en")
         recipe = Datasource.getUserDiets().days[selectedDate]?.foods?.get(recipeType)
     }
 

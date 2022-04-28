@@ -45,7 +45,7 @@ class FragmentHome : Fragment() {
             findNavController().navigate(action)
         }
         binding.todaysMenu.setOnClickListener {
-            val weekDay = Calendar().getDate("es")
+            val weekDay = Calendar.getDate("es")
             val action = FragmentHomeDirections.actionFragmentHomeToFragmentFoodDailyHome(dayIndex = weekDay)
             findNavController().navigate(action)
         }

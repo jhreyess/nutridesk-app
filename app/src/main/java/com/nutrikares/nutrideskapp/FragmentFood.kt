@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.nutrikares.nutrideskapp.adapters.FoodWeekAdapter
 import com.nutrikares.nutrideskapp.data.Datasource
 import com.nutrikares.nutrideskapp.databinding.FragmentFoodBinding
+import com.nutrikares.nutrideskapp.utils.Calendar
 
 class FragmentFood : Fragment() {
 
@@ -29,9 +30,10 @@ class FragmentFood : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val data = Datasource.getUserDiets()
+        val days = Calendar.getWeekStartEnd()
 
         // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, data.weekStart, data.weekEnd)
+        binding.fragmentLabel.text = resources.getString(R.string.food_toolbar, days.first, days.second)
 
         // Adapter with custom layout
         val customLayoutManager = GridLayoutManager(activity, 2)
