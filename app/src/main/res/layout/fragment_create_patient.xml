@@ -80,45 +80,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/textViewObjective"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/objective"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAge" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textFieldPatientObjective"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="?attr/colorSurface"
-            app:boxStrokeColor="@color/gray"
-            app:hintEnabled="false">
-
-            <EditText
-                android:id="@+id/patientObjective_editText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:autofillHints="no"
-                android:background="@android:color/transparent"
-                android:hint="@string/patient_objective_placeholder"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/prompt_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldPatientObjective" />
+            app:layout_constraintTop_toBottomOf="@id/textFieldPatientAge" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textFieldPatientEmail"

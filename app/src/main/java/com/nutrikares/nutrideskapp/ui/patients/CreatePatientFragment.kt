@@ -135,7 +135,7 @@ class CreatePatientFragment : Fragment() {
 
     fun checkFields() : Boolean{
         return !(binding.patientNameEditText.text.isEmpty() || binding.patientAgeEditText.text.isEmpty()
-                || binding.patientObjectiveEditText.text.isEmpty() || binding.patientEmailEditText.text.isEmpty()
+                || binding.patientEmailEditText.text.isEmpty()
                 || binding.patientPasswordEditText.text.isEmpty())
     }
 
