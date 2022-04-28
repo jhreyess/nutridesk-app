@@ -26,6 +26,7 @@ class AssignRecipeFragment : Fragment() {
     private var selectedRecipe : String = ""
     private lateinit var database : DatabaseReference
     lateinit var user: User
+    lateinit var listOfRecipes : MutableList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,17 +54,7 @@ class AssignRecipeFragment : Fragment() {
             }
         }
 
-        if(Datasource.recipes.size==0){
-            getRecipes()
-        }else{
-            binding.recipesRecycler.adapter = AssignRecipeAdapter(Datasource.recipes, object : AdapterListener {
-                override fun onItemClick(p0: String) {
-                    selectedRecipe = p0
-                    binding.selectedRecipeTextView.text = resources.getString(R.string.selected_text, p0)
-                }
-            })
-            binding.recipesRecycler.setHasFixedSize(true)
-        }
+        getRecipes()
 
         binding.searchRoutineIcon.setOnClickListener {
             searchRecipes(binding.searchRecipeEditText.text.toString())
@@ -85,7 +76,7 @@ class AssignRecipeFragment : Fragment() {
 
     fun searchRecipes(text : String){
         if(text.isEmpty()){
-            binding.recipesRecycler.adapter = AssignRecipeAdapter(Datasource.recipes, object : AdapterListener {
+            binding.recipesRecycler.adapter = AssignRecipeAdapter(listOfRecipes, object : AdapterListener {
                 override fun onItemClick(p0: String) {
                     selectedRecipe = p0
                     binding.selectedRecipeTextView.text = resources.getString(R.string.selected_text, p0)
@@ -94,7 +85,7 @@ class AssignRecipeFragment : Fragment() {
             binding.recipesRecycler.setHasFixedSize(true)
         }else{
             val newList = mutableListOf<String>()
-            for(recipe in Datasource.recipes){
+            for(recipe in listOfRecipes){
                 if(recipe.contains(text, true)){
                     newList.add(recipe)
                 }
@@ -112,18 +103,25 @@ class AssignRecipeFragment : Fragment() {
     fun getRecipes(){
         Log.d("Recipes","Entró")
         val database : DatabaseReference = Firebase.database.reference
+        listOfRecipes = mutableListOf()
+
+        val type =  when(Datasource.foodSelected){
+            "breakfast" -> "Desayuno"
+            "meal" -> "Comida"
+            "dinner" -> "Cena"
+            "snack1" -> "Snack"
+            "snack2" -> "Snack"
+            else -> "Desayuno"
+        }
 
         database.child("recipes").get().addOnSuccessListener {
 
-            Datasource.mapOfRecipes.clear()
-            Datasource.recipes.clear()
-
             for (ds in it.children) {
-                Datasource.mapOfRecipes.put(ds.child("name").value.toString(),ds.key.toString())
-                Datasource.recipes.add(ds.child("name").value.toString())
+                if(ds.child("type").value.toString().equals(type))
+                listOfRecipes.add(ds.child("name").value.toString())
             }
             // Recycler Viewer
-            binding.recipesRecycler.adapter = AssignRecipeAdapter(Datasource.recipes, object : AdapterListener {
+            binding.recipesRecycler.adapter = AssignRecipeAdapter(listOfRecipes, object : AdapterListener {
                 override fun onItemClick(p0: String) {
                     selectedRecipe = p0
                     binding.selectedRecipeTextView.text = resources.getString(R.string.selected_text, p0)

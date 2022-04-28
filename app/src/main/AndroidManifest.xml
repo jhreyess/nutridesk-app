@@ -18,6 +18,7 @@
         <activity
             android:name=".AdminMainActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_admin_main" />
         <activity
             android:name=".MainActivity"
