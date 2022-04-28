@@ -55,23 +55,27 @@ class FoodWeekAdapter(
         holder.dateTextView.text =  dayMenu.day
 
         val imagePath = dayMenu.imageUri
-        val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
-        if(cacheFile.exists()){
-            holder.previewImageSource.setImageURI(cacheFile.toUri())
-        }else{
-            Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
-                .addOnCompleteListener {
-                    if(it.isSuccessful) {
-                        val uri = cacheFile.toUri()
-                        holder.previewImageSource.setImageURI(uri)
+        if(imagePath.isNotBlank()){
+            val cacheFile = File(context?.requireActivity()?.cacheDir, imagePath)
+            if(cacheFile.exists()){
+                holder.previewImageSource.setImageURI(cacheFile.toUri())
+            }else{
+                Firebase.storage.reference.child("images").child(imagePath).getFile(cacheFile)
+                    .addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            val uri = cacheFile.toUri()
+                            holder.previewImageSource.setImageURI(uri)
+                        }
                     }
-                }
+            }
         }
 
-        // Assign onClickListener to each card
-        holder.cardButton.setOnClickListener {
-            val action = FragmentFoodDirections.actionFragmentFoodToFragmentFoodDaily(dayIndex = dayMenu.day)
-            holder.view?.findNavController()!!.navigate(action)
+        if(dayMenu.foods.isNotEmpty()){
+            // Assign onClickListener to each card
+            holder.cardButton.setOnClickListener {
+                val action = FragmentFoodDirections.actionFragmentFoodToFragmentFoodDaily(dayIndex = dayMenu.day)
+                holder.view?.findNavController()!!.navigate(action)
+            }
         }
     }
 }
