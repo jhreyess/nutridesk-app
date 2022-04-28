@@ -43,7 +43,7 @@ class FragmentFoodDaily : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Bindings
-        binding.fragmentLabel.text = resources.getString(R.string.menu_date, Calendar().dateIndex(menuDay), menuDay)
+        binding.fragmentLabel.text = resources.getString(R.string.menu_date, Calendar.dateIndex(menuDay), menuDay)
         binding.backButton.setOnClickListener { findNavController().popBackStack() }
 
         // Adapter with custom layout

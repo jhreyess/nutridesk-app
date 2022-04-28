@@ -45,8 +45,6 @@ data class FoodDayMenu (
 )
 
 data class FoodWeekMenu(
-    var weekStart: String = "",
-    var weekEnd: String = "",
     var days: MutableMap<String, FoodDayMenu> = mutableMapOf(
         "monday" to FoodDayMenu(),
         "tuesday" to FoodDayMenu(),
