@@ -115,6 +115,13 @@ class AssignRecipeFragment : Fragment() {
         }
 
         database.child("recipes").get().addOnSuccessListener {
+            if(Datasource.recipes.size == 0){
+                Datasource.mapOfRecipes.clear()
+                for (ds in it.children) {
+                    Datasource.mapOfRecipes.put(ds.child("name").value.toString(),ds.key.toString())
+                    Datasource.recipes.add(ds.child("name").value.toString())
+                }
+            }
 
             for (ds in it.children) {
                 if(ds.child("type").value.toString().equals(type))
